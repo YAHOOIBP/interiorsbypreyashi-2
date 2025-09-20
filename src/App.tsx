@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Home from './pages/Home';
+import HomePage from './pages/Home';
 import About from './pages/About';
 import WhereWeWork from './pages/WhereWeWork';
 import Services from './pages/Services';
@@ -32,7 +32,7 @@ function App() {
               className="flex-1"
             >
               <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<HomePage />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/where-we-work" element={<WhereWeWork />} />
                 <Route path="/services" element={<Services />} />

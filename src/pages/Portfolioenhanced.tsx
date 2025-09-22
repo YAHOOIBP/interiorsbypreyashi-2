@@ -16,146 +16,132 @@ const Portfolio = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // YOUR ORIGINAL PROJECT DATA - PRESERVED EXACTLY
   const projects = [
     {
       id: 1,
-      title: "Modern Contemporary Villa",
+      title: "Modern Contemporary Home",
       category: "Residential",
       location: "Tinsukia, Assam",
       year: "2024",
-      area: "3,500 sq ft",
+      area: "2,800 sq ft",
       duration: "4 months",
-      client: "Private Villa Owner",
-      description: "A stunning contemporary villa that seamlessly blends modern design with traditional Indian architectural elements. This luxurious residence features open-plan living spaces, floor-to-ceiling windows, and a sophisticated color palette that creates an elegant and comfortable living environment. The design incorporates sustainable materials and smart home technology while maintaining a connection to the natural surroundings.",
+      budget: "₹15-20 Lakhs",
+      client: "The Sharma Family",
+      description: "A sophisticated contemporary home design that seamlessly blends modern aesthetics with traditional Indian elements. This project features an open-concept layout with clean lines, neutral color palette, and strategic use of natural light. The design incorporates Vastu principles while maintaining a sleek, minimalist aesthetic. Key highlights include a spacious living area with double-height ceilings, a modern kitchen with island, and bedrooms designed for optimal rest and privacy.",
       images: [
-        "/images/portfolio/villa-1.jpg",
-        "/images/portfolio/villa-2.jpg", 
-        "/images/portfolio/villa-3.jpg",
-        "/images/portfolio/villa-4.jpg"
+        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1616137466211-f939fc000234?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1556020685-ae41abfc9365?w=800&h=600&fit=crop"
       ],
-      features: ["Smart Home Integration", "Sustainable Materials", "Open Plan Living", "Natural Lighting", "Modern Kitchen", "Luxury Bathrooms"]
+      features: ["Open Concept Living", "Vastu Compliant", "Smart Home Integration", "Natural Light Optimization", "Premium Materials", "Custom Storage Solutions"],
+      style: "Contemporary",
+      challenges: "Incorporating Vastu principles while maintaining modern aesthetics",
+      solution: "Strategic room placement and natural material integration"
     },
     {
       id: 2,
-      title: "Corporate Headquarters Interior",
-      category: "Commercial",
-      location: "Guwahati, Assam",
+      title: "Luxury Villa Interior",
+      category: "Residential",
+      location: "Dibrugarh, Assam",
       year: "2024",
-      area: "8,000 sq ft",
-      duration: "3 months", 
-      client: "Tech Solutions Ltd",
-      description: "A sophisticated corporate office design that promotes collaboration and productivity. The space features modern workstations, executive offices, conference rooms, and recreational areas. The design incorporates the company's brand colors and values while creating an inspiring work environment that attracts and retains top talent.",
+      area: "4,500 sq ft",
+      duration: "6 months",
+      budget: "₹25-30 Lakhs",
+      client: "The Gupta Residence",
+      description: "An opulent villa interior that exudes luxury through carefully curated materials, textures, and lighting. The design philosophy centered around creating intimate spaces within the grand layout while ensuring each room maintains its distinct character. Rich fabrics, custom millwork, and statement lighting fixtures create an atmosphere of refined elegance. The project includes a grand living room, formal dining area, master suite with walk-in closet, and a private study.",
       images: [
-        "/images/portfolio/office-1.jpg",
-        "/images/portfolio/office-2.jpg",
-        "/images/portfolio/office-3.jpg"
+        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop"
       ],
-      features: ["Brand Integration", "Collaborative Spaces", "Executive Offices", "Modern Workstations", "Conference Rooms", "Break Areas"]
+      features: ["Luxury Finishes", "Custom Millwork", "Statement Lighting", "Premium Fabrics", "Art Collection Integration", "Climate Control"],
+      style: "Luxury Contemporary",
+      challenges: "Balancing grandeur with intimacy in large spaces",
+      solution: "Creating distinct zones with appropriate scale and lighting"
     },
     {
       id: 3,
-      title: "Boutique Hotel Suite Design",
-      category: "Hospitality", 
-      location: "Dibrugarh, Assam",
+      title: "Corporate Office Design",
+      category: "Commercial",
+      location: "Guwahati, Assam",
       year: "2023",
-      area: "800 sq ft",
-      duration: "2 months",
-      client: "Heritage Hotels Group",
-      description: "An elegant hotel suite that captures the essence of Assamese culture while providing modern luxury amenities. The design features local artwork, traditional textiles, and contemporary furniture that create a unique hospitality experience. Rich colors and textures reflect the natural beauty of the region while ensuring guest comfort.",
+      area: "3,200 sq ft",
+      duration: "3 months",
+      budget: "₹18-22 Lakhs",
+      client: "TechnoVision Solutions",
+      description: "A dynamic office space designed to enhance productivity and collaboration while reflecting the company's innovative spirit. The design features flexible workspaces, modern meeting rooms, and recreational areas that promote work-life balance. The color scheme incorporates the company's branding while maintaining a professional atmosphere. Smart storage solutions and ergonomic furniture ensure functionality meets aesthetic appeal.",
       images: [
-        "/images/portfolio/hotel-suite-1.jpg",
-        "/images/portfolio/hotel-suite-2.jpg",
-        "/images/portfolio/hotel-suite-3.jpg"
+        "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop"
       ],
-      features: ["Cultural Elements", "Luxury Amenities", "Local Artwork", "Contemporary Furniture", "Rich Textures", "Modern Bathroom"]
+      features: ["Flexible Workspaces", "Branding Integration", "Ergonomic Design", "Smart Storage", "Collaborative Zones", "Sound Management"],
+      style: "Modern Corporate",
+      challenges: "Creating collaborative spaces while ensuring productivity",
+      solution: "Flexible furniture arrangements and acoustic planning"
     },
     {
       id: 4,
-      title: "Family Residence Renovation",
-      category: "Residential",
-      location: "Jorhat, Assam", 
+      title: "Boutique Restaurant Interior",
+      category: "Hospitality",
+      location: "Jorhat, Assam",
       year: "2023",
-      area: "2,800 sq ft",
-      duration: "5 months",
-      client: "The Sharma Family",
-      description: "A comprehensive renovation of a traditional family home that preserves its heritage character while introducing modern functionality. The project involved updating electrical and plumbing systems, redesigning the kitchen and bathrooms, and creating comfortable living spaces that accommodate three generations of the family.",
+      area: "1,800 sq ft",
+      duration: "2 months",
+      budget: "₹12-15 Lakhs",
+      client: "Spice Garden Restaurant",
+      description: "An intimate restaurant design that creates a warm, welcoming atmosphere while optimizing traffic flow and operational efficiency. The design incorporates local cultural elements through artwork, lighting fixtures, and material choices. The space features comfortable seating arrangements for various group sizes, an open kitchen concept, and carefully planned lighting that enhances both food presentation and dining experience.",
       images: [
-        "/images/portfolio/family-home-1.jpg",
-        "/images/portfolio/family-home-2.jpg",
-        "/images/portfolio/family-home-3.jpg",
-        "/images/portfolio/family-home-4.jpg"
+        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop"
       ],
-      features: ["Heritage Preservation", "Multi-generational Design", "Modern Systems", "Traditional Elements", "Updated Kitchen", "Family Spaces"]
+      features: ["Cultural Integration", "Optimal Traffic Flow", "Mood Lighting", "Flexible Seating", "Open Kitchen Design", "Local Artwork"],
+      style: "Cultural Contemporary",
+      challenges: "Balancing cultural authenticity with modern functionality",
+      solution: "Thoughtful integration of local art and modern operational needs"
     },
     {
       id: 5,
-      title: "Luxury Restaurant Interior",
-      category: "Hospitality",
-      location: "Silchar, Assam",
+      title: "Minimalist Apartment",
+      category: "Residential",
+      location: "Tezpur, Assam",
       year: "2023",
-      area: "2,200 sq ft", 
-      duration: "2.5 months",
-      client: "Fine Dining Restaurant",
-      description: "An upscale restaurant interior that creates an intimate dining experience through carefully planned lighting, seating arrangements, and acoustic design. The space features custom-designed furniture, local artwork, and a sophisticated color scheme that enhances the culinary experience and reflects the restaurant's premium positioning.",
+      area: "1,200 sq ft",
+      duration: "2 months",
+      budget: "₹8-12 Lakhs",
+      client: "Young Professional Couple",
+      description: "A clean, uncluttered apartment design that maximizes space efficiency while maintaining style and comfort. The minimalist approach focuses on quality over quantity, featuring multi-functional furniture, hidden storage solutions, and a neutral color palette with selective accent colors. Every element serves a purpose while contributing to the overall aesthetic harmony.",
       images: [
-        "/images/portfolio/restaurant-1.jpg",
-        "/images/portfolio/restaurant-2.jpg",
-        "/images/portfolio/restaurant-3.jpg"
+        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=800&h=600&fit=crop"
       ],
-      features: ["Intimate Ambiance", "Custom Furniture", "Acoustic Design", "Premium Lighting", "Local Artwork", "Sophisticated Colors"]
+      features: ["Space Optimization", "Multi-functional Furniture", "Hidden Storage", "Neutral Palette", "Quality Materials", "Clean Lines"],
+      style: "Minimalist",
+      challenges: "Maximizing functionality in limited space",
+      solution: "Smart storage solutions and multi-purpose furniture"
     },
     {
       id: 6,
-      title: "Modern Apartment Design",
-      category: "Residential",
-      location: "Tezpur, Assam",
-      year: "2023", 
-      area: "1,400 sq ft",
-      duration: "2 months",
-      client: "Young Professional Couple",
-      description: "A contemporary apartment design that maximizes space efficiency while maintaining style and comfort. The open-plan layout incorporates smart storage solutions, multifunctional furniture, and a neutral color palette with selective accent colors. The design creates a sophisticated urban living environment suitable for a modern lifestyle.",
-      images: [
-        "/images/portfolio/apartment-1.jpg",
-        "/images/portfolio/apartment-2.jpg",
-        "/images/portfolio/apartment-3.jpg"
-      ],
-      features: ["Space Optimization", "Smart Storage", "Multifunctional Furniture", "Open Plan Layout", "Modern Amenities", "Urban Lifestyle"]
-    },
-    {
-      id: 7,
-      title: "Retail Showroom Design",
-      category: "Commercial",
+      title: "Heritage Hotel Suite",
+      category: "Hospitality",
       location: "Itanagar, Arunachal Pradesh",
-      year: "2022",
-      area: "1,800 sq ft",
+      year: "2023",
+      area: "800 sq ft",
       duration: "1.5 months",
-      client: "Fashion Retail Brand",
-      description: "A modern retail showroom designed to showcase fashion merchandise effectively while creating an engaging shopping experience. The design features flexible display systems, strategic lighting, and a layout that guides customers through the space naturally. The interior reflects current retail design trends while accommodating the brand's specific requirements.",
+      budget: "₹10-14 Lakhs",
+      client: "Mountain View Resort",
+      description: "A luxury hotel suite design that celebrates the rich cultural heritage of Arunachal Pradesh while providing modern amenities and comfort. The design incorporates traditional patterns, locally sourced materials, and handcrafted furniture pieces. The color scheme reflects the natural beauty of the mountains and valleys, creating a serene retreat for guests.",
       images: [
-        "/images/portfolio/showroom-1.jpg", 
-        "/images/portfolio/showroom-2.jpg",
-        "/images/portfolio/showroom-3.jpg"
+        "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop"
       ],
-      features: ["Flexible Displays", "Strategic Lighting", "Customer Flow", "Brand Showcase", "Modern Fixtures", "Engaging Experience"]
-    },
-    {
-      id: 8,
-      title: "Heritage Home Restoration",
-      category: "Residential",
-      location: "Namsai, Arunachal Pradesh",
-      year: "2022",
-      area: "2,600 sq ft",
-      duration: "6 months",
-      client: "Heritage Property Owner",
-      description: "A careful restoration of a heritage property that preserves its historical character while introducing necessary modern amenities. The project involved structural repairs, restoration of original architectural features, and sensitive additions that complement the existing structure. Traditional building techniques were used alongside modern materials to ensure longevity.",
-      images: [
-        "/images/portfolio/heritage-1.jpg",
-        "/images/portfolio/heritage-2.jpg", 
-        "/images/portfolio/heritage-3.jpg",
-        "/images/portfolio/heritage-4.jpg"
-      ],
-      features: ["Historical Preservation", "Structural Restoration", "Traditional Techniques", "Modern Amenities", "Architectural Features", "Sensitive Additions"]
+      features: ["Cultural Heritage", "Local Materials", "Handcrafted Elements", "Mountain Views", "Luxury Amenities", "Natural Color Palette"],
+      style: "Heritage Luxury",
+      challenges: "Preserving cultural authenticity while meeting modern hospitality standards",
+      solution: "Careful selection of traditional elements enhanced with contemporary comfort"
     }
   ];
 
@@ -319,7 +305,7 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Projects Grid - Enhanced 3D Display with your original images */}
+      {/* Projects Grid - Enhanced 3D Display */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -336,7 +322,7 @@ const Portfolio = () => {
                   onClick={() => openProject(project)}
                 >
                   <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-[1.02]">
-                    {/* 3D Enhanced Image Container with your original images */}
+                    {/* 3D Enhanced Image Container */}
                     <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-purple-100 to-pink-100">
                       <img
                         src={project.images[0]}
@@ -428,7 +414,7 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Project Detail Modal with your original images */}
+      {/* Project Detail Modal */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
@@ -447,7 +433,7 @@ const Portfolio = () => {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-                {/* Image Carousel with your original images */}
+                {/* Image Carousel */}
                 <div className="relative aspect-square lg:aspect-auto">
                   <img
                     src={selectedProject.images[currentImageIndex]}
@@ -490,7 +476,7 @@ const Portfolio = () => {
                   </button>
                 </div>
 
-                {/* Project Details - Your original content */}
+                {/* Project Details */}
                 <div className="p-8">
                   <div className="mb-6">
                     <div className="flex items-center justify-between mb-4">
@@ -522,12 +508,12 @@ const Portfolio = () => {
                       <span className="ml-2 font-medium">{selectedProject.duration}</span>
                     </div>
                     <div>
-                      <span className="text-gray-500">Client:</span>
-                      <span className="ml-2 font-medium">{selectedProject.client}</span>
+                      <span className="text-gray-500">Budget:</span>
+                      <span className="ml-2 font-medium">{selectedProject.budget}</span>
                     </div>
                     <div>
-                      <span className="text-gray-500">Category:</span>
-                      <span className="ml-2 font-medium">{selectedProject.category}</span>
+                      <span className="text-gray-500">Style:</span>
+                      <span className="ml-2 font-medium">{selectedProject.style}</span>
                     </div>
                   </div>
 
@@ -546,6 +532,20 @@ const Portfolio = () => {
                       ))}
                     </div>
                   </div>
+
+                  {selectedProject.challenges && (
+                    <div className="mb-6">
+                      <h3 className="font-semibold text-gray-800 mb-2">Challenge</h3>
+                      <p className="text-gray-700 text-sm">{selectedProject.challenges}</p>
+                    </div>
+                  )}
+
+                  {selectedProject.solution && (
+                    <div className="mb-6">
+                      <h3 className="font-semibold text-gray-800 mb-2">Solution</h3>
+                      <p className="text-gray-700 text-sm">{selectedProject.solution}</p>
+                    </div>
+                  )}
 
                   <div className="pt-6 border-t border-gray-200">
                     <button

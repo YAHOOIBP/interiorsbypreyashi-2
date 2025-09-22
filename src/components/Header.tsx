@@ -1,20 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
@@ -22,169 +24,198 @@ const Header: React.FC = () => {
     setActiveDropdown(null);
   }, [location]);
 
+  // Universal navigation handler - works for ALL pages
+  const handleNavigation = (path: string, e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    
+    if (location.pathname === path) {
+      // If already on the target page, scroll to top smoothly
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      // Navigate to the page and then scroll to top
+      navigate(path);
+      // Small delay to ensure navigation completes before scrolling
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
+    }
+    
+    // Close mobile menu if open
+    setIsMobileMenuOpen(false);
+    setActiveDropdown(null);
+  };
+
   const navigationItems = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
+    { name: 'Home', path: '/' },
+    { name: 'About', path: '/about' },
     {
-      name: "Services",
-      path: "/services",
+      name: 'Services',
+      path: '/services',
       dropdown: [
-        { name: "How We Work", path: "/how-we-work" },
-        { name: "Design Solutions", path: "/design-solutions" },
-        { name: "Turnkey Solutions", path: "/turnkey-solutions" },
+        { name: 'How We Work', path: '/how-we-work' },
+        { name: 'Design Solutions', path: '/design-solutions' },
+        { name: 'Turnkey Solutions', path: '/turnkey-solutions' },
       ],
     },
-    { name: "Where We Work", path: "/where-we-work" },
-    { name: "Portfolio", path: "/portfolio" },
-    { name: "Blog", path: "/blog" },
-    { name: "FAQ", path: "/faq" },
-    { name: "Contact", path: "/contact" },
+    { name: 'Where We Work', path: '/where-we-work' },
+    { name: 'Portfolio', path: '/portfolio' },
+    { name: 'Blog', path: '/blog' },
+    { name: 'FAQ', path: '/faq' },
+    { name: 'Contact', path: '/contact' },
   ];
 
-  // This always shows a visible header with correct coloring on all routes
+  const handleDropdownToggle = (itemName: string) => {
+    setActiveDropdown(activeDropdown === itemName ? null : itemName);
+  };
+
+  const renderNavItem = (item: any, isMobile = false) => {
+    if (item.dropdown) {
+      return (
+        <div className="relative group" key={item.name}>
+          <button
+            onClick={() => {
+              if (isMobile) {
+                handleDropdownToggle(item.name);
+              } else {
+                handleNavigation(item.path);
+              }
+            }}
+            className={`${
+              isMobile
+                ? 'flex items-center justify-between w-full px-4 py-3 text-left hover:bg-gray-50'
+                : 'flex items-center px-3 py-2 hover:text-amber-600'
+            } transition-colors duration-300 ${
+              location.pathname === item.path ||
+              item.dropdown.some((dropdownItem: any) => dropdownItem.path === location.pathname)
+                ? 'text-amber-600 font-semibold'
+                : 'text-gray-700 hover:text-amber-600'
+            }`}
+          >
+            {item.name}
+            <ChevronDown className="w-4 h-4 ml-1" />
+          </button>
+
+          {/* Desktop Dropdown */}
+          {!isMobile && (
+            <div className="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+              <div className="py-2">
+                {item.dropdown.map((dropdownItem: any) => (
+                  <button
+                    key={dropdownItem.name}
+                    onClick={() => handleNavigation(dropdownItem.path)}
+                    className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-amber-50 hover:text-amber-600 transition-colors duration-300"
+                  >
+                    {dropdownItem.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Mobile Dropdown */}
+          {isMobile && activeDropdown === item.name && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="bg-gray-50 overflow-hidden"
+            >
+              {item.dropdown.map((dropdownItem: any) => (
+                <button
+                  key={dropdownItem.name}
+                  onClick={() => handleNavigation(dropdownItem.path)}
+                  className="block w-full text-left px-8 py-3 text-gray-600 hover:text-amber-600 transition-colors duration-300"
+                >
+                  {dropdownItem.name}
+                </button>
+              ))}
+            </motion.div>
+          )}
+        </div>
+      );
+    }
+
+    return (
+      <button
+        key={item.name}
+        onClick={() => handleNavigation(item.path)}
+        className={`${
+          isMobile
+            ? 'block w-full text-left px-4 py-3 hover:bg-gray-50'
+            : 'px-3 py-2 hover:text-amber-600'
+        } transition-colors duration-300 ${
+          location.pathname === item.path
+            ? 'text-amber-600 font-semibold'
+            : 'text-gray-700 hover:text-amber-600'
+        }`}
+      >
+        {item.name}
+      </button>
+    );
+  };
+
   return (
     <header
-      className={`fixed w-full top-0 left-0 z-50 transition-colors duration-300 bg-white shadow text-gray-900`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled || location.pathname !== '/'
+          ? 'bg-white shadow-md'
+          : 'bg-white/95 backdrop-blur-sm'
+      }`}
     >
-      <div className="container mx-auto px-4 flex items-center justify-between h-16">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
-          <img
-            src="/logo.png"
-            alt="Interiors By Preyashi Logo"
-            className="h-10 w-10 object-contain"
-            onError={(e) => {
-              (e.currentTarget as HTMLImageElement).style.display = "none";
-            }}
-          />
-          <span className="font-montserrat font-bold text-xl hidden sm:inline-block">
-            Interiors By Preyashi
-          </span>
-        </Link>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-6 items-center font-semibold">
-          {navigationItems.map((item) =>
-            item.dropdown ? (
-              <div
-                key={item.name}
-                className="relative"
-                onMouseEnter={() => setActiveDropdown(item.name)}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                {/* Make the top-level Services item a clickable Link */}
-                <Link
-                  to={item.path}
-                  className={`flex items-center gap-1 hover:text-amber-600 ${
-                    location.pathname.startsWith(item.path)
-                      ? "text-amber-600 font-bold"
-                      : ""
-                  }`}
-                  aria-haspopup="true"
-                  aria-expanded={activeDropdown === item.name}
-                >
-                  {item.name} <ChevronDown size={16} />
-                </Link>
-                {activeDropdown === item.name && (
-                  <div className="absolute top-full left-0 bg-white text-gray-900 shadow-lg rounded-md py-2 w-48">
-                    {item.dropdown.map((sub) => (
-                      <Link
-                        key={sub.name}
-                        to={sub.path}
-                        className="block px-4 py-2 hover:bg-amber-100"
-                      >
-                        {sub.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ) : (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={`hover:text-amber-600 ${
-                  location.pathname === item.path
-                    ? "text-amber-600 font-bold"
-                    : ""
-                }`}
-              >
-                {item.name}
-              </Link>
-            )
-          )}
-        </nav>
-
-        {/* CTA Button */}
-        <Link
-          to="/contact"
-          className="hidden md:inline-block px-6 py-2 bg-gradient-to-r from-yellow-500 to-orange-500 text-white rounded-full font-semibold hover:scale-105 transition-transform"
-        >
-          Schedule Consultation
-        </Link>
-
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className={`md:hidden p-2 rounded-md focus:outline-none text-gray-900`}
-          aria-label="Toggle menu"
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <nav className="md:hidden bg-white shadow-lg text-gray-900">
-          <div className="px-4 py-4">
-            {navigationItems.map((item) => (
-              <div key={item.name} className="mb-2">
-                {item.dropdown ? (
-                  <>
-                    <Link
-                      to={item.path}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="w-full flex justify-between items-center px-2 py-2 font-semibold hover:bg-amber-100 rounded-md"
-                    >
-                      {item.name}
-                      <ChevronDown />
-                    </Link>
-                    {activeDropdown === item.name && (
-                      <div className="mt-1 pl-4 border-l border-gray-300">
-                        {item.dropdown.map((sub) => (
-                          <Link
-                            key={sub.name}
-                            to={sub.path}
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            className="block px-2 py-1 hover:bg-amber-100 rounded-md"
-                          >
-                            {sub.name}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </>
-                ) : (
-                  <Link
-                    to={item.path}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block px-4 py-2 font-semibold hover:bg-amber-100 rounded-md"
-                  >
-                    {item.name}
-                  </Link>
-                )}
-              </div>
-            ))}
-            {/* Mobile CTA Button */}
-            <Link
-              to="/contact"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="w-full px-4 py-3 mt-2 bg-gradient-to-r from-yellow-500 to-orange-500 text-white rounded-md font-semibold hover:scale-105 transition-transform text-center block"
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <div className="flex items-center">
+            <button
+              onClick={() => handleNavigation('/')}
+              className="flex items-center space-x-3 hover:opacity-80 transition-opacity duration-300"
             >
-              Schedule Consultation
-            </Link>
+              <div className="w-12 h-12 bg-gradient-to-r from-amber-500 to-orange-500 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-xl">P</span>
+              </div>
+              <div>
+                <h1 className="text-xl font-serif text-gray-800 font-bold leading-tight">
+                  Interiors by Preyashi
+                </h1>
+                <p className="text-xs text-gray-600">Design • Vastu • Numerology</p>
+              </div>
+            </button>
           </div>
-        </nav>
-      )}
+
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center space-x-1">
+            {navigationItems.map((item) => renderNavItem(item))}
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300"
+          >
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6 text-gray-700" />
+            ) : (
+              <Menu className="w-6 h-6 text-gray-700" />
+            )}
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isMobileMenuOpen && (
+          <motion.nav
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="lg:hidden border-t border-gray-200 bg-white overflow-hidden"
+          >
+            <div className="py-4">
+              {navigationItems.map((item) => renderNavItem(item, true))}
+            </div>
+          </motion.nav>
+        )}
+      </div>
     </header>
   );
 };

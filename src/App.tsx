@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HelmetProvider } from 'react-helmet-async';
+
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/Home';
@@ -13,6 +14,9 @@ import DesignSolutions from './pages/DesignSolutions';
 import TurnkeySolutions from './pages/TurnkeySolutions';
 import Portfolio from './pages/Portfolio';
 import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
+import VastuInsights from './pages/VastuInsights';
+import NumerologyInsights from './pages/NumerologyInsights';
 import FAQ from './pages/FAQ';
 import Contact from './pages/Contact';
 
@@ -20,17 +24,10 @@ function App() {
   return (
     <HelmetProvider>
       <Router>
-        <div className="flex flex-col min-h-screen">
+        <div className="min-h-screen flex flex-col bg-cream-50">
           <Header />
-          
-          <AnimatePresence mode="wait">
-            <motion.main
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-              className="flex-1"
-            >
+          <main className="flex-grow">
+            <AnimatePresence mode="wait">
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about" element={<About />} />
@@ -41,12 +38,14 @@ function App() {
                 <Route path="/turnkey-solutions" element={<TurnkeySolutions />} />
                 <Route path="/portfolio" element={<Portfolio />} />
                 <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:slug" element={<BlogPost />} />
+                <Route path="/vastu-insights" element={<VastuInsights />} />
+                <Route path="/numerology-insights" element={<NumerologyInsights />} />
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="/contact" element={<Contact />} />
               </Routes>
-            </motion.main>
-          </AnimatePresence>
-          
+            </AnimatePresence>
+          </main>
           <Footer />
         </div>
       </Router>

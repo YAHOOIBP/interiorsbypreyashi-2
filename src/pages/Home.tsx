@@ -1,852 +1,735 @@
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import {
-  Star,
-  Award,
-  Users,
-  Clock,
-  MapPin,
-  Instagram,
-  Phone,
-  Mail,
-  ChevronLeft,
-  ChevronRight,
-  Home as HomeIcon,
-  Compass,
-  Zap,
-  Eye,
-  Sparkles,
-  Heart,
-  Shield,
-} from "lucide-react";
-import { Link } from "react-router-dom";
-import SEOHead from "../components/SEOHead";
-import LeadModal from "../components/LeadModal";
-import QuizModal from "../components/QuizModal";
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Star, Users, Award, Heart, Play, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import SEOHead from '../components/SEOHead';
+import LeadModal from '../components/LeadModal';
 
-const AnimatedCounter = ({
-  end,
-  duration = 2000,
-  suffix = "",
-}: {
-  end: number | string;
-  duration?: number;
-  suffix?: string;
-}) => {
-  const [count, setCount] = useState(0);
-  const { ref, inView } = useInView({ triggerOnce: true });
-
-  useEffect(() => {
-    if (inView && typeof end === "number") {
-      let start = 0;
-      const increment = end / (duration / 16);
-      const timer = setInterval(() => {
-        start += increment;
-        if (start >= end) {
-          setCount(end);
-          clearInterval(timer);
-        } else {
-          setCount(Math.floor(start));
-        }
-      }, 16);
-      return () => clearInterval(timer);
-    } else if (typeof end === "string") {
-      setCount(Number(end.replace(/[^0-9]/g, "")) || 0);
-    }
-  }, [inView, end, duration]);
-
-  return (
-    <span ref={ref} className="text-4xl font-bold text-amber-600">
-      {count}
-      {suffix}
-    </span>
-  );
-};
-
-const reelList = [
-  {
-    url: "https://www.instagram.com/reel/DMFY-N7ycuf",
-    title: "Entrances Main Door Designs",
-    img: "/images/Reel1.jpg",
-  },
-  {
-    url: "https://www.instagram.com/reel/DG4-b0sSZGP",
-    title: "360 degree view of conference room",
-    img: "/images/Reel2.jpg",
-  },
-  {
-    url: "https://www.instagram.com/reel/DLE2bnJSrhP",
-    title: "Are you Ruled by planet Moon ?",
-    img: "/images/Reel3.jpg",
-  },
-  {
-    url: "https://www.instagram.com/reel/C_DprW9PrNi",
-    title: "Modern Bedroom Makeover",
-    img: "/images/Reel4.jpg",
-  },
-  {
-    url: "https://www.instagram.com/reel/C_dZ34uv6rM",
-    title: "Clients Testimonial",
-    img: "/images/Reel5.jpg",
-  },
-  {
-    url: "https://www.instagram.com/reel/CeTMFuvphOq",
-    title: "Transformation Of Favourite Corner",
-    img: "/images/Reel6.jpg",
-  },
-  {
-    url: "https://www.instagram.com/reel/C_fx6UfPAfw",
-    title: "Trendy kids Bedroom colour combinations",
-    img: "/images/Reel7.jpg",
-  },
-];
-
-// World-Class Interior Photos Collection
-const worldClassInteriors = [
-  {
-    id: 1,
-    title: "Luxury Modern Living Room",
-    description: "Contemporary design with traditional Indian elements and rich textures",
-    category: "Living Room",
-    image: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-    inspiration: "Rich textures, warm lighting, and sophisticated color palette create an inviting luxury atmosphere"
-  },
-  {
-    id: 2,
-    title: "Opulent Master Bedroom",
-    description: "Serene sanctuary with cultural motifs and modern comfort",
-    category: "Bedroom", 
-    image: "https://images.pexels.com/photos/2581922/pexels-photo-2581922.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-    inspiration: "Blend of modern minimalism with traditional Indian art creates a peaceful retreat"
-  },
-  {
-    id: 3,
-    title: "Elegant Dining Experience",
-    description: "Sophisticated dining space with marble accents and artistic lighting",
-    category: "Dining Room",
-    image: "https://images.pexels.com/photos/1571467/pexels-photo-1571467.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-    inspiration: "Marble textures and golden accents create an elegant dining atmosphere"
-  },
-  {
-    id: 4,
-    title: "Modern Kitchen Design",
-    description: "Clean lines with natural materials and optimal functionality",
-    category: "Kitchen",
-    image: "https://images.pexels.com/photos/1571463/pexels-photo-1571463.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-    inspiration: "White cabinetry with wood accents promotes cleanliness and positive energy"
-  },
-  {
-    id: 5,
-    title: "Heritage Study Room",
-    description: "Traditional wisdom meets modern functionality",
-    category: "Study Room",
-    image: "https://images.pexels.com/photos/3762875/pexels-photo-3762875.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-    inspiration: "Rich wood tones and organized layout enhance focus and productivity"
-  },
-  {
-    id: 6,
-    title: "Luxury Bathroom Spa",
-    description: "Spa-like retreat with natural elements and tranquil ambiance",
-    category: "Bathroom",
-    image: "https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-    inspiration: "Natural materials and clean design promote wellness and relaxation"
-  }
-];
-
-// Vastu Tips Collection
-const vastuTips = [
-  {
-    id: 1,
-    icon: HomeIcon,
-    title: "Main Entrance Vastu",
-    tip: "Position your main door facing North, East, or Northeast to invite positive energy and prosperity into your home.",
-    benefit: "Attracts wealth, health, and happiness",
-    color: "text-green-600",
-    bgColor: "bg-green-50"
-  },
-  {
-    id: 2,
-    icon: Compass,
-    title: "Living Room Direction",
-    tip: "Place your living room in the Northeast or North direction with seating arranged to face East or North.",
-    benefit: "Enhances family harmony and social connections",
-    color: "text-blue-600",
-    bgColor: "bg-blue-50"
-  },
-  {
-    id: 3,
-    icon: Zap,
-    title: "Kitchen Placement",
-    tip: "Locate your kitchen in the Southeast corner (fire element) for optimal health and family wellbeing.",
-    benefit: "Promotes good health and family unity",
-    color: "text-red-600",
-    bgColor: "bg-red-50"
-  },
-  {
-    id: 4,
-    icon: Heart,
-    title: "Bedroom Harmony",
-    tip: "Position the master bedroom in Southwest direction with bed placed away from doors for peaceful sleep.",
-    benefit: "Ensures restful sleep and relationship stability",
-    color: "text-purple-600",
-    bgColor: "bg-purple-50"
-  },
-  {
-    id: 5,
-    icon: Shield,
-    title: "Colors & Elements",
-    tip: "Use soothing colors like cream, light yellow, and soft greens to promote peace and positive vibrations.",
-    benefit: "Creates calming atmosphere and emotional balance",
-    color: "text-amber-600",
-    bgColor: "bg-amber-50"
-  }
-];
-
-// Numerology Insights Collection
-const numerologyInsights = [
-  {
-    id: 1,
-    number: "1",
-    title: "Leadership & Independence",
-    insight: "Homes with address numbers totaling 1 promote leadership qualities and independence. Use bold, strong furniture pieces.",
-    colors: ["Red", "Orange", "Gold"],
-    elements: "Fire and Sun energy",
-    tip: "Place a bright light or sun symbol in the East direction"
-  },
-  {
-    id: 2,
-    number: "2",
-    title: "Cooperation & Balance",
-    insight: "Number 2 homes foster partnerships and cooperation. Emphasize pairs and balanced arrangements in décor.",
-    colors: ["White", "Silver", "Light Blue"],
-    elements: "Water and Moon energy",
-    tip: "Use paired objects and soft, curved furniture designs"
-  },
-  {
-    id: 3,
-    number: "3",
-    title: "Creativity & Communication",
-    insight: "Homes resonating with 3 enhance creativity and social connections. Perfect for artists and communicators.",
-    colors: ["Yellow", "Gold", "Orange"],
-    elements: "Air and Jupiter energy",
-    tip: "Create artistic corners and open communication spaces"
-  },
-  {
-    id: 4,
-    number: "4",
-    title: "Stability & Foundation", 
-    insight: "Number 4 provides solid foundation and practical approach. Use square shapes and earth tones for grounding.",
-    colors: ["Brown", "Green", "Earth Tones"],
-    elements: "Earth and Saturn energy",
-    tip: "Incorporate natural materials and geometric patterns"
-  },
-  {
-    id: 5,
-    number: "5",
-    title: "Freedom & Adventure",
-    insight: "Homes with 5 energy promote freedom and change. Great for travelers and dynamic personalities.",
-    colors: ["Green", "Turquoise", "Mixed Colors"],
-    elements: "Space and Mercury energy",
-    tip: "Use versatile furniture and travel-inspired décor"
-  },
-  {
-    id: 6,
-    number: "6",
-    title: "Love & Nurturing",
-    insight: "Number 6 homes are perfect for families, emphasizing love, care, and nurturing. Ideal for family gatherings.",
-    colors: ["Pink", "Rose", "Soft Pastels"],
-    elements: "Earth and Venus energy", 
-    tip: "Create comfortable family spaces with soft textures"
-  }
-];
-
-const HomePage: React.FC = () => {
+const Home = () => {
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
-  const [isQuizModalOpen, setIsQuizModalOpen] = useState(false);
-  const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [currentInteriorIndex, setCurrentInteriorIndex] = useState(0);
+  const [currentVastuTip, setCurrentVastuTip] = useState(0);
+  const [currentNumerologyInsight, setCurrentNumerologyInsight] = useState(0);
+  const [currentDrawingIndex, setCurrentDrawingIndex] = useState(0);
+  const [currentClientLogoIndex, setCurrentClientLogoIndex] = useState(0);
 
-  const heroBgImages = [
-    "https://www.winnerdesignsolutions.in/assets/images/courses/Interior%20Designing%20Using%20AutoCAD%20-%20Winner%20Design%20Solutions%201.jpg",
-    "https://dwgshare.com/wp-content/uploads/2022/08/House-Design-Drawing-of-Interior-Design-V.2-3.jpg",
-    "https://t3.ftcdn.net/jpg/06/21/66/58/360_F_621665818_ny9D2M4rYSn6SpINdke1akgwb4bMY75M.jpg",
+  // AutoCAD Drawings for Hero Section
+  const autocadDrawings = [
+    {
+      src: "/images/autocad/floor-plan-1.jpg",
+      alt: "Modern Floor Plan - Living Space Design",
+      title: "Contemporary Floor Plan"
+    },
+    {
+      src: "/images/autocad/elevation-1.jpg", 
+      alt: "Interior Elevation - Kitchen Design",
+      title: "Kitchen Elevation"
+    },
+    {
+      src: "/images/autocad/section-1.jpg",
+      alt: "Architectural Section - Cross Section View", 
+      title: "Section Drawing"
+    },
+    {
+      src: "/images/autocad/3d-plan.jpg",
+      alt: "3D Floor Plan - Detailed Layout",
+      title: "3D Visualization"
+    }
   ];
 
-  const [currentBg, setCurrentBg] = useState(0);
-  const [isPreloading, setIsPreloading] = useState(false);
+  // Client Logos for Carousel
+  const clientLogos = [
+    { src: "/images/clients/client-1.png", alt: "Client Logo 1" },
+    { src: "/images/clients/client-2.png", alt: "Client Logo 2" },
+    { src: "/images/clients/client-3.png", alt: "Client Logo 3" },
+    { src: "/images/clients/client-4.png", alt: "Client Logo 4" },
+    { src: "/images/clients/client-5.png", alt: "Client Logo 5" },
+    { src: "/images/clients/client-6.png", alt: "Client Logo 6" },
+    { src: "/images/clients/client-7.png", alt: "Client Logo 7" },
+    { src: "/images/clients/client-8.png", alt: "Client Logo 8" }
+  ];
 
-  // Preload next image
+  // Streamlined content arrays
+  const worldClassInteriors = [
+    {
+      title: "Contemporary Indian Luxury",
+      description: "Sophisticated spaces that celebrate rich cultural heritage while embracing modern functionality.",
+      inspiration: "Drawing from Rajasthani palaces and modern Mumbai penthouses"
+    },
+    {
+      title: "Scandinavian-Indian Fusion", 
+      description: "Minimalist Nordic design principles enhanced with warm Indian textiles and craftsmanship.",
+      inspiration: "Inspired by Danish hygge meets traditional Indian comfort"
+    },
+    {
+      title: "Art Deco Revival",
+      description: "Bold geometric patterns and metallic accents create glamorous, timeless interiors.",
+      inspiration: "Channeling 1920s Mumbai architecture with contemporary touches"
+    },
+    {
+      title: "Biophilic Luxury",
+      description: "Nature-integrated designs that bring the outdoors inside for wellness and tranquility.",
+      inspiration: "Kerala backwaters and Japanese zen gardens reimagined for modern living"
+    }
+  ];
+
+  const vastuTips = [
+    {
+      title: "Entrance Energy Flow",
+      tip: "Keep your main entrance clean, well-lit, and obstacle-free to welcome positive energy. A beautiful nameplate and healthy plants enhance the welcoming energy."
+    },
+    {
+      title: "Kitchen Placement Power",
+      tip: "Position your kitchen in the southeast zone and face east while cooking to align with natural fire energy and promote health and prosperity."
+    },
+    {
+      title: "Bedroom Rest & Romance",
+      tip: "Place your bed in the southwest corner with headboard against a solid wall, avoiding mirrors facing the bed for better sleep and relationships."
+    }
+  ];
+
+  const numerologyInsights = [
+    {
+      title: "Personal Number Harmony",
+      tip: "Your birth date number influences your ideal color palette - discover which colors resonate with your personal energy for a truly harmonious space."
+    },
+    {
+      title: "Address Vibrations", 
+      tip: "Your house number affects the energy of your space. Learn how to enhance or balance your home's numerical vibration through strategic design choices."
+    }
+  ];
+
+  const testimonials = [
+    {
+      name: "Rajesh Kumar",
+      location: "Tinsukia, Assam",
+      text: "Preyashi transformed our home into a masterpiece. The Vastu-compliant design brought positive changes to our family's well-being and prosperity.",
+      rating: 5
+    },
+    {
+      name: "Ananya Sharma", 
+      location: "Dibrugarh, Assam",
+      text: "Exceptional attention to detail and perfect blend of modern design with traditional values. Our office space now inspires productivity and success.",
+      rating: 5
+    },
+    {
+      name: "Dr. Vikash Gupta",
+      location: "Kharagpur",
+      text: "The numerology-based design recommendations were spot-on. Our home now feels perfectly aligned with our family's energy and goals.",
+      rating: 5
+    }
+  ];
+
+  // Enhanced Instagram Reels with Links and Cover Images
+  const instagramReels = [
+    {
+      title: "Vastu Living Room Transformation",
+      description: "Watch how we repositioned furniture to create perfect energy flow",
+      coverImage: "/images/reels/reel-cover-1.jpg",
+      reelLink: "https://www.instagram.com/reel/YOUR_REEL_ID_1/"
+    },
+    {
+      title: "Color Psychology in Action",
+      description: "See the dramatic impact of numerology-based color choices", 
+      coverImage: "/images/reels/reel-cover-2.jpg",
+      reelLink: "https://www.instagram.com/reel/YOUR_REEL_ID_2/"
+    },
+    {
+      title: "Small Space, Big Impact",
+      description: "Maximizing style and function in a compact apartment",
+      coverImage: "/images/reels/reel-cover-3.jpg", 
+      reelLink: "https://www.instagram.com/reel/YOUR_REEL_ID_3/"
+    },
+    {
+      title: "Vastu Kitchen Design",
+      description: "Creating the perfect kitchen following Vastu principles",
+      coverImage: "/images/reels/reel-cover-4.jpg",
+      reelLink: "https://www.instagram.com/reel/YOUR_REEL_ID_4/"
+    },
+    {
+      title: "Numerology Color Scheme",
+      description: "Personal numbers guiding color selection for harmony",
+      coverImage: "/images/reels/reel-cover-5.jpg",
+      reelLink: "https://www.instagram.com/reel/YOUR_REEL_ID_5/"
+    }
+  ];
+
+  // Auto-rotate content with scroll position awareness
   useEffect(() => {
-    const preloadImage = (src: string) => {
-      const img = new Image();
-      img.src = src;
-    };
+    const intervals = [
+      setInterval(() => setCurrentDrawingIndex(prev => (prev + 1) % autocadDrawings.length), 3000),
+      setInterval(() => setCurrentInteriorIndex(prev => (prev + 1) % worldClassInteriors.length), 4000),
+      setInterval(() => setCurrentVastuTip(prev => (prev + 1) % vastuTips.length), 5000),
+      setInterval(() => setCurrentNumerologyInsight(prev => (prev + 1) % numerologyInsights.length), 6000),
+      setInterval(() => setCurrentTestimonial(prev => (prev + 1) % testimonials.length), 7000)
+    ];
 
-    // Preload all images on component mount
-    heroBgImages.forEach(preloadImage);
+    return () => intervals.forEach(clearInterval);
   }, []);
 
+  // Handle home page navigation - scroll to top
   useEffect(() => {
-    const timer = setInterval(() => {
-      setIsPreloading(true);
-      
-      // Preload next image
-      const nextIndex = (currentBg + 1) % heroBgImages.length;
-      const nextImg = new Image();
-      nextImg.onload = () => {
-        setCurrentBg(nextIndex);
-        setIsPreloading(false);
-      };
-      nextImg.src = heroBgImages[nextIndex];
-    }, 4000);
+    const handleHomeNavigation = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
 
-    return () => clearInterval(timer);
-  }, [currentBg]);
-
-  const reviews = [
-    { name: "RAJAT RATHI", stars: 5, ago: "2 years ago", text: "She thoroughly investigated our budget and requirements before arriving at two design options. The whole process felt she's very personable and a pleasure to work with. The end result was stunning and we are extremely happy." },
-    { name: "Nandini Birmiwal", stars: 5, ago: "2 years ago", text: "Undoubtedly, this is the one-stop solution for all of your requirements related to interior decor service. Lovely designs, economical, on-time and satisfactory service, caters to all client needs and a very effective space planning approach." },
-    { name: "Suman Birmiwal", stars: 5, ago: "2 years ago", text: "Very sincere towards their work and the best creativity with cost cutting and managing everything till they hand you over the site." },
-    { name: "Purnima Gogoi", stars: 5, ago: "5 years ago", text: "Love the work. Very knowledgeable and dedicated people towards their work. Worth the money. Best interior designer in Tinsukia so far." },
-    { name: "Ruchika Bhatti", stars: 5, ago: "5 years ago", text: "I had a great experience with her, she is a great designer, I would always recommend her to everyone ❤️" },
-    { name: "Kajal Jain", stars: 5, ago: "5 years ago", text: "They have got amazing designs..I really loved ur work😍" },
-    { name: "Sumit Sharma", stars: 5, ago: "2 years ago", text: "Good behaviour, professional, very creative mind." },
-    { name: "Nischay More", stars: 5, ago: "4 years ago", text: "Having good knowledge and exposure of work. I really loved her designs." },
-    { name: "Harshit Jindal", stars: 5, ago: "5 years ago", text: "They provide indeed the best that one can ask for🔥👍 Do give a try." },
-    { name: "Siddhant Agarwall", stars: 5, ago: "5 years ago", text: "Best interior designer in the town...best service good experience." },
-    { name: "Rachna Goyal", stars: 5, ago: "2 years ago", text: "Very efficient n hard working n very innovative ideas. Positive, Quality." },
-    { name: "Keshav Kanoi", stars: 5, ago: "5 years ago", text: "Worth for money. Thanks PM designs for the Excellent work." },
-    { name: "Shruti Jogani", stars: 5, ago: "5 years ago", text: "Good taste n nice service." },
-    { name: "Priyanka Agarwall", stars: 5, ago: "5 years ago", text: "Best place for interior designing." },
-    { name: "Prasiddh Agarwall", stars: 5, ago: "5 years ago", text: "Best place for interior designing." },
-    { name: "Sneha Sovasaria", stars: 5, ago: "2 years ago", text: "Positive — Responsiveness, Punctuality, Quality, Professionalism, Value." },
-  ];
-
-  const reviewsPerPage = 3;
-  const totalPages = Math.ceil(reviews.length / reviewsPerPage);
-
-  const nextReviewSlide = () => {
-    setCurrentReviewIndex((prev) => (prev + 1) % totalPages);
-  };
-
-  const prevReviewSlide = () => {
-    setCurrentReviewIndex((prev) => (prev - 1 + totalPages) % totalPages);
-  };
-
-  const nextInteriorSlide = () => {
-    setCurrentInteriorIndex((prev) => (prev + 1) % worldClassInteriors.length);
-  };
-
-  const prevInteriorSlide = () => {
-    setCurrentInteriorIndex((prev) => (prev - 1 + worldClassInteriors.length) % worldClassInteriors.length);
-  };
-
-  const getCurrentReviews = () => {
-    const start = currentReviewIndex * reviewsPerPage;
-    return reviews.slice(start, start + reviewsPerPage);
-  };
-
-  useEffect(() => {
-    const reviewTimer = setInterval(() => {
-      nextReviewSlide();
-    }, 5000);
-
-    return () => clearInterval(reviewTimer);
-  }, [currentReviewIndex]);
-
-  useEffect(() => {
-    const interiorTimer = setInterval(() => {
-      nextInteriorSlide();
-    }, 6000);
-
-    return () => clearInterval(interiorTimer);
-  }, [currentInteriorIndex]);
+    // Listen for home navigation events
+    window.addEventListener('navigateHome', handleHomeNavigation);
+    return () => window.removeEventListener('navigateHome', handleHomeNavigation);
+  }, []);
 
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: "Interiors By Preyashi",
-    description: "Premium interior design services with Vastu consultation, Vedic numerology, and world-class design expertise in Northeast India.",
-    url: "https://interiorsbypreyashi.com",
-    telephone: "+918486076075",
-    email: "contact@pmdesign.co.in",
-    address: {
+    "@type": "LocalBusiness", 
+    "name": "Interiors By Preyashi",
+    "description": "Expert interior design services with Vastu consultation and numerology guidance in Northeast India",
+    "address": {
       "@type": "PostalAddress",
-      streetAddress: "Manav Kalyan Road, Parbatia, Namgarh Path - 03",
-      addressLocality: "Tinsukia",
-      addressRegion: "Assam",
-      postalCode: "786125",
-      addressCountry: "IN",
+      "streetAddress": "Tinsukia",
+      "addressRegion": "Assam",
+      "addressCountry": "IN"
     },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: "27.48940927630817",
-      longitude: "95.36547957545964",
+    "telephone": "+918486076075",
+    "url": "https://interiorsbypreyashi.com",
+    "founder": {
+      "@type": "Person", 
+      "name": "Preyashi More Birmiwal"
     },
-    openingHours: "Mo-Sa 10:00-19:00",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "127"
+    }
   };
 
   return (
-    <div className="relative min-h-screen bg-stone-50 font-inter">
+    <div className="min-h-screen bg-cream-50">
       <SEOHead
-        title="Interiors By Preyashi – Best Interior Designer in Assam | Vastu & Numerology Expert"
-        description="Premium interior design, world-class interiors, Vastu consultation, and Vedic numerology expert in Northeast India. Transform your space with ancient wisdom and modern design."
-        canonical="https://interiorsbypreyashi.com/"
+        title="Interiors By Preyashi - Expert Interior Design with Vastu & Numerology"
+        description="Transform your space with world-class interior design, authentic Vastu consultation, and personalized numerology guidance across Northeast India."
+        keywords="interior design Assam, Vastu consultation, numerology interior design, Tinsukia interior designer"
+        canonicalUrl="/"
+        structuredData={structuredData}
       />
-      <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
 
-      <LeadModal
-        open={isLeadModalOpen}
-        onClose={() => setIsLeadModalOpen(false)}
-        title="Schedule Your Consultation"
-      />
-      <QuizModal isOpen={isQuizModalOpen} onClose={() => setIsQuizModalOpen(false)} />
-
-      {/* Hero Section */}
-      <section className="relative h-screen flex flex-col items-center justify-center text-center text-white overflow-hidden">
-        {/* Background Images with Seamless Transition */}
-        {heroBgImages.map((image, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
-              index === currentBg ? 'opacity-100' : 'opacity-0'
-            }`}
-            style={{ backgroundImage: `url('${image}')` }}
-            aria-hidden="true"
-          />
-        ))}
-        
-        <div className="absolute inset-0 bg-black bg-opacity-40" />
-        
-        <div className="relative z-10 p-4">
-          <motion.img
-            src="/logo.png"
-            alt="Interiors By Preyashi Logo"
-            className="h-24 w-24 mx-auto mb-4"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-          />
-          <motion.h1
-            className="font-montserrat text-4xl md:text-5xl font-bold text-white drop-shadow-md"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-          >
-            Interiors By Preyashi
-          </motion.h1>
-          <motion.p
-            className="mt-2 text-lg md:text-xl text-yellow-100 drop-shadow"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-          >
-            From dreams to design, from spaces to purpose.
-          </motion.p>
+      {/* Hero Section - Enhanced with AutoCAD Drawings */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-cream-50 via-amber-50 to-orange-50">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
-            className="flex flex-wrap justify-center gap-4 mt-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+            className="text-left"
           >
-            <a
-              href="tel:8486076075"
-              className="bg-white/20 backdrop-blur-sm border border-white/40 text-white font-semibold px-7 py-3 rounded-full hover:bg-white/30 transition"
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif mb-6 text-gray-900 leading-tight font-bold">
+              Interiors by
+              <span className="block text-amber-700 italic font-bold drop-shadow-sm">Preyashi</span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-gray-800 mb-8 leading-relaxed max-w-2xl font-medium">
+              Where ancient wisdom meets modern design. Creating harmonious spaces through 
+              <strong className="text-amber-700"> Interior Design</strong>, <strong className="text-amber-700">Vastu Shastra</strong> & <strong className="text-amber-700">Vedic Numerology</strong>.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setIsLeadModalOpen(true)}
+                className="bg-amber-600 text-white px-8 py-4 rounded-lg font-medium hover:bg-amber-700 transition-all duration-300 shadow-lg"
+              >
+                Start Your Project
+              </motion.button>
+              
+              <Link
+                to="/portfolio"
+                className="border-2 border-amber-600 text-amber-600 px-8 py-4 rounded-lg font-medium hover:bg-amber-600 hover:text-white transition-all duration-300 text-center"
+              >
+                View Portfolio
+              </Link>
+            </div>
+          </motion.div>
+          
+          {/* Enhanced Right Side with AutoCAD Drawings and Founder Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="relative"
+          >
+            <div className="aspect-square rounded-full bg-gradient-to-br from-amber-200 to-orange-200 p-2 shadow-2xl">
+              <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
+                {/* Founder Image */}
+                <img
+                  src="/images/founder/preyashi-profile.jpg"
+                  alt="Preyashi More Birmiwal - Interior Designer & Vastu Consultant"
+                  className="w-full h-full object-cover rounded-full"
+                  onError={(e) => {
+                    // Fallback to a placeholder if image fails to load
+                    e.currentTarget.src = "/images/founder/placeholder-profile.jpg";
+                  }}
+                />
+              </div>
+            </div>
+            
+            {/* AutoCAD Drawings Carousel */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="absolute -top-8 -right-8 bg-white rounded-lg shadow-xl p-4 max-w-xs"
             >
-              <Phone className="inline-block mr-2" size={18} />
-              Call Now
-            </a>
-            <Link
-              to="/contact"
-              className="bg-amber-500 text-white font-semibold px-7 py-3 rounded-full hover:bg-amber-600 transition"
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentDrawingIndex}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <img
+                    src={autocadDrawings[currentDrawingIndex].src}
+                    alt={autocadDrawings[currentDrawingIndex].alt}
+                    className="w-full h-32 object-cover rounded-lg mb-2"
+                    onError={(e) => {
+                      // Fallback to a default architectural drawing
+                      e.currentTarget.src = "/images/autocad/default-drawing.jpg";
+                    }}
+                  />
+                  <h4 className="font-semibold text-gray-800 text-sm">
+                    {autocadDrawings[currentDrawingIndex].title}
+                  </h4>
+                </motion.div>
+              </AnimatePresence>
+            </motion.div>
+            
+            {/* Floating Stats */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="absolute -bottom-4 -left-4 bg-white rounded-lg shadow-lg p-4 text-center"
             >
-              <Mail className="inline-block mr-2" size={18} />
-              Get Free Consultation
-            </Link>
+              <div className="text-2xl font-bold text-amber-600">19+</div>
+              <div className="text-sm text-gray-600">Projects</div>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 1 }}
+              className="absolute top-1/2 -left-8 bg-white rounded-lg shadow-lg p-4 text-center"
+            >
+              <div className="text-2xl font-bold text-amber-600">7+</div>
+              <div className="text-sm text-gray-600">Years Experience</div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Main content starts here */}
-      <main className="relative z-10 bg-stone-50 px-4 py-16">
-        {/* Animated Counters */}
-        <section className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 -mt-40 mb-16">
-          <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center">
-            <Award className="text-amber-500 mb-3" size={32} />
-            <AnimatedCounter end={7} suffix="+" />
-            <div className="text-md text-stone-700 mt-1 font-medium">Years Experience</div>
-          </div>
-          <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center">
-            <Star className="text-orange-400 mb-3" size={32} />
-            <AnimatedCounter end={50} suffix="+" />
-            <div className="text-md text-stone-700 mt-1 font-medium">Projects Completed</div>
-          </div>
-          <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center">
-            <Users className="text-yellow-600 mb-3" size={32} />
-            <AnimatedCounter end={100} suffix="%" />
-            <div className="text-md text-stone-700 mt-1 font-medium">Client Satisfaction</div>
-          </div>
-        </section>
-
-        {/* World-Class Interior Photos Showcase */}
-        <section className="max-w-6xl mx-auto py-16 mb-16">
+      {/* World-Class Interiors - Simplified */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold font-montserrat text-amber-800 mb-4">World-Class Interior Designs</h2>
-            <p className="text-xl text-stone-600 max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-serif mb-6 text-gray-800">
+              World-Class Interior Designs
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Discover our portfolio of luxury interiors that blend modern sophistication with traditional Indian elements
             </p>
           </motion.div>
 
-          <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden">
-            <div className="relative h-96 md:h-[500px]">
-              <img
-                src={worldClassInteriors[currentInteriorIndex].image}
-                alt={worldClassInteriors[currentInteriorIndex].title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-              
-              <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                <div className="flex items-center mb-3">
-                  <span className="bg-amber-500 text-white px-3 py-1 rounded-full text-sm font-semibold mr-3">
-                    {worldClassInteriors[currentInteriorIndex].category}
-                  </span>
-                  <Sparkles className="w-5 h-5 mr-2" />
-                  <span className="text-sm">World-Class Design</span>
-                </div>
-                <h3 className="text-3xl font-bold mb-2">{worldClassInteriors[currentInteriorIndex].title}</h3>
-                <p className="text-lg mb-3">{worldClassInteriors[currentInteriorIndex].description}</p>
-                <p className="text-sm text-yellow-200 italic">{worldClassInteriors[currentInteriorIndex].inspiration}</p>
-              </div>
-
-              {/* Navigation Buttons */}
-              <button
-                onClick={prevInteriorSlide}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-all duration-300"
+          <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-8 md:p-12">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentInteriorIndex}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.6 }}
+                className="text-center"
               >
-                <ChevronLeft size={24} />
-              </button>
-              
-              <button
-                onClick={nextInteriorSlide}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-all duration-300"
-              >
-                <ChevronRight size={24} />
-              </button>
-            </div>
-
-            {/* Dot Indicators */}
-            <div className="flex justify-center py-6 space-x-2">
+                <h3 className="text-3xl font-serif text-gray-800 mb-4">
+                  {worldClassInteriors[currentInteriorIndex].title}
+                </h3>
+                <p className="text-lg text-gray-700 mb-6 max-w-3xl mx-auto">
+                  {worldClassInteriors[currentInteriorIndex].description}
+                </p>
+                <p className="text-amber-600 font-medium italic">
+                  {worldClassInteriors[currentInteriorIndex].inspiration}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+            
+            <div className="flex justify-center mt-8 space-x-2">
               {worldClassInteriors.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentInteriorIndex(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentInteriorIndex 
-                      ? 'bg-amber-500 scale-125' 
-                      : 'bg-gray-300 hover:bg-gray-400'
+                  className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                    index === currentInteriorIndex ? 'bg-amber-600' : 'bg-gray-300'
                   }`}
                 />
               ))}
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Vastu Tips Section */}
-        <section className="max-w-6xl mx-auto py-16 mb-16">
+      {/* Vastu & Numerology - Simplified */}
+      <section className="py-20 bg-gradient-to-r from-teal-50 to-blue-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Vastu Wisdom */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="bg-white rounded-2xl p-8 shadow-lg"
+            >
+              <h3 className="text-3xl font-serif text-gray-800 mb-6 text-center">
+                Ancient Vastu Wisdom
+              </h3>
+              <p className="text-gray-600 mb-8 text-center">
+                Transform your home into a sanctuary of positive energy with time-tested Vastu Shastra principles
+              </p>
+              
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentVastuTip}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <h4 className="text-xl font-semibold text-amber-600 mb-4">
+                    {vastuTips[currentVastuTip].title}
+                  </h4>
+                  <p className="text-gray-700 leading-relaxed">
+                    {vastuTips[currentVastuTip].tip}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+              
+              <div className="flex justify-center mt-6 space-x-2">
+                {vastuTips.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentVastuTip(index)}
+                    className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+                      index === currentVastuTip ? 'bg-amber-600' : 'bg-gray-300'
+                    }`}
+                  />
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Numerology */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="bg-white rounded-2xl p-8 shadow-lg"
+            >
+              <h3 className="text-3xl font-serif text-gray-800 mb-6 text-center">
+                Numerology & Sacred Geometry
+              </h3>
+              <p className="text-gray-600 mb-8 text-center">
+                Unlock the power of numbers to create harmonious living spaces that resonate with your personal energy
+              </p>
+              
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentNumerologyInsight}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <h4 className="text-xl font-semibold text-purple-600 mb-4">
+                    {numerologyInsights[currentNumerologyInsight].title}
+                  </h4>
+                  <p className="text-gray-700 leading-relaxed">
+                    {numerologyInsights[currentNumerologyInsight].tip}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+              
+              <div className="flex justify-center mt-6 space-x-2">
+                {numerologyInsights.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentNumerologyInsight(index)}
+                    className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+                      index === currentNumerologyInsight ? 'bg-purple-600' : 'bg-gray-300'
+                    }`}
+                  />
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Core Philosophies - Compact */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
-            <div className="flex items-center justify-center mb-6">
-              <Compass className="w-12 h-12 text-green-600 mr-4" />
-              <h2 className="text-4xl font-bold font-montserrat text-amber-800">Ancient Vastu Wisdom</h2>
-            </div>
-            <p className="text-xl text-stone-600 max-w-3xl mx-auto">
-              Transform your home into a sanctuary of positive energy with time-tested Vastu Shastra principles
-            </p>
+            <h2 className="text-4xl font-serif text-gray-800 mb-6">Our Core Philosophies</h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {vastuTips.map((tip, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: "🎯",
+                title: "Precision",
+                description: "Meticulous attention to detail from concept to execution for flawless results."
+              },
+              {
+                icon: "✨",
+                title: "Creativity",
+                description: "Innovative designs that reflect your unique personality and lifestyle."
+              },
+              {
+                icon: "🏠",
+                title: "Vastu Expertise",
+                description: "Creating harmonious spaces that promote well-being and prosperity."
+              }
+            ].map((philosophy, index) => (
               <motion.div
-                key={tip.id}
-                initial={{ opacity: 0, y: 30 }}
+                key={philosophy.title}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`${tip.bgColor} rounded-xl p-6 hover:shadow-xl transition-all duration-300 border border-opacity-20`}
+                transition={{ delay: index * 0.2 }}
+                className="text-center p-6 rounded-lg hover:shadow-lg transition-all duration-300"
               >
-                <div className="flex items-center mb-4">
-                  <tip.icon className={`w-8 h-8 ${tip.color} mr-3`} />
-                  <h3 className="text-xl font-bold text-gray-800">{tip.title}</h3>
-                </div>
-                <p className="text-gray-700 mb-4 leading-relaxed">{tip.tip}</p>
-                <div className={`text-sm font-semibold ${tip.color} bg-white/60 rounded-lg px-3 py-2`}>
-                  ✨ {tip.benefit}
-                </div>
+                <div className="text-4xl mb-4">{philosophy.icon}</div>
+                <h3 className="text-xl font-serif text-gray-800 mb-3">{philosophy.title}</h3>
+                <p className="text-gray-600">{philosophy.description}</p>
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
 
+      {/* Client Logos Carousel Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-center mt-12"
+            className="text-center mb-12"
           >
-            <Link
-              to="/blog"
-              className="bg-gradient-to-r from-green-600 to-blue-600 text-white px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform duration-300 shadow-lg inline-block"
-            >
-              Discover More Vastu Tips
-            </Link>
+            <h2 className="text-4xl font-serif text-gray-800 mb-6">Clients Worked With</h2>
+            <p className="text-xl text-gray-600">Trusted by leading brands and homeowners across Northeast India</p>
           </motion.div>
-        </section>
 
-        {/* Numerology Insights Section */}
-        <section className="max-w-6xl mx-auto py-16 mb-16 bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl">
-          <div className="px-8">
+          {/* Infinite Scrolling Logo Carousel */}
+          <div className="relative overflow-hidden">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center mb-12"
+              animate={{ x: [-1920, 0] }}
+              transition={{ 
+                duration: 20,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+              className="flex space-x-8 items-center"
             >
-              <div className="flex items-center justify-center mb-6">
-                <Eye className="w-12 h-12 text-purple-600 mr-4" />
-                <h2 className="text-4xl font-bold font-montserrat text-purple-800">Numerology & Sacred Geometry</h2>
-              </div>
-              <p className="text-xl text-purple-700 max-w-3xl mx-auto">
-                Unlock the power of numbers to create harmonious living spaces that resonate with your personal energy
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {numerologyInsights.map((insight, index) => (
-                <motion.div
-                  key={insight.id}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-purple-500"
+              {/* Double the logos for seamless infinite scroll */}
+              {[...clientLogos, ...clientLogos].map((logo, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 w-32 h-20 bg-white rounded-lg shadow-sm flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all duration-300"
                 >
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mr-4">
-                      {insight.number}
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="max-w-full max-h-full object-contain"
+                    onError={(e) => {
+                      // Fallback to placeholder
+                      e.currentTarget.src = "/images/clients/placeholder-logo.png";
+                    }}
+                  />
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Instagram Reels - Enhanced Auto-scrolling Carousel */}
+      <section className="py-20 bg-gradient-to-r from-pink-50 to-purple-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl font-serif text-gray-800 mb-6">Follow Our Journey</h2>
+            <p className="text-xl text-gray-600">See our latest projects and design tips on Instagram</p>
+          </motion.div>
+
+          {/* Auto-scrolling Reels Carousel */}
+          <div className="relative overflow-hidden">
+            <motion.div
+              animate={{ x: [-1600, 0] }}
+              transition={{ 
+                duration: 25,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+              className="flex space-x-6"
+            >
+              {/* Double the reels for seamless infinite scroll */}
+              {[...instagramReels, ...instagramReels].map((reel, index) => (
+                <motion.div
+                  key={index}
+                  className="flex-shrink-0 w-80 bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300 cursor-pointer"
+                  onClick={() => window.open(reel.reelLink, '_blank')}
+                  whileHover={{ scale: 1.02 }}
+                >
+                  <div className="relative aspect-video bg-gradient-to-br from-pink-200 to-purple-200 flex items-center justify-center">
+                    <img
+                      src={reel.coverImage}
+                      alt={reel.title}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        // Fallback to default cover
+                        e.currentTarget.src = "/images/reels/default-cover.jpg";
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                      <Play className="w-12 h-12 text-white group-hover:scale-110 transition-transform duration-300" />
                     </div>
-                    <h3 className="text-xl font-bold text-gray-800">{insight.title}</h3>
                   </div>
-                  
-                  <p className="text-gray-700 mb-4 leading-relaxed">{insight.insight}</p>
-                  
-                  <div className="space-y-3">
-                    <div>
-                      <span className="font-semibold text-purple-600">Colors: </span>
-                      <div className="flex gap-2 mt-1">
-                        {insight.colors.map((color, idx) => (
-                          <span key={idx} className="bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs">
-                            {color}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <span className="font-semibold text-purple-600">Element: </span>
-                      <span className="text-gray-700 text-sm">{insight.elements}</span>
-                    </div>
-                    
-                    <div className="bg-purple-50 rounded-lg p-3 mt-4">
-                      <span className="font-semibold text-purple-600">💡 Tip: </span>
-                      <span className="text-purple-700 text-sm">{insight.tip}</span>
+                  <div className="p-6">
+                    <h3 className="font-semibold text-gray-800 mb-2">{reel.title}</h3>
+                    <p className="text-gray-600 text-sm">{reel.description}</p>
+                    <div className="mt-4 flex items-center text-pink-600 text-sm font-medium">
+                      <ExternalLink className="w-4 h-4 mr-1" />
+                      Watch on Instagram
                     </div>
                   </div>
                 </motion.div>
               ))}
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-              className="text-center mt-12"
-            >
-              <Link
-                to="/blog"
-                className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform duration-300 shadow-lg inline-block"
-              >
-                Explore More Numerology Insights
-              </Link>
             </motion.div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Why Choose Us */}
-        <section className="max-w-4xl mx-auto py-12 text-center">
-          <h2 className="text-3xl font-bold font-montserrat text-amber-800 mb-8">Our Core Philosophies</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div className="flex flex-col items-center">
-              <Clock className="text-orange-500 mb-3" size={36} />
-              <h3 className="text-xl font-semibold text-orange-700 mb-2">Precision</h3>
-              <p className="text-stone-600">Meticulous attention to detail from concept to execution for flawless results.</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <Star className="text-yellow-500 mb-3" size={36} />
-              <h3 className="text-xl font-semibold text-amber-700 mb-2">Creativity</h3>
-              <p className="text-stone-600">Innovative designs that reflect your unique personality and lifestyle.</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <MapPin className="text-green-600 mb-3" size={36} />
-              <h3 className="text-xl font-semibold text-green-700 mb-2">Vastu Expertise</h3>
-              <p className="text-stone-600">Creating harmonious spaces that promote well-being and prosperity.</p>
-            </div>
-          </div>
-        </section>
+      {/* Testimonials - Enhanced with Google Reviews Link */}
+      <section className="py-20 bg-amber-600 text-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="mb-12"
+          >
+            <h2 className="text-4xl font-serif mb-6">What Our Clients Say</h2>
+          </motion.div>
 
-        {/* Instagram Reels */}
-        <section className="max-w-6xl mx-auto mt-16 py-10">
-          <h2 className="text-3xl font-bold mb-8 font-montserrat text-orange-700 text-center">Follow Our Journey</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            {reelList.map((reel) => (
-              <a key={reel.url} href={reel.url} target="_blank" rel="noopener noreferrer" className="block group">
-                <div className="relative overflow-hidden rounded-lg shadow-md group-hover:shadow-xl transition-shadow">
-                  <img src={reel.img} alt={reel.title} className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 flex items-end p-3">
-                    <p className="text-white text-sm font-semibold">{reel.title}</p>
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
-        </section>
-
-        {/* Enhanced Google Reviews with 3D Slider */}
-        <section className="relative bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 rounded-3xl shadow-2xl px-6 py-12 mb-16 max-w-4xl mx-auto overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-orange-200/20 to-amber-200/20 backdrop-blur-sm"></div>
-          
-          <div className="relative z-10">
-            <h2 className="font-bold text-2xl md:text-3xl text-amber-700 mb-8 font-montserrat text-center">
-              What Our Clients Say
-            </h2>
-            
-            <div className="relative">
-              {/* Review Cards Container */}
-              <div className="overflow-hidden rounded-2xl">
-                <div 
-                  className="flex transition-transform duration-700 ease-in-out"
-                  style={{ transform: `translateX(-${currentReviewIndex * 100}%)` }}
-                >
-                  {Array.from({ length: totalPages }).map((_, pageIndex) => (
-                    <div key={pageIndex} className="w-full flex-shrink-0">
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
-                        {reviews.slice(pageIndex * reviewsPerPage, (pageIndex + 1) * reviewsPerPage).map((review, index) => (
-                          <div 
-                            key={review.name + review.ago} 
-                            className="group bg-white/90 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-2xl p-6 flex flex-col h-full transition-all duration-500 transform hover:scale-105 hover:rotate-1"
-                            style={{
-                              background: 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(254,249,195,0.8) 100%)',
-                              border: '1px solid rgba(245,158,11,0.2)',
-                            }}
-                          >
-                            <div className="flex items-center justify-between mb-3">
-                              <div className="font-montserrat font-semibold text-stone-800 text-sm group-hover:text-amber-700 transition-colors">
-                                {review.name}
-                              </div>
-                              <div className="flex items-center ml-2">
-                                {Array.from({ length: review.stars }).map((_, i) => (
-                                  <span key={i} className="text-yellow-400 text-lg animate-pulse" style={{ animationDelay: `${i * 100}ms` }}>
-                                    ★
-                                  </span>
-                                ))}
-                              </div>
-                            </div>
-                            <div className="text-xs text-stone-500 mb-3 group-hover:text-stone-600 transition-colors">
-                              {review.ago}
-                            </div>
-                            <div className="text-stone-700 text-sm leading-relaxed flex-grow">
-                              {review.text}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Navigation Buttons */}
-              <button
-                onClick={prevReviewSlide}
-                className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm text-amber-600 p-3 rounded-full shadow-lg hover:bg-white hover:scale-110 transition-all duration-300 z-20"
-                aria-label="Previous reviews"
-              >
-                <ChevronLeft size={24} />
-              </button>
-              
-              <button
-                onClick={nextReviewSlide}
-                className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm text-amber-600 p-3 rounded-full shadow-lg hover:bg-white hover:scale-110 transition-all duration-300 z-20"
-                aria-label="Next reviews"
-              >
-                <ChevronRight size={24} />
-              </button>
-
-              {/* Dot Indicators */}
-              <div className="flex justify-center mt-8 space-x-2">
-                {Array.from({ length: totalPages }).map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentReviewIndex(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      index === currentReviewIndex 
-                        ? 'bg-amber-500 scale-125' 
-                        : 'bg-amber-200 hover:bg-amber-300'
-                    }`}
-                    aria-label={`Go to review page ${index + 1}`}
-                  />
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentTestimonial}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.6 }}
+              className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-8"
+            >
+              <div className="flex justify-center mb-4">
+                {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                 ))}
               </div>
-            </div>
+              
+              <blockquote className="text-xl italic mb-6 leading-relaxed">
+                "{testimonials[currentTestimonial].text}"
+              </blockquote>
+              
+              <div>
+                <div className="font-semibold text-lg">{testimonials[currentTestimonial].name}</div>
+                <div className="opacity-90">{testimonials[currentTestimonial].location}</div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+          
+          <div className="flex justify-center mt-8 space-x-2 mb-8">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentTestimonial(index)}
+                className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                  index === currentTestimonial ? 'bg-white' : 'bg-white/50'
+                }`}
+              />
+            ))}
           </div>
 
-          {/* Decorative Elements */}
-          <div className="absolute -top-4 -left-4 w-24 h-24 bg-gradient-to-br from-yellow-300/30 to-orange-400/30 rounded-full blur-xl"></div>
-          <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-gradient-to-br from-amber-300/30 to-red-400/30 rounded-full blur-xl"></div>
-
-          <div className="mt-10 text-center relative z-10">
-            <a
-              href="https://maps.app.goo.gl/7heGYZtQHvswV5eE7"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 text-white font-bold px-8 py-4 rounded-full shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 transform"
-            >
-              Check out more reviews on Google
-            </a>
-          </div>
-        </section>
-
-        {/* Quiz Section */}
-        <section className="mb-24 mt-12 flex flex-col items-center text-center">
-          <h2 className="text-2xl font-bold mb-3 text-amber-700 font-montserrat">Find Your Perfect Design Style</h2>
-          <p className="text-stone-600 mb-6 max-w-xl">Take our quick and fun quiz to discover which interior design approach best suits your personality and lifestyle.</p>
-          <button
-            onClick={() => setIsQuizModalOpen(true)}
-            className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white text-lg font-bold px-10 py-4 rounded-full shadow-lg hover:scale-105 transition"
+          {/* Google Reviews Link */}
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => window.open('https://maps.app.goo.gl/h9urqLv7WTLWRwbF8', '_blank')}
+            className="bg-white text-amber-600 px-8 py-4 rounded-lg font-medium hover:bg-gray-100 transition-colors duration-300 inline-flex items-center shadow-lg"
           >
-            Start Quiz Now
-          </button>
-        </section>
-      </main>
+            <Star className="w-5 h-5 mr-2 fill-yellow-500 text-yellow-500" />
+            Read All Google Reviews
+            <ExternalLink className="w-4 h-4 ml-2" />
+          </motion.button>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gray-800 text-white">
+        <div className="max-w-4xl mx-auto text-center px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-serif mb-6">
+              Ready to Transform Your Space?
+            </h2>
+            <p className="text-xl mb-8 opacity-90">
+              Let's create something extraordinary together. Your dream space is just a conversation away.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setIsLeadModalOpen(true)}
+                className="bg-amber-600 text-white px-8 py-4 rounded-lg font-medium hover:bg-amber-700 transition-colors duration-300"
+              >
+                Get Free Consultation
+              </motion.button>
+              
+              <Link
+                to="/contact"
+                className="border border-white text-white px-8 py-4 rounded-lg font-medium hover:bg-white hover:text-gray-800 transition-all duration-300 inline-block"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Lead Modal */}
+      <LeadModal 
+        isOpen={isLeadModalOpen} 
+        onClose={() => setIsLeadModalOpen(false)}
+        title="Start Your Dream Project"
+      />
     </div>
   );
 };
 
-export default HomePage;
+export default Home;

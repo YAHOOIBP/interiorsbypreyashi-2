@@ -14,7 +14,6 @@ const Header: React.FC = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -27,7 +26,6 @@ const Header: React.FC = () => {
   // Universal navigation handler - works for ALL pages
   const handleNavigation = (path: string, e?: React.MouseEvent) => {
     if (e) e.preventDefault();
-    
     if (location.pathname === path) {
       // If already on the target page, scroll to top smoothly
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -39,7 +37,7 @@ const Header: React.FC = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }, 100);
     }
-    
+
     // Close mobile menu if open
     setIsMobileMenuOpen(false);
     setActiveDropdown(null);
@@ -71,7 +69,7 @@ const Header: React.FC = () => {
   const renderNavItem = (item: any, isMobile = false) => {
     if (item.dropdown) {
       return (
-        <div className="relative group" key={item.name}>
+        <div key={item.name} className={isMobile ? 'w-full' : 'relative group'}>
           <button
             onClick={() => {
               if (isMobile) {
@@ -92,35 +90,27 @@ const Header: React.FC = () => {
             }`}
           >
             {item.name}
-            <ChevronDown className="w-4 h-4 ml-1" />
+            <ChevronDown className={`w-4 h-4 ml-1 ${isMobile && activeDropdown === item.name ? 'rotate-180' : ''} transition-transform duration-300`} />
           </button>
 
           {/* Desktop Dropdown */}
           {!isMobile && (
-            <div className="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-              <div className="py-2">
-                {item.dropdown.map((dropdownItem: any) => (
-                  <button
-                    key={dropdownItem.name}
-                    onClick={() => handleNavigation(dropdownItem.path)}
-                    className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-amber-50 hover:text-amber-600 transition-colors duration-300"
-                  >
-                    {dropdownItem.name}
-                  </button>
-                ))}
-              </div>
+            <div className="absolute top-full left-0 mt-1 w-56 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+              {item.dropdown.map((dropdownItem: any) => (
+                <button
+                  key={dropdownItem.name}
+                  onClick={() => handleNavigation(dropdownItem.path)}
+                  className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-amber-50 hover:text-amber-600 transition-colors duration-300 first:rounded-t-lg last:rounded-b-lg"
+                >
+                  {dropdownItem.name}
+                </button>
+              ))}
             </div>
           )}
 
           {/* Mobile Dropdown */}
           {isMobile && activeDropdown === item.name && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="bg-gray-50 overflow-hidden"
-            >
+            <div className="bg-gray-50">
               {item.dropdown.map((dropdownItem: any) => (
                 <button
                   key={dropdownItem.name}
@@ -130,7 +120,7 @@ const Header: React.FC = () => {
                   {dropdownItem.name}
                 </button>
               ))}
-            </motion.div>
+            </div>
           )}
         </div>
       );
@@ -156,67 +146,99 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || location.pathname !== '/'
-          ? 'bg-white shadow-md'
-          : 'bg-white/95 backdrop-blur-sm'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <div className="flex items-center">
-            <button
-              onClick={() => handleNavigation('/')}
-              className="flex items-center space-x-3 hover:opacity-80 transition-opacity duration-300"
-            >
-              <div className="w-12 h-12 bg-gradient-to-r from-amber-500 to-orange-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">P</span>
-              </div>
-              <div>
-                <h1 className="text-xl font-serif text-gray-800 font-bold leading-tight">
-                  Interiors by Preyashi
-                </h1>
-                <p className="text-xs text-gray-600">Design • Vastu • Numerology</p>
-              </div>
-            </button>
+    <>
+      {/* Fixed Header */}
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-white/90 backdrop-blur-sm'
+      }`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            
+            {/* Logo Section */}
+            <div className="flex items-center flex-shrink-0">
+              <button
+                onClick={() => handleNavigation('/')}
+                className="flex items-center space-x-3 hover:opacity-80 transition-opacity duration-300"
+              >
+                {/* Logo Image */}
+                <div className="w-12 h-12 bg-amber-600 rounded-full flex items-center justify-center flex-shrink-0">
+                  <img
+                    src="/images/logo/logo.png"
+                    alt="Interiors By Preyashi Logo"
+                    className="w-10 h-10 object-contain rounded-full"
+                    onError={(e) => {
+                      // Fallback to text logo if image not found
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.nextElementSibling!.style.display = 'block';
+                    }}
+                  />
+                  {/* Fallback Text Logo */}
+                  <span className="text-white font-bold text-lg hidden">P</span>
+                </div>
+                
+                {/* Brand Text */}
+                <div className="hidden sm:block">
+                  <h1 className="text-xl md:text-2xl font-serif font-bold text-gray-800">
+                    Interiors by Preyashi
+                  </h1>
+                  <p className="text-sm text-gray-600 -mt-1">
+                    Design • Vastu • Numerology
+                  </p>
+                </div>
+              </button>
+            </div>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex items-center space-x-1">
+              {navigationItems.map((item) => renderNavItem(item))}
+            </nav>
+
+            {/* Mobile Menu Button */}
+            <div className="lg:hidden">
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="p-2 rounded-lg text-gray-700 hover:text-amber-600 hover:bg-gray-100 transition-colors duration-300"
+                aria-label="Toggle mobile menu"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
+              </button>
+            </div>
           </div>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-1">
-            {navigationItems.map((item) => renderNavItem(item))}
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300"
-          >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6 text-gray-700" />
-            ) : (
-              <Menu className="w-6 h-6 text-gray-700" />
-            )}
-          </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <motion.nav
+          <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden border-t border-gray-200 bg-white overflow-hidden"
+            className="lg:hidden bg-white border-t border-gray-200 shadow-lg"
           >
-            <div className="py-4">
-              {navigationItems.map((item) => renderNavItem(item, true))}
+            {/* Mobile Brand Text (Show when menu is open) */}
+            <div className="px-4 py-3 border-b border-gray-200 sm:hidden">
+              <h2 className="text-lg font-serif font-bold text-gray-800">
+                Interiors by Preyashi
+              </h2>
+              <p className="text-sm text-gray-600">
+                Design • Vastu • Numerology
+              </p>
             </div>
-          </motion.nav>
+            
+            <nav className="py-2 max-h-96 overflow-y-auto">
+              {navigationItems.map((item) => renderNavItem(item, true))}
+            </nav>
+          </motion.div>
         )}
-      </div>
-    </header>
+      </header>
+
+      {/* Spacer to prevent content from going under fixed header */}
+      <div className="h-20"></div>
+    </>
   );
 };
 

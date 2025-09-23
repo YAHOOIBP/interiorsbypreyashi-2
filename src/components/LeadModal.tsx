@@ -193,7 +193,7 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose, title = "Start Y
                     required
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300 text-gray-900"
                     placeholder="Your full name"
                   />
                 </div>
@@ -210,7 +210,7 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose, title = "Start Y
                     required
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300 text-gray-900"
                     placeholder="+91 XXXXX XXXXX"
                   />
                 </div>
@@ -228,7 +228,7 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose, title = "Start Y
                   required
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300 text-gray-900"
                   placeholder="your.email@example.com"
                 />
               </div>
@@ -243,7 +243,7 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose, title = "Start Y
                   required
                   value={formData.projectType}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300 text-gray-900"
                 >
                   <option value="">Select project type</option>
                   {projectTypes.map((type) => (
@@ -264,7 +264,7 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose, title = "Start Y
                   rows={4}
                   value={formData.message}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300 text-gray-900"
                   placeholder="Tell us about your project requirements, space details, budget range, timeline, and any specific preferences..."
                 ></textarea>
               </div>

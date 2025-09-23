@@ -16,10 +16,26 @@ const Home = () => {
 
   // AutoCAD Drawings for Hero Section
   const autocadDrawings = [
-    { src: "/images/autocad/floor-plan-1.jpg", alt: "Modern Floor Plan - Living Space Design", title: "Contemporary Floor Plan" },
-    { src: "/images/autocad/elevation-1.jpg", alt: "Interior Elevation - Design", title: " Elevation" },
-    { src: "/images/autocad/section-1.jpg", alt: "Architectural Section - Cross Section View", title: "Section Drawing" },
-    { src: "/images/autocad/3d-plan.jpg", alt: "3D Floor Plan - Detailed Layout", title: "3D Visualization" }
+    {
+      src: "/images/autocad/floor-plan-1.jpg",
+      alt: "Modern Floor Plan - Living Space Design",
+      title: "Contemporary Floor Plan"
+    },
+    {
+      src: "/images/autocad/elevation-1.jpg", 
+      alt: "Interior Elevation - Kitchen Design",
+      title: "Kitchen Elevation"
+    },
+    {
+      src: "/images/autocad/section-1.jpg",
+      alt: "Architectural Section - Cross Section View", 
+      title: "Section Drawing"
+    },
+    {
+      src: "/images/autocad/3d-plan.jpg",
+      alt: "3D Floor Plan - Detailed Layout",
+      title: "3D Visualization"
+    }
   ];
 
   // Client Logos for Carousel
@@ -42,7 +58,7 @@ const Home = () => {
       inspiration: "Drawing from Rajasthani palaces and modern Mumbai penthouses"
     },
     {
-      title: "Scandinavian-Indian Fusion",
+      title: "Scandinavian-Indian Fusion", 
       description: "Minimalist Nordic design principles enhanced with warm Indian textiles and craftsmanship.",
       inspiration: "Inspired by Danish hygge meets traditional Indian comfort"
     },
@@ -79,7 +95,7 @@ const Home = () => {
       tip: "Your birth date number influences your ideal color palette - discover which colors resonate with your personal energy for a truly harmonious space."
     },
     {
-      title: "Address Vibrations",
+      title: "Address Vibrations", 
       tip: "Your house number affects the energy of your space. Learn how to enhance or balance your home's numerical vibration through strategic design choices."
     }
   ];
@@ -213,13 +229,13 @@ const Home = () => {
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Tinsukia",
-      "addressRegion": "Assam", 
+      "addressRegion": "Assam",
       "addressCountry": "IN"
     },
     "telephone": "+918486076075",
     "url": "https://interiorsbypreyashi.com",
     "founder": {
-      "@type": "Person",
+      "@type": "Person", 
       "name": "Preyashi More Birmiwal"
     },
     "aggregateRating": {
@@ -230,107 +246,131 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-cream-50">
       <SEOHead
-        title="Interior Design Services | Vastu Shastra & Numerology | Interiors By Preyashi"
-        description="Transform your space with expert interior design, Vastu consultation, and numerology guidance in Northeast India. Creating harmonious homes and offices in Tinsukia, Assam."
-        keywords="interior design, vastu shastra, numerology, home design, office interiors, Tinsukia, Assam, Northeast India"
+        title="Interiors By Preyashi - Expert Interior Design with Vastu & Numerology"
+        description="Transform your space with world-class interior design, authentic Vastu consultation, and personalized numerology guidance across Northeast India."
+        keywords="interior design Assam, Vastu consultation, numerology interior design, Tinsukia interior designer"
         canonicalUrl="/"
         structuredData={structuredData}
       />
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }} />
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
+      {/* Hero Section - Enhanced with AutoCAD Drawings */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-cream-50 via-amber-50 to-orange-50">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center lg:text-left"
+            transition={{ duration: 1 }}
+            className="text-left"
           >
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-serif mb-6 text-gray-800 leading-tight"
-            >
-              Where ancient wisdom meets modern design.
-            </motion.h1>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif mb-6 text-gray-900 leading-tight font-bold">
+              Interiors by
+              <span className="block text-amber-700 italic font-bold drop-shadow-sm">Preyashi</span>
+            </h1>
             
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed"
-            >
-              Creating harmonious spaces through<br />
-              <span className="text-amber-700 font-semibold">Interior Design</span>, <span className="text-amber-700 font-semibold">Vastu Shastra</span> & <span className="text-amber-700 font-semibold">Vedic Numerology</span>.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-            >
-              <button
+            <p className="text-xl md:text-2xl text-gray-800 mb-8 leading-relaxed max-w-2xl font-medium">
+              Where ancient wisdom meets modern design. Creating harmonious spaces through 
+              <strong className="text-amber-700"> Interior Design</strong>, <strong className="text-amber-700">Vastu Shastra</strong> & <strong className="text-amber-700">Vedic Numerology</strong>.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => setIsLeadModalOpen(true)}
-                className="bg-amber-600 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="bg-amber-600 text-white px-8 py-4 rounded-lg font-medium hover:bg-amber-700 transition-all duration-300 shadow-lg"
               >
-                Start Your Journey
-              </button>
+                Start Your Project
+              </motion.button>
+              
               <Link
                 to="/portfolio"
-                className="border border-amber-600 text-amber-700 px-8 py-4 rounded-lg text-lg font-medium hover:bg-amber-600 hover:text-white transition-all duration-300 flex items-center justify-center"
+                className="border-2 border-amber-600 text-amber-600 px-8 py-4 rounded-lg font-medium hover:bg-amber-600 hover:text-white transition-all duration-300 text-center"
               >
                 View Portfolio
-                <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
-            </motion.div>
+            </div>
           </motion.div>
-
-          {/* Right Visual */}
+          
+          {/* Enhanced Right Side with AutoCAD Drawings and Founder Image */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 1, delay: 0.2 }}
             className="relative"
           >
-            <div className="relative w-full h-96 rounded-2xl overflow-hidden shadow-2xl">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={currentDrawingIndex}
-                  src={autocadDrawings[currentDrawingIndex].src}
-                  alt={autocadDrawings[currentDrawingIndex].alt}
-                  initial={{ opacity: 0, scale: 1.1 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.7 }}
-                  className="w-full h-full object-cover"
+            <div className="aspect-square rounded-full bg-gradient-to-br from-amber-200 to-orange-200 p-2 shadow-2xl">
+              <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
+                {/* Founder Image */}
+                <img
+                  src="/images/founder/preyashi-profile.jpg"
+                  alt="Preyashi More Birmiwal - Interior Designer & Vastu Consultant"
+                  className="w-full h-full object-cover rounded-full"
                   onError={(e) => {
-                    e.target.src = "/images/hero/hero-fallback.jpg";
+                    // Fallback to a placeholder if image fails to load
+                    e.currentTarget.src = "/images/founder/placeholder-profile.jpg";
                   }}
                 />
-              </AnimatePresence>
-              
-              {/* Overlay with title */}
-              <div className="absolute bottom-4 left-4 right-4 bg-black/50 backdrop-blur-sm rounded-lg p-4">
-                <h3 className="text-white font-semibold">{autocadDrawings[currentDrawingIndex].title}</h3>
               </div>
             </div>
+            
+            {/* AutoCAD Drawings Carousel */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="absolute -top-8 -right-8 bg-white rounded-lg shadow-xl p-4 max-w-xs"
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentDrawingIndex}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <img
+                    src={autocadDrawings[currentDrawingIndex].src}
+                    alt={autocadDrawings[currentDrawingIndex].alt}
+                    className="w-full h-32 object-cover rounded-lg mb-2"
+                    onError={(e) => {
+                      // Fallback to a default architectural drawing
+                      e.currentTarget.src = "/images/autocad/default-drawing.jpg";
+                    }}
+                  />
+                  <h4 className="font-semibold text-gray-800 text-sm">
+                    {autocadDrawings[currentDrawingIndex].title}
+                  </h4>
+                </motion.div>
+              </AnimatePresence>
+            </motion.div>
+            
+            {/* Floating Stats */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="absolute -bottom-4 -left-4 bg-white rounded-lg shadow-lg p-4 text-center"
+            >
+              <div className="text-2xl font-bold text-amber-600">19+</div>
+              <div className="text-sm text-gray-600">Projects</div>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 1 }}
+              className="absolute top-1/2 -left-8 bg-white rounded-lg shadow-lg p-4 text-center"
+            >
+              <div className="text-2xl font-bold text-amber-600">7+</div>
+              <div className="text-sm text-gray-600">Years Experience</div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* World-Class Interiors Section */}
+      {/* World-Class Interiors - Simplified */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div
@@ -338,186 +378,190 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-serif text-gray-800 mb-6">World-Class Interiors</h2>
+            <h2 className="text-4xl md:text-5xl font-serif mb-6 text-gray-800">
+              World-Class Interior Designs
+            </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Discover our portfolio of luxury interiors that blend modern sophistication with traditional Indian elements
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              className="relative h-80 rounded-2xl overflow-hidden shadow-xl"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-orange-500/20"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center text-gray-600">
-                  <div className="w-24 h-24 mx-auto mb-4 bg-amber-100 rounded-full flex items-center justify-center">
-                    <Star className="w-12 h-12 text-amber-600" />
-                  </div>
-                  <p>Premium Interior Showcase</p>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              className="space-y-6"
-            >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentInteriorIndex}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <h3 className="text-3xl font-serif text-gray-800 mb-4">
-                    {worldClassInteriors[currentInteriorIndex].title}
-                  </h3>
-                  <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                    {worldClassInteriors[currentInteriorIndex].description}
-                  </p>
-                  <p className="text-amber-700 font-medium italic">
-                    {worldClassInteriors[currentInteriorIndex].inspiration}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
-            </motion.div>
+          <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-8 md:p-12">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentInteriorIndex}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.6 }}
+                className="text-center"
+              >
+                <h3 className="text-3xl font-serif text-gray-800 mb-4">
+                  {worldClassInteriors[currentInteriorIndex].title}
+                </h3>
+                <p className="text-lg text-gray-700 mb-6 max-w-3xl mx-auto">
+                  {worldClassInteriors[currentInteriorIndex].description}
+                </p>
+                <p className="text-amber-600 font-medium italic">
+                  {worldClassInteriors[currentInteriorIndex].inspiration}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+            
+            <div className="flex justify-center mt-8 space-x-2">
+              {worldClassInteriors.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentInteriorIndex(index)}
+                  className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                    index === currentInteriorIndex ? 'bg-amber-600' : 'bg-gray-300'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Vastu Wisdom Section */}
-      <section className="py-20 bg-gradient-to-r from-green-50 to-emerald-50">
+      {/* Vastu & Numerology - Simplified */}
+      <section className="py-20 bg-gradient-to-r from-teal-50 to-blue-50">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Vastu Wisdom */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              className="space-y-6"
+              className="bg-white rounded-2xl p-8 shadow-lg"
             >
-              <h2 className="text-4xl md:text-5xl font-serif text-gray-800">Vastu Wisdom</h2>
-              <p className="text-xl text-gray-600">
+              <h3 className="text-3xl font-serif text-gray-800 mb-6 text-center">
+                Ancient Vastu Wisdom
+              </h3>
+              <p className="text-gray-600 mb-8 text-center">
                 Transform your home into a sanctuary of positive energy with time-tested Vastu Shastra principles
               </p>
-
+              
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentVastuTip}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.6 }}
-                  className="bg-white p-6 rounded-xl shadow-lg"
+                  transition={{ duration: 0.5 }}
                 >
-                  <h3 className="text-xl font-semibold text-gray-800 mb-3">
+                  <h4 className="text-xl font-semibold text-amber-600 mb-4">
                     {vastuTips[currentVastuTip].title}
-                  </h3>
+                  </h4>
                   <p className="text-gray-700 leading-relaxed">
                     {vastuTips[currentVastuTip].tip}
                   </p>
                 </motion.div>
               </AnimatePresence>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              className="relative h-80 rounded-2xl overflow-hidden shadow-xl"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center text-gray-600">
-                  <div className="w-24 h-24 mx-auto mb-4 bg-green-100 rounded-full flex items-center justify-center">
-                    <Heart className="w-12 h-12 text-green-600" />
-                  </div>
-                  <p>Vastu Compliant Designs</p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Numerology Insights Section */}
-      <section className="py-20 bg-gradient-to-r from-purple-50 to-indigo-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              className="relative h-80 rounded-2xl overflow-hidden shadow-xl lg:order-2"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-indigo-500/20"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center text-gray-600">
-                  <div className="w-24 h-24 mx-auto mb-4 bg-purple-100 rounded-full flex items-center justify-center">
-                    <span className="text-3xl font-bold text-purple-600">∞</span>
-                  </div>
-                  <p>Numerology Harmony</p>
-                </div>
+              
+              <div className="flex justify-center mt-6 space-x-2">
+                {vastuTips.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentVastuTip(index)}
+                    className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+                      index === currentVastuTip ? 'bg-amber-600' : 'bg-gray-300'
+                    }`}
+                  />
+                ))}
               </div>
             </motion.div>
 
+            {/* Numerology */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              className="space-y-6 lg:order-1"
+              className="bg-white rounded-2xl p-8 shadow-lg"
             >
-              <h2 className="text-4xl md:text-5xl font-serif text-gray-800">Numerology Insights</h2>
-              <p className="text-xl text-gray-600">
+              <h3 className="text-3xl font-serif text-gray-800 mb-6 text-center">
+                Numerology & Sacred Geometry
+              </h3>
+              <p className="text-gray-600 mb-8 text-center">
                 Unlock the power of numbers to create harmonious living spaces that resonate with your personal energy
               </p>
-
+              
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentNumerologyInsight}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.6 }}
-                  className="bg-white p-6 rounded-xl shadow-lg"
+                  transition={{ duration: 0.5 }}
                 >
-                  <h3 className="text-xl font-semibold text-gray-800 mb-3">
+                  <h4 className="text-xl font-semibold text-purple-600 mb-4">
                     {numerologyInsights[currentNumerologyInsight].title}
-                  </h3>
+                  </h4>
                   <p className="text-gray-700 leading-relaxed">
                     {numerologyInsights[currentNumerologyInsight].tip}
                   </p>
                 </motion.div>
               </AnimatePresence>
+              
+              <div className="flex justify-center mt-6 space-x-2">
+                {numerologyInsights.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentNumerologyInsight(index)}
+                    className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+                      index === currentNumerologyInsight ? 'bg-purple-600' : 'bg-gray-300'
+                    }`}
+                  />
+                ))}
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Philosophy Section */}
-      <section className="py-20 bg-amber-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      {/* Core Philosophies - Compact */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-serif mb-8">Our Philosophy</h2>
-            {(() => {
-              const philosophy = {
-                description: "We believe that great interior design goes beyond aesthetics. It's about creating spaces that nurture the soul, support your dreams, and enhance your daily life through the perfect harmony of beauty, function, and positive energy."
-              };
-              return (
-                <p className="text-xl md:text-2xl leading-relaxed opacity-90 max-w-3xl mx-auto">
-                  {philosophy.description}
-                </p>
-              );
-            })()}
+            <h2 className="text-4xl font-serif text-gray-800 mb-6">Our Core Philosophies</h2>
           </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: "🎯",
+                title: "Precision",
+                description: "Meticulous attention to detail from concept to execution for flawless results."
+              },
+              {
+                icon: "✨",
+                title: "Creativity",
+                description: "Innovative designs that reflect your unique personality and lifestyle."
+              },
+              {
+                icon: "🏠",
+                title: "Vastu Expertise",
+                description: "Creating harmonious spaces that promote well-being and prosperity."
+              }
+            ].map((philosophy, index) => (
+              <motion.div
+                key={philosophy.title}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2 }}
+                className="text-center p-6 rounded-lg hover:shadow-lg transition-all duration-300"
+              >
+                <div className="text-4xl mb-4">{philosophy.icon}</div>
+                <h3 className="text-xl font-serif text-gray-800 mb-3">{philosophy.title}</h3>
+                <p className="text-gray-600">{philosophy.description}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Clients Section - MODIFIED to show colorful, bigger logos in circles */}
+      {/* Client Logos Carousel Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div
@@ -579,137 +623,158 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Instagram Reels Section */}
-      <section className="py-20 bg-white">
+      {/* Instagram Reels - Enhanced Auto-scrolling Carousel */}
+      <section className="py-20 bg-gradient-to-r from-pink-50 to-purple-50">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
-            <h2 className="text-4xl md:text-5xl font-serif text-gray-800 mb-6">Design Stories</h2>
-            <p className="text-xl text-gray-600">
-              See our latest projects and design tips on Instagram
-            </p>
+            <h2 className="text-4xl font-serif text-gray-800 mb-6">Follow Our Journey</h2>
+            <p className="text-xl text-gray-600">See our latest projects and design tips on Instagram</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {instagramReels.slice(0, 3).map((reel, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
-                onClick={() => window.open(reel.reelLink, '_blank')}
-              >
-                <div className="aspect-[9/16] relative">
-                  <img
-                    src={reel.coverImage}
-                    alt={reel.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    onError={(e) => {
-                      e.target.src = "/images/reels/default-reel.jpg";
-                    }}
-                  />
-                  
-                  {/* Play overlay */}
-                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                      <Play className="w-8 h-8 text-gray-800 ml-1" fill="currentColor" />
+          {/* Auto-scrolling Reels Carousel */}
+          <div className="relative overflow-hidden">
+            <motion.div
+              animate={{ x: [-1600, 0] }}
+              transition={{ 
+                duration: 25,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+              className="flex space-x-6"
+            >
+              {/* Double the reels for seamless infinite scroll */}
+              {[...instagramReels, ...instagramReels].map((reel, index) => (
+                <motion.div
+                  key={index}
+                  className="flex-shrink-0 w-80 bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300 cursor-pointer"
+                  onClick={() => window.open(reel.reelLink, '_blank')}
+                  whileHover={{ scale: 1.02 }}
+                >
+                  <div className="relative aspect-video bg-gradient-to-br from-pink-200 to-purple-200 flex items-center justify-center">
+                    <img
+                      src={reel.coverImage}
+                      alt={reel.title}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        // Fallback to default cover
+                        e.currentTarget.src = "/images/reels/default-cover.jpg";
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                      <Play className="w-12 h-12 text-white group-hover:scale-110 transition-transform duration-300" />
                     </div>
                   </div>
-
-                  {/* Content overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                    <h3 className="text-white font-semibold mb-2">{reel.title}</h3>
-                    <p className="text-gray-200 text-sm">{reel.description}</p>
+                  <div className="p-6">
+                    <h3 className="font-semibold text-gray-800 mb-2">{reel.title}</h3>
+                    <p className="text-gray-600 text-sm">{reel.description}</p>
+                    <div className="mt-4 flex items-center text-pink-600 text-sm font-medium">
+                      <ExternalLink className="w-4 h-4 mr-1" />
+                      Watch on Instagram
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <a
-              href="https://www.instagram.com/interiorsbypreyashi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-4 rounded-lg font-medium hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg"
-            >
-              <ExternalLink className="mr-2 w-5 h-5" />
-              Follow on Instagram
-            </a>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-50 to-indigo-50">
-        <div className="max-w-4xl mx-auto px-4">
+      {/* Testimonials - Enhanced with Google Reviews Link */}
+      <section className="py-20 bg-amber-600 text-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-center mb-16"
+            className="mb-12"
           >
-            <h2 className="text-4xl md:text-5xl font-serif text-gray-800 mb-6">What Our Clients Say</h2>
+            <h2 className="text-4xl font-serif mb-6">What Our Clients Say</h2>
           </motion.div>
 
           <AnimatePresence mode="wait">
             <motion.div
               key={currentTestimonial}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -50 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.6 }}
-              className="text-center bg-white p-8 rounded-2xl shadow-xl"
+              className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-8"
             >
-              <div className="flex justify-center mb-6">
+              <div className="flex justify-center mb-4">
                 {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                  <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
+                  <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                 ))}
               </div>
               
-              <blockquote className="text-xl md:text-2xl text-gray-700 mb-8 italic leading-relaxed">
+              <blockquote className="text-xl italic mb-6 leading-relaxed">
                 "{testimonials[currentTestimonial].text}"
               </blockquote>
               
-              <div className="flex items-center justify-center">
-                <div className="text-center">
-                  <p className="font-semibold text-gray-800">{testimonials[currentTestimonial].name}</p>
-                  <p className="text-gray-600">{testimonials[currentTestimonial].location}</p>
-                </div>
+              <div>
+                <div className="font-semibold text-lg">{testimonials[currentTestimonial].name}</div>
+                <div className="opacity-90">{testimonials[currentTestimonial].location}</div>
               </div>
             </motion.div>
           </AnimatePresence>
+          
+          <div className="flex justify-center mt-8 space-x-2 mb-8">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentTestimonial(index)}
+                className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                  index === currentTestimonial ? 'bg-white' : 'bg-white/50'
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Google Reviews Link */}
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => window.open('https://maps.app.goo.gl/h9urqLv7WTLWRwbF8', '_blank')}
+            className="bg-white text-amber-600 px-8 py-4 rounded-lg font-medium hover:bg-gray-100 transition-colors duration-300 inline-flex items-center shadow-lg"
+          >
+            <Star className="w-5 h-5 mr-2 fill-yellow-500 text-yellow-500" />
+            Read All Google Reviews
+            <ExternalLink className="w-4 h-4 ml-2" />
+          </motion.button>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-20 bg-gray-800 text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+        <div className="max-w-4xl mx-auto text-center px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-serif mb-8">Ready to Transform Your Space?</h2>
-            <p className="text-xl md:text-2xl mb-12 opacity-90">
+            <h2 className="text-4xl md:text-5xl font-serif mb-6">
+              Ready to Transform Your Space?
+            </h2>
+            <p className="text-xl mb-8 opacity-90">
               Let's create something extraordinary together. Your dream space is just a conversation away.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <button
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => setIsLeadModalOpen(true)}
-                className="bg-amber-600 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-amber-700 transition-colors duration-300 shadow-lg"
+                className="bg-amber-600 text-white px-8 py-4 rounded-lg font-medium hover:bg-amber-700 transition-colors duration-300"
               >
-                Start Your Project
-              </button>
+                Get Free Consultation
+              </motion.button>
+              
               <Link
                 to="/contact"
-                className="border border-white text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-white hover:text-gray-800 transition-colors duration-300"
+                className="border border-white text-white px-8 py-4 rounded-lg font-medium hover:bg-white hover:text-gray-800 transition-all duration-300 inline-block"
               >
-                Get In Touch
+                Contact Us
               </Link>
             </div>
           </motion.div>
@@ -720,7 +785,7 @@ const Home = () => {
       <LeadModal 
         isOpen={isLeadModalOpen} 
         onClose={() => setIsLeadModalOpen(false)}
-        title="Transform Your Space"
+        title="Start Your Dream Project"
       />
     </div>
   );

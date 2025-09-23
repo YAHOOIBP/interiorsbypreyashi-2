@@ -20,142 +20,209 @@ const Portfolio = () => {
   const projects = [
     {
       id: 1,
-      title: "Modern Contemporary Villa",
-      category: "Residential",
-      location: "Tinsukia, Assam",
+      title: "Hindustan Unilever Limited (HUL) – Conference Room",
+      category: "Commercial",
+      location: "Doomdooma, Assam",
       year: "2024",
       area: "3,500 sq ft",
       duration: "4 months",
-      client: "Private Villa Owner",
-      description: "A stunning contemporary villa that seamlessly blends modern design with traditional Indian architectural elements. This luxurious residence features open-plan living spaces, floor-to-ceiling windows, and a sophisticated color palette that creates an elegant and comfortable living environment. The design incorporates sustainable materials and smart home technology while maintaining a connection to the natural surroundings.",
+      client: "(HUL)",
+      description: "Hindustan Unilever Limited (HUL) is India\'s largest fast-moving consumer goods (FMCG) company and a subsidiary of Unilever, a British multinational. With a legacy of over 90 years, HUL has been serving Indian households with some of the most trusted brands. It\'s an honour that I had the opportunity to design and execute the conference room for HUL\'s office in Doomdooma, Assam. The project was carefully curated to reflect professionalism, modern aesthetics, and functionality—ensuring a comfortable and inspiring environment for corporate discussions and meetings within the given deadline.",
       images: [
-        "/images/portfolio/villa-1.jpg",
-        "/images/portfolio/villa-2.jpg", 
-        "/images/portfolio/villa-3.jpg",
-        "/images/portfolio/villa-4.jpg"
+        "/images/portfolio/HUL1.jpg",
+        "/images/portfolio/HUL2.jpg", 
+        "/images/portfolio/HUL1.jpg",
+        "/images/portfolio/HUL1.jpg"
       ],
-      features: ["Smart Home Integration", "Sustainable Materials", "Open Plan Living", "Natural Lighting", "Modern Kitchen", "Luxury Bathrooms"]
+      features: ["Professional Design", "Sustainable Materials", "Modern Aesthetics", "Natural Lighting", "Functional Layout", "Corporate Standards"]
     },
     {
       id: 2,
-      title: "Corporate Headquarters Interior",
-      category: "Commercial",
-      location: "Guwahati, Assam",
-      year: "2024",
+      title: "KCR Sweet Shop & Restaurant",
+      category: "Hospitality",
+      location: "Tinsukia, Assam",
+      year: "2023",
       area: "8,000 sq ft",
       duration: "3 months", 
-      client: "Tech Solutions Ltd",
-      description: "A sophisticated corporate office design that promotes collaboration and productivity. The space features modern workstations, executive offices, conference rooms, and recreational areas. The design incorporates the company's brand colors and values while creating an inspiring work environment that attracts and retains top talent.",
+      client: "KCR",
+      description: "Created an inviting and aesthetic restaurant and sweet shop interior that balances traditional warmth with a contemporary dining experience, ensuring comfort and easy maintenance.",
       images: [
-        "/images/portfolio/office-1.jpg",
-        "/images/portfolio/office-2.jpg",
-        "/images/portfolio/office-3.jpg"
+        "/images/portfolio/KCR1.JPG",
+        "/images/portfolio/KCR2.JPG",
+        "/images/portfolio/KCR5.JPG"
       ],
-      features: ["Brand Integration", "Collaborative Spaces", "Executive Offices", "Modern Workstations", "Conference Rooms", "Break Areas"]
+      features: ["Brand Integration", "Traditional Warmth", "Contemporary Design", "Easy Maintenance", "Customer Comfort", "Wash Areas"]
     },
     {
       id: 3,
-      title: "Boutique Hotel Suite Design",
-      category: "Hospitality", 
-      location: "Dibrugarh, Assam",
+      title: "Corporate Office",
+      category: "Commercial", 
+      location: "Kharagpur, W.B.",
       year: "2023",
       area: "800 sq ft",
       duration: "2 months",
       client: "Heritage Hotels Group",
-      description: "An elegant hotel suite that captures the essence of Assamese culture while providing modern luxury amenities. The design features local artwork, traditional textiles, and contemporary furniture that create a unique hospitality experience. Rich colors and textures reflect the natural beauty of the region while ensuring guest comfort.",
+      description: "Developed a well-structured office space in Kharagpur with efficient layouts, optimized storage, and a design that enhances productivity while maintaining a corporate elegance.",
       images: [
-        "/images/portfolio/hotel-suite-1.jpg",
-        "/images/portfolio/hotel-suite-2.jpg",
-        "/images/portfolio/hotel-suite-3.jpg"
+        "/images/portfolio/Kharagpur1.jpg",
+        "/images/portfolio/Kharagpur2.jpg",
+        "/images/portfolio/Kharagpur3.jpg"
       ],
-      features: ["Cultural Elements", "Luxury Amenities", "Local Artwork", "Contemporary Furniture", "Rich Textures", "Modern Bathroom"]
+      features: ["Efficient Layouts", "Optimized Storage", "Productivity Enhancement", "Contemporary Furniture", "Rich Textures", "Corporate Elegance"]
     },
     {
       id: 4,
-      title: "Family Residence Renovation",
+      title: "Two Girls Bedroom",
       category: "Residential",
-      location: "Jorhat, Assam", 
-      year: "2023",
-      area: "2,800 sq ft",
+      location: "Tinsukia, Assam", 
+      year: "2024",
+      area: "800 sq ft",
       duration: "5 months",
-      client: "The Sharma Family",
-      description: "A comprehensive renovation of a traditional family home that preserves its heritage character while introducing modern functionality. The project involved updating electrical and plumbing systems, redesigning the kitchen and bathrooms, and creating comfortable living spaces that accommodate three generations of the family.",
+      client: "The More Family",
+      description: "Designed a personalized and vibrant bedroom space for two young girls, combining functionality with playful aesthetics to reflect their individuality and growing needs.",
       images: [
-        "/images/portfolio/family-home-1.jpg",
-        "/images/portfolio/family-home-2.jpg",
-        "/images/portfolio/family-home-3.jpg",
-        "/images/portfolio/family-home-4.jpg"
+        "/images/portfolio/2GirlsBedroom1.jpg",
+        "/images/portfolio/2GirlsBedroom2.jpg",
+        "/images/portfolio/2GirlsBedroom3.jpg"
       ],
-      features: ["Heritage Preservation", "Multi-generational Design", "Modern Systems", "Traditional Elements", "Updated Kitchen", "Family Spaces"]
+      features: ["Personalized Design", "Multi-generational Design", "Modern Systems", "Vibrant Aesthetics", "Functional Layout", "Growth-Adaptive"]
     },
     {
       id: 5,
-      title: "Luxury Restaurant Interior",
-      category: "Hospitality",
-      location: "Silchar, Assam",
+      title: "Office Project",
+      category: "Commercial",
+      location: "North Lakhimpur, Assam",
       year: "2023",
-      area: "2,200 sq ft", 
+      area: "1,200 sq ft", 
       duration: "2.5 months",
-      client: "Fine Dining Restaurant",
-      description: "An upscale restaurant interior that creates an intimate dining experience through carefully planned lighting, seating arrangements, and acoustic design. The space features custom-designed furniture, local artwork, and a sophisticated color scheme that enhances the culinary experience and reflects the restaurant's premium positioning.",
+      client: "MORE GROUPS",
+      description: "Executed a modern office project in North Lakhimpur, integrating practical design solutions, ergonomic planning, and stylish interiors suited for a professional work environment.",
       images: [
-        "/images/portfolio/restaurant-1.jpg",
-        "/images/portfolio/restaurant-2.jpg",
-        "/images/portfolio/restaurant-3.jpg"
+        "/images/portfolio/Lakhimpur1.jpg",
+        "/images/portfolio/Lakhimpur2.jpg",
+        "/images/portfolio/Lakhimpur3.jpg"
       ],
-      features: ["Intimate Ambiance", "Custom Furniture", "Acoustic Design", "Premium Lighting", "Local Artwork", "Sophisticated Colors"]
+      features: ["Modern Design", "Custom Furniture", "Ergonomic Planning", "Professional Environment", "Practical Solutions", "Sophisticated Colors"]
     },
     {
       id: 6,
-      title: "Modern Apartment Design",
-      category: "Residential",
-      location: "Tezpur, Assam",
-      year: "2023", 
-      area: "1,400 sq ft",
+      title: "Sanitary Showroom",
+      category: "Commercial",
+      location: "Tinsukia, Assam",
+      year: "2024", 
+      area: "2,400 sq ft",
       duration: "2 months",
-      client: "Young Professional Couple",
-      description: "A contemporary apartment design that maximizes space efficiency while maintaining style and comfort. The open-plan layout incorporates smart storage solutions, multifunctional furniture, and a neutral color palette with selective accent colors. The design creates a sophisticated urban living environment suitable for a modern lifestyle.",
+      client: "Singla Agencies",
+      description: "Crafted an appealing showroom interior for a sanitary brand in Tinsukia, showcasing products in an organized, customer-friendly, and visually engaging manner.",
       images: [
-        "/images/portfolio/apartment-1.jpg",
-        "/images/portfolio/apartment-2.jpg",
-        "/images/portfolio/apartment-3.jpg"
+        "/images/portfolio/Sanitary2.jpg",
+        "/images/portfolio/Sanitary1.jpg",
+        "/images/portfolio/Sanitary3.jpg"
       ],
-      features: ["Space Optimization", "Smart Storage", "Multifunctional Furniture", "Open Plan Layout", "Modern Amenities", "Urban Lifestyle"]
+      features: ["Space Optimization", "Smart Storage", "Product Showcase", "Organized Layout", "Customer-Friendly", "Visual Appeal"]
     },
     {
       id: 7,
-      title: "Retail Showroom Design",
+      title: "Railway DRM Washroom",
       category: "Commercial",
-      location: "Itanagar, Arunachal Pradesh",
-      year: "2022",
+      location: "Tinsukia & Dibrugarh, Assam",
+      year: "2025",
       area: "1,800 sq ft",
       duration: "1.5 months",
-      client: "Fashion Retail Brand",
-      description: "A modern retail showroom designed to showcase fashion merchandise effectively while creating an engaging shopping experience. The design features flexible display systems, strategic lighting, and a layout that guides customers through the space naturally. The interior reflects current retail design trends while accommodating the brand's specific requirements.",
+      client: "North-East Frontier Railway",
+      description: "Handling official and functional design for railway administrative Rest houses, ensuring comfortable stays for officers.",
       images: [
-        "/images/portfolio/showroom-1.jpg", 
-        "/images/portfolio/showroom-2.jpg",
-        "/images/portfolio/showroom-3.jpg"
+        "/images/portfolio/R_WASHROOM1.jpg", 
+        "/images/portfolio/R_WASHROOM2.jpg",
+        "/images/portfolio/R_WASHROOM3.jpg"
       ],
-      features: ["Flexible Displays", "Strategic Lighting", "Customer Flow", "Brand Showcase", "Modern Fixtures", "Engaging Experience"]
+      features: ["Modern Design", "Safety Focus", "Customer Flow", "Comfort Focus", "Modern Fixtures", "Administrative Standards"]
     },
     {
       id: 8,
-      title: "Heritage Home Restoration",
+      title: "3BHK Two-Storey Residential Building",
       category: "Residential",
-      location: "Namsai, Arunachal Pradesh",
-      year: "2022",
+      location: "Tinsukia, Arunachal Pradesh",
+      year: "2025",
       area: "2,600 sq ft",
       duration: "6 months",
-      client: "Heritage Property Owner",
-      description: "A careful restoration of a heritage property that preserves its historical character while introducing necessary modern amenities. The project involved structural repairs, restoration of original architectural features, and sensitive additions that complement the existing structure. Traditional building techniques were used alongside modern materials to ensure longevity.",
+      client: "Dhandharia Group",
+      description: "A thoughtfully planned residence combining aesthetics, comfort, and Vastu-compliant design principles.",
       images: [
-        "/images/portfolio/heritage-1.jpg",
-        "/images/portfolio/heritage-2.jpg", 
-        "/images/portfolio/heritage-3.jpg",
-        "/images/portfolio/heritage-4.jpg"
+        "/images/portfolio/3BHK1.JPG",
+        "/images/portfolio/3BHK2.JPG", 
+        "/images/portfolio/3BHK3.JPG"
       ],
-      features: ["Historical Preservation", "Structural Restoration", "Traditional Techniques", "Modern Amenities", "Architectural Features", "Sensitive Additions"]
+      features: ["Vastu Compliant", "Aesthetic Design", "Traditional Techniques", "Modern Amenities", "Comfort Focus", "Thoughtful Planning"]
+    },
+    {
+      id: 9,
+      title: "Restaurant",
+      category: "Hospitality",
+      location: "Tinsukia, Assam",
+      year: "2025",
+      area: "2,600 sq ft",
+      duration: "6 months",
+      client: "Birmiwal Sweets",
+      description: "Creating an inviting and stylish dining environment that balances ambiance, functionality, and customer experience.",
+      images: [
+        "/images/portfolio/Restro1.jpg",
+        "/images/portfolio/Restro2.jpg", 
+        "/images/portfolio/Restro3.jpg"
+      ],
+      features: ["Inviting Ambiance", "Stylish Design", "Traditional Techniques", "Functional Layout", "Customer Experience", "Thoughtful Planning"]
+    },
+    {
+      id: 10,
+      title: "Gym",
+      category: "Commercial",
+      location: "Tinsukia, Assam",
+      year: "2025",
+      area: "2,600 sq ft",
+      duration: "6 months",
+      client: "Gold",
+      description: "Designing a fitness space focused on efficiency, ergonomics, and motivation for members.",
+      images: [
+        "/images/portfolio/gym1.jpg",
+        "/images/portfolio/gym2.jpg", 
+        "/images/portfolio/gym3.jpg",
+        "/images/portfolio/gym1.jpg"
+      ],
+      features: ["Efficient Design", "Ergonomic Planning", "Motivational Environment", "Modern Amenities", "Comfort Focus", "Member-Focused"]
+    },
+    {
+      id: 11,
+      title: "Drilling Company",
+      category: "Commercial",
+      location: "Duliajan, Assam",
+      year: "2025",
+      area: "2,600 sq ft",
+      duration: "6 months",
+      client: "Oil India",
+      description: "Developing industrial interiors with a focus on safety, operational efficiency, and professional aesthetics.",
+      images: [
+        "/images/portfolio/DRILLING1.jpg",
+        "/images/portfolio/DRILLING2.jpg", 
+        "/images/portfolio/DRILLING3.jpg"
+      ],
+      features: ["Safety Focus", "Operational Efficiency", "Professional Aesthetics", "Industrial Standards"]
+    },
+    {
+      id: 12,
+      title: "Railway DRM Projects",
+      category: "Commercial",
+      location: "Tinsukia & Dibrugarh",
+      year: "2025",
+      area: "1,600 sq ft",
+      duration: "6 months",
+      client: "North East Frontier Railway",
+      description: "Handling official and functional design for railway administrative Rest houses, ensuring comfortable stays for officers.",
+      images: [
+        "/images/portfolio/RAILWAY1.jpg",
+        "/images/portfolio/RAILWAY2.jpg", 
+        "/images/portfolio/RAILWAY3.jpg"
+      ],
+      features: ["Official Design", "Functional Layout", "Comfortable Stays", "Administrative Standards"]
     }
   ];
 

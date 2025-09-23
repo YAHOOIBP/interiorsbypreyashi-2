@@ -100,17 +100,17 @@ const Contact = () => {
     {
       icon: <Mail className="w-6 h-6" />,
       title: 'Email',
-      primary: 'contact@pmdesign.co.in',
+      primary: 'contact@interiorsbypreyashi.com',
       secondary: 'We respond within 24 hours',
-      action: () => window.open('mailto:contact@pmdesign.co.in'),
+      action: () => window.open('mailto:contact@interiorsbypreyashi.com'),
       color: 'from-blue-500 to-cyan-500'
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: 'Address',
       primary: 'Manav Kalyan Road, Parbatia',
-      secondary: 'Namgarh Path -03, Tinsukia, Assam - 786125',
-      action: () => window.open('https://maps.google.com/?q=Tinsukia,Assam,India'),
+      secondary: 'Namgarh Path - 03, Tinsukia, Assam - 786125',
+      action: () => window.open('https://maps.app.goo.gl/swy5ftPjmrD9rReS8'),
       color: 'from-purple-500 to-pink-500'
     },
     {
@@ -137,7 +137,7 @@ const Contact = () => {
     "description": "Professional interior design services with Vastu consultation and numerology guidance in Northeast India. Contact us for residential, commercial, and hospitality interior design projects.",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Manav Kalyan Road, Parbatia, Namgarh Path -03",
+      "streetAddress": "Manav Kalyan Road, Parbatia, Namgarh Path - 03",
       "addressLocality": "Tinsukia",
       "addressRegion": "Assam",
       "postalCode": "786125",
@@ -149,7 +149,7 @@ const Contact = () => {
       "longitude": 95.3647
     },
     "telephone": "+918486076075",
-    "email": "contact@pmdesign.co.in",
+    "email": "contact@interiorsbypreyashi.com",
     "url": "https://interiorsbypreyashi.com/contact",
     "openingHours": [
       "Mo-Sa 10:00-19:00"
@@ -157,7 +157,7 @@ const Contact = () => {
     "areaServed": ["Assam", "Arunachal Pradesh", "Northeast India"],
     "priceRange": "₹₹₹",
     "paymentAccepted": ["Cash", "Credit Card", "Bank Transfer", "UPI"],
-    "hasMap": "https://maps.google.com/?q=Tinsukia,Assam,India",
+    "hasMap": "https://maps.app.goo.gl/swy5ftPjmrD9rReS8",
     "founder": {
       "@type": "Person",
       "name": "Preyashi More Birmiwal"

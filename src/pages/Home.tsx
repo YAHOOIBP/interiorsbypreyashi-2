@@ -255,120 +255,132 @@ const Home = () => {
         structuredData={structuredData}
       />
 
-      {/* Hero Section - Enhanced with AutoCAD Drawings */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-cream-50 via-amber-50 to-orange-50">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            className="text-left"
-          >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif mb-6 text-gray-900 leading-tight font-bold">
-              Interiors by
-              <span className="block text-amber-700 italic font-bold drop-shadow-sm">Preyashi</span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-gray-800 mb-8 leading-relaxed max-w-2xl font-medium">
-              Where ancient wisdom meets modern design. Creating harmonious spaces through 
-              <strong className="text-amber-700"> Interior Design</strong>, <strong className="text-amber-700">Vastu Shastra</strong> & <strong className="text-amber-700">Vedic Numerology</strong>.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setIsLeadModalOpen(true)}
-                className="bg-amber-600 text-white px-8 py-4 rounded-lg font-medium hover:bg-amber-700 transition-all duration-300 shadow-lg"
-              >
-                Start Your Project
-              </motion.button>
-              
-              <Link
-                to="/portfolio"
-                className="border-2 border-amber-600 text-amber-600 px-8 py-4 rounded-lg font-medium hover:bg-amber-600 hover:text-white transition-all duration-300 text-center"
-              >
-                View Portfolio
-              </Link>
-            </div>
-          </motion.div>
-          
-          {/* Enhanced Right Side with AutoCAD Drawings and Founder Image */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="relative"
-          >
-            <div className="aspect-square rounded-full bg-gradient-to-br from-amber-200 to-orange-200 p-2 shadow-2xl">
-              <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
-                {/* Founder Image */}
-                <img
-                  src="/images/founder/preyashi-profile.jpg"
-                  alt="Preyashi More Birmiwal - Interior Designer & Vastu Consultant"
-                  className="w-full h-full object-cover rounded-full"
-                  onError={(e) => {
-                    // Fallback to a placeholder if image fails to load
-                    e.currentTarget.src = "/images/founder/placeholder-profile.jpg";
-                  }}
-                />
-              </div>
-            </div>
-            
-            {/* AutoCAD Drawings Carousel */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="absolute -top-8 -right-8 bg-white rounded-lg shadow-xl p-4 max-w-xs"
-            >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentDrawingIndex}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <img
-                    src={autocadDrawings[currentDrawingIndex].src}
-                    alt={autocadDrawings[currentDrawingIndex].alt}
-                    className="w-full h-32 object-cover rounded-lg mb-2"
-                    onError={(e) => {
-                      // Fallback to a default architectural drawing
-                      e.currentTarget.src = "/images/autocad/default-drawing.jpg";
-                    }}
-                  />
-                  <h4 className="font-semibold text-gray-800 text-sm">
-                    {autocadDrawings[currentDrawingIndex].title}
-                  </h4>
-                </motion.div>
-              </AnimatePresence>
-            </motion.div>
-            
-            {/* Floating Stats */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="absolute -bottom-4 -left-4 bg-white rounded-lg shadow-lg p-4 text-center"
-            >
-              <div className="text-2xl font-bold text-amber-600">19+</div>
-              <div className="text-sm text-gray-600">Projects</div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 1 }}
-              className="absolute top-1/2 -left-8 bg-white rounded-lg shadow-lg p-4 text-center"
-            >
-              <div className="text-2xl font-bold text-amber-600">7+</div>
-              <div className="text-sm text-gray-600">Years Experience</div>
-            </motion.div>
-          </motion.div>
+      {/* Hero Section with Blueprint Background */}
+<section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+  {/* Blueprint Background Image */}
+  <div 
+    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+    style={{
+      backgroundImage: 'url(/images/bg-2.jpg)',
+    }}
+  ></div>
+  
+  {/* Dark overlay for better text visibility */}
+  <div className="absolute inset-0 bg-black/60 z-10"></div>
+  
+  {/* Additional subtle pattern overlay */}
+  <div className="absolute inset-0 opacity-10 z-10">
+    <div className="absolute inset-0" style={{
+      backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+    }} />
+  </div>
+
+  <div className="relative z-20 max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    {/* Left Content */}
+    <motion.div
+      initial={{ opacity: 0, x: -50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8 }}
+      className="text-center lg:text-left"
+    >
+      <motion.h1 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="text-4xl md:text-5xl lg:text-6xl font-serif mb-6 text-white leading-tight drop-shadow-lg"
+      >
+        <span className="text-cyan-300">Interiors By</span><br />
+        <span className="text-amber-400 italic">Preyashi</span>
+      </motion.h1>
+      
+      <motion.p
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+        className="text-xl md:text-2xl text-gray-100 mb-8 leading-relaxed drop-shadow-md"
+      >
+        Where ancient wisdom meets modern design.
+      </motion.p>
+
+      <motion.p
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed drop-shadow-md"
+      >
+        Creating harmonious spaces through<br />
+        <span className="text-amber-300 font-semibold">Interior Design</span>, <span className="text-green-300 font-semibold">Vastu Shastra</span> & <span className="text-cyan-300 font-semibold">Vedic Numerology</span>.
+      </motion.p>
+
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+        className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+      >
+        <button
+          onClick={() => setIsLeadModalOpen(true)}
+          className="bg-amber-600 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 border border-amber-500"
+        >
+          Start Your Project
+        </button>
+        <Link
+          to="/portfolio"
+          className="border-2 border-cyan-400 text-cyan-400 px-8 py-4 rounded-lg text-lg font-medium hover:bg-cyan-400 hover:text-gray-900 transition-all duration-300 flex items-center justify-center backdrop-blur-sm bg-white/10"
+        >
+          View Portfolio
+          <ArrowRight className="ml-2 w-5 h-5" />
+        </Link>
+      </motion.div>
+    </motion.div>
+
+    {/* Right Visual */}
+    <motion.div
+      initial={{ opacity: 0, x: 50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8, delay: 0.3 }}
+      className="relative"
+    >
+      <div className="relative w-full h-96 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/30 backdrop-blur-sm">
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={currentDrawingIndex}
+            src={autocadDrawings[currentDrawingIndex].src}
+            alt={autocadDrawings[currentDrawingIndex].alt}
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.7 }}
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              e.target.src = "/images/hero/hero-fallback.jpg";
+            }}
+          />
+        </AnimatePresence>
+        
+        {/* Enhanced overlay with title */}
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6">
+          <h3 className="text-white font-semibold text-lg mb-2 drop-shadow-lg">{autocadDrawings[currentDrawingIndex].title}</h3>
+          <div className="flex items-center text-amber-400">
+            <Star className="w-4 h-4 mr-1" />
+            <span className="text-sm drop-shadow-md">Professional Design</span>
+          </div>
         </div>
-      </section>
+      </div>
+
+      {/* Enhanced floating stats with backdrop blur */}
+      <div className="absolute -top-4 -left-4 bg-white/20 backdrop-blur-md rounded-xl p-4 text-white border border-white/30 shadow-xl">
+        <div className="text-2xl font-bold text-amber-400 drop-shadow-lg">7+</div>
+        <div className="text-sm drop-shadow-md">Years Experience</div>
+      </div>
+
+      <div className="absolute -bottom-4 -right-4 bg-white/20 backdrop-blur-md rounded-xl p-4 text-white border border-white/30 shadow-xl">
+        <div className="text-2xl font-bold text-cyan-400 drop-shadow-lg">19+</div>
+        <div className="text-sm drop-shadow-md">Projects</div>
+      </div>
+    </motion.div>
+  </div>
+</section>
 
       {/* World-Class Interiors - Simplified */}
       <section className="py-20 bg-white">

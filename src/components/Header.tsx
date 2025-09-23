@@ -177,14 +177,14 @@ const Header: React.FC = () => {
                 </div>
                 
                 {/* Brand Text */}
-                <div className="hidden sm:block">
-                  <h1 className="text-xl md:text-2xl font-serif font-bold text-gray-800">
-                    Interiors by Preyashi
-                  </h1>
-                  <p className="text-sm text-gray-600 -mt-1">
-                    Design • Vastu • Numerology
-                  </p>
-                </div>
+                <div className="block">
+  <h1 className="text-lg sm:text-xl md:text-2xl font-serif font-bold text-gray-800 leading-tight">
+    Interiors by Preyashi
+  </h1>
+  <p className="text-xs sm:text-sm text-gray-600 -mt-1">
+    Design • Vastu • Numerology
+  </p>
+</div>
               </button>
             </div>
 

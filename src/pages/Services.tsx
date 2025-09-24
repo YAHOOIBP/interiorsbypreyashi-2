@@ -20,7 +20,7 @@ const Services = () => {
       subtitle: 'Residential & Commercial',
       icon: <Home className="w-10 h-10 text-amber-600" />,
       description: 'End-to-end interior solutions designed with precision, functionality, and creativity.',
-      price: '₹25-150 per sq ft',
+      price: '₹50-500 per sq ft',
       features: [
         'Space Planning & Optimization',
         '2D Floor Plans & 3D Visualizations',
@@ -58,7 +58,7 @@ const Services = () => {
       subtitle: 'Residential, Commercial & Industrial',
       icon: <Building2 className="w-10 h-10 text-amber-600" />,
       description: 'Expert Vastu guidance to create harmony, balance, and positive energy in your spaces.',
-      price: '₹5,000-25,000',
+      price: '₹5,000-1.5 L',
       features: [
         'Vastu-Compliant Floor Planning',
         'Space & Directional Analysis',
@@ -85,7 +85,7 @@ const Services = () => {
       subtitle: 'Personal & Business',
       icon: <Calculator className="w-10 h-10 text-amber-600" />,
       description: 'Unlock the power of numbers to bring clarity and success in every aspect of life.',
-      price: '₹2,000-15,000',
+      price: '₹2,000-45,000',
       features: [
         'Personal Numerology Consultations',
         'Name Spelling Corrections & Personalized Grids',

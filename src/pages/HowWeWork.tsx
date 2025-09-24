@@ -308,7 +308,7 @@ const HowWeWork = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
-              { number: '19+', label: 'Projects Completed', description: 'Using Our Process' },
+              { number: '50+', label: 'Projects Completed', description: 'Using Our Process' },
               { number: '100%', label: 'On-Time Delivery', description: 'Project Timeline Adherence' },
               { number: '7+', label: 'Years Experience', description: 'Refined Methodology' },
               { number: '95%+', label: 'Client Satisfaction', description: 'Process Approval Rate' }

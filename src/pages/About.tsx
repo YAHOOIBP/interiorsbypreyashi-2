@@ -47,7 +47,7 @@ const About = () => {
   const achievements = [
     {
       icon: <Award className="w-6 h-6 text-amber-600" />,
-      title: "19+ Successful Projects",
+      title: "50+ Successful Projects",
       description: "Completed diverse residential, commercial, and hospitality projects across Northeast India"
     },
     {
@@ -57,7 +57,7 @@ const About = () => {
     },
     {
       icon: <Users className="w-6 h-6 text-amber-600" />,
-      title: "100+ Happy Clients", 
+      title: "50+ Happy Clients", 
       description: "Satisfied families and businesses throughout Assam and Arunachal Pradesh"
     },
     {
@@ -139,7 +139,7 @@ const About = () => {
                     <img
                       src="/images/founder/preyashi-profile1.jpg"
                       alt="Preyashi More Birmiwal - Interior Designer and Vastu Consultant in Tinsukia, Assam"
-                      className="w-full h-full object-cover rounded-full"
+                      className="w-full h-full object-cover object-top"
                       onError={(e) => {
                         e.currentTarget.src = "/images/founder/placeholder-profile.jpg";
                       }}

@@ -246,7 +246,7 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-cream-50">
+    <div className="min-h-screen bg-cream-50 overflow-x-hidden">
       <SEOHead
         title="Interiors By Preyashi - Expert Interior Design with Vastu & Numerology"
         description="Transform your space with world-class interior design, authentic Vastu consultation, and personalized numerology guidance across Northeast India."
@@ -275,7 +275,7 @@ const Home = () => {
     }} />
   </div>
 
-  <div className="relative z-20 max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+  <div className="relative z-20 max-w-7xl mx-auto px-0 sm:px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
     {/* Left Content */}
     <motion.div
       initial={{ opacity: 0, x: -50 }}
@@ -375,7 +375,7 @@ const Home = () => {
       </div>
 
       <div className="absolute -bottom-4 -right-4 bg-white/20 backdrop-blur-md rounded-xl p-4 text-white border border-white/30 shadow-xl">
-        <div className="text-2xl font-bold text-cyan-400 drop-shadow-lg">19+</div>
+        <div className="text-2xl font-bold text-cyan-400 drop-shadow-lg">50+</div>
         <div className="text-sm drop-shadow-md">Projects</div>
       </div>
     </motion.div>
@@ -697,7 +697,7 @@ const Home = () => {
 
       {/* Testimonials - Enhanced with Google Reviews Link */}
       <section className="py-20 bg-amber-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+        <div className="max-w-4xl mx-auto px-4 text-center overflow-x-auto scrollbar-hide touch-pan-x">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}

@@ -464,7 +464,7 @@ const TurnkeySolutions = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               {[
-                { number: '19+', label: 'Turnkey Projects', description: 'Successfully Completed' },
+                { number: '50+', label: 'Turnkey Projects', description: 'Successfully Completed' },
                 { number: '100%', label: 'On-Time Delivery', description: 'Project Completion Rate' },
                 { number: '30%', label: 'Faster Completion', description: 'Than Traditional Approach' },
                 { number: '95%+', label: 'Client Satisfaction', description: 'Across All Projects' }

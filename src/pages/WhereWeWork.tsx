@@ -98,7 +98,7 @@ const WhereWeWork = () => {
 
   const projectStats = [
     { number: '50+', label: 'Cities Served', description: 'Across India' },
-    { number: '19+', label: 'Completed Projects', description: 'Pan India Coverage' },
+    { number: '50+', label: 'Completed Projects', description: 'Pan India Coverage' },
     { number: '13', label: 'Northeast Cities', description: 'Specialized Expertise' },
     { number: '100%', label: 'Client Satisfaction', description: 'All Locations' }
   ];

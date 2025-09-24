@@ -1261,3 +1261,13 @@ select:focus {
     backdrop-filter: blur(5px);
   }
 }
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari */
+}
+.touch-pan-x {
+  touch-action: pan-x;
+}

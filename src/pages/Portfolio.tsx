@@ -24,9 +24,9 @@ const Portfolio = () => {
       category: "Commercial",
       location: "Doomdooma, Assam",
       year: "2024",
-      area: "3,500 sq ft",
+      status: "Completed",
       duration: "4 months",
-      client: "(HUL)",
+      mood: "Sundar aur Shaandar",
       description: "Hindustan Unilever Limited (HUL) is India\'s largest fast-moving consumer goods (FMCG) company and a subsidiary of Unilever, a British multinational. With a legacy of over 90 years, HUL has been serving Indian households with some of the most trusted brands. It\'s an honour that I had the opportunity to design and execute the conference room for HUL\'s office in Doomdooma, Assam. The project was carefully curated to reflect professionalism, modern aesthetics, and functionality—ensuring a comfortable and inspiring environment for corporate discussions and meetings within the given deadline.",
       images: [
         "/images/portfolio/HUL1.jpg",
@@ -42,9 +42,9 @@ const Portfolio = () => {
       category: "Hospitality",
       location: "Tinsukia, Assam",
       year: "2023",
-      area: "8,000 sq ft",
+      status: "Completed",
       duration: "3 months", 
-      client: "KCR",
+      mood: "Mithas Bhara Nazara",
       description: "Created an inviting and aesthetic restaurant and sweet shop interior that balances traditional warmth with a contemporary dining experience, ensuring comfort and easy maintenance.",
       images: [
         "/images/portfolio/KCR1.JPG",
@@ -59,9 +59,9 @@ const Portfolio = () => {
       category: "Commercial", 
       location: "Kharagpur, W.B.",
       year: "2023",
-      area: "800 sq ft",
+      status: "Completed",
       duration: "2 months",
-      client: "Heritage Hotels Group",
+      mood: "Sundarta aur Sahi Planning",
       description: "Developed a well-structured office space in Kharagpur with efficient layouts, optimized storage, and a design that enhances productivity while maintaining a corporate elegance.",
       images: [
         "/images/portfolio/Kharagpur1.jpg",
@@ -76,9 +76,9 @@ const Portfolio = () => {
       category: "Residential",
       location: "Tinsukia, Assam", 
       year: "2024",
-      area: "800 sq ft",
+      status: "Completed",
       duration: "5 months",
-      client: "The More Family",
+      mood: "Rangeen Khwab",
       description: "Designed a personalized and vibrant bedroom space for two young girls, combining functionality with playful aesthetics to reflect their individuality and growing needs.",
       images: [
         "/images/portfolio/2GirlsBedroom1.jpg",
@@ -93,9 +93,9 @@ const Portfolio = () => {
       category: "Commercial",
       location: "North Lakhimpur, Assam",
       year: "2023",
-      area: "1,200 sq ft", 
+      status: 'Completed', 
       duration: "2.5 months",
-      client: "MORE GROUPS",
+      mood: "Aaram aur Asar",
       description: "Executed a modern office project in North Lakhimpur, integrating practical design solutions, ergonomic planning, and stylish interiors suited for a professional work environment.",
       images: [
         "/images/portfolio/Lakhimpur1.jpg",
@@ -110,9 +110,9 @@ const Portfolio = () => {
       category: "Commercial",
       location: "Tinsukia, Assam",
       year: "2024", 
-      area: "2,400 sq ft",
+      status: "Completed",
       duration: "2 months",
-      client: "Singla Agencies",
+      mood: "Safai ka Jalwa",
       description: "Crafted an appealing showroom interior for a sanitary brand in Tinsukia, showcasing products in an organized, customer-friendly, and visually engaging manner.",
       images: [
         "/images/portfolio/Sanitary2.jpg",
@@ -127,9 +127,9 @@ const Portfolio = () => {
       category: "Commercial",
       location: "Tinsukia & Dibrugarh, Assam",
       year: "2025",
-      area: "1,800 sq ft",
+      status: "Completed",
       duration: "1.5 months",
-      client: "North-East Frontier Railway",
+      mood: "Sukoon Bhari Jagah",
       description: "Handling official and functional design for railway administrative Rest houses, ensuring comfortable stays for officers.",
       images: [
         "/images/portfolio/R_WASHROOM1.jpg", 
@@ -144,9 +144,9 @@ const Portfolio = () => {
       category: "Residential",
       location: "Tinsukia, Arunachal Pradesh",
       year: "2025",
-      area: "2,600 sq ft",
+      status: "Ongoing",
       duration: "6 months",
-      client: "Dhandharia Group",
+      mood: "Sukh-Shanti ka Ghar",
       description: "A thoughtfully planned residence combining aesthetics, comfort, and Vastu-compliant design principles.",
       images: [
         "/images/portfolio/3BHK1.JPG",
@@ -161,9 +161,9 @@ const Portfolio = () => {
       category: "Hospitality",
       location: "Tinsukia, Assam",
       year: "2025",
-      area: "2,600 sq ft",
+      status: "Ongoing",
       duration: "6 months",
-      client: "Birmiwal Sweets",
+      mood: "Swad aur Shaan",
       description: "Creating an inviting and stylish dining environment that balances ambiance, functionality, and customer experience.",
       images: [
         "/images/portfolio/Restro1.jpg",
@@ -178,9 +178,9 @@ const Portfolio = () => {
       category: "Commercial",
       location: "Tinsukia, Assam",
       year: "2025",
-      area: "2,600 sq ft",
+      status: "Ongoing",
       duration: "6 months",
-      client: "Gold",
+      mood: "Josh aur Junoon",
       description: "Designing a fitness space focused on efficiency, ergonomics, and motivation for members.",
       images: [
         "/images/portfolio/gym1.jpg",
@@ -196,9 +196,9 @@ const Portfolio = () => {
       category: "Commercial",
       location: "Duliajan, Assam",
       year: "2025",
-      area: "2,600 sq ft",
+      status: "Completed",
       duration: "6 months",
-      client: "Oil India",
+      mood: "Mazbooti aur Bharosa",
       description: "Developing industrial interiors with a focus on safety, operational efficiency, and professional aesthetics.",
       images: [
         "/images/portfolio/DRILLING1.jpg",
@@ -213,9 +213,9 @@ const Portfolio = () => {
       category: "Commercial",
       location: "Tinsukia & Dibrugarh",
       year: "2025",
-      area: "1,600 sq ft",
+      status: "Ongoing",
       duration: "6 months",
-      client: "North East Frontier Railway",
+      mood: "North East Frontier Railway",
       description: "Handling official and functional design for railway administrative Rest houses, ensuring comfortable stays for officers.",
       images: [
         "/images/portfolio/RAILWAY1.jpg",
@@ -259,7 +259,7 @@ const Portfolio = () => {
   };
 
   const stats = [
-    { number: '19+', label: 'Completed Projects', icon: <Award className="w-6 h-6" /> },
+    { number: '50+', label: 'Completed Projects', icon: <Award className="w-6 h-6" /> },
     { number: '50+', label: 'Happy Clients', icon: <Star className="w-6 h-6" /> },
     { number: '13', label: 'Cities Covered', icon: <MapPin className="w-6 h-6" /> },
     { number: '7+', label: 'Years Experience', icon: <Calendar className="w-6 h-6" /> }
@@ -480,7 +480,7 @@ const Portfolio = () => {
                       
                       <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                         <div className="text-sm text-gray-600">
-                          <span className="font-medium">{project.area}</span>
+                          <span className="font-medium">{project.status}</span>
                         </div>
                         <div className="text-sm text-purple-600 font-medium">
                           View Details →
@@ -581,20 +581,20 @@ const Portfolio = () => {
 
                   <div className="grid grid-cols-2 gap-4 mb-6 text-sm">
                     <div>
-                      <span className="text-gray-500">Area:</span>
-                      <span className="ml-2 font-medium">{selectedProject.area}</span>
+                      <span className="text-gray-500">Status:</span>
+                      <span className="ml-2 font-medium text-gray-700 leading-relaxed">{selectedProject.status}</span>
                     </div>
                     <div>
                       <span className="text-gray-500">Duration:</span>
-                      <span className="ml-2 font-medium">{selectedProject.duration}</span>
+                      <span className="ml-2 font-medium text-gray-700 leading-relaxed">{selectedProject.duration}</span>
                     </div>
                     <div>
-                      <span className="text-gray-500">Client:</span>
-                      <span className="ml-2 font-medium">{selectedProject.client}</span>
+                      <span className="text-gray-500">Mood:</span>
+                      <span className="ml-2 font-medium text-gray-700 leading-relaxed">{selectedProject.mood}</span>
                     </div>
                     <div>
                       <span className="text-gray-500">Category:</span>
-                      <span className="ml-2 font-medium">{selectedProject.category}</span>
+                      <span className="ml-2 font-medium text-gray-700 leading-relaxed">{selectedProject.category}</span>
                     </div>
                   </div>
 

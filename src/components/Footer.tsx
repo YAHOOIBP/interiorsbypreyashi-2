@@ -98,25 +98,25 @@ const Footer: React.FC = () => {
                 href="https://instagram.com/interiorsbypreyashi" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-amber-600 transition-colors duration-300"
+                className="bg-gradient-to-br from-pink-500 via-red-500 to-purple-500 p-3 rounded-full shadow-lg flex items-center justify-center hover:bg-amber-600 transition-colors duration-300"
               >
-                <Instagram className="w-5 h-5" />
+                <Instagram className="w-6 h-6" />
               </a>
               <a 
                 href="https://facebook.com/interiorsbypreyashi" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-amber-600 transition-colors duration-300"
+                className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 p-3 rounded-full shadow-lg flex items-center justify-center hover:bg-amber-600 transition-colors duration-300"
               >
-                <Facebook className="w-5 h-5" />
+                <Facebook className="w-6 h-6" />
               </a>
               <a 
                 href="https://linkedin.com/company/interiorsbypreyashi" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-amber-600 transition-colors duration-300"
+                className="bg-gradient-to-br from-blue-700 via-blue-800 to-blue-900 p-3 rounded-full shadow-lg flex items-center justify-center hover:bg-amber-600 transition-colors duration-300"
               >
-                <Linkedin className="w-5 h-5" />
+                <Linkedin className="w-6 h-6" />
               </a>
             </div>
           </div>
@@ -170,10 +170,10 @@ const Footer: React.FC = () => {
                 <Mail className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
                 <div>
                   <a 
-                    href="mailto:contact@pmdesign.co.in" 
+                    href="mailto:contact@interiorsbypreyashi.com" 
                     className="text-gray-300 hover:text-amber-400 transition-colors duration-300 break-all"
                   >
-                    contact@pmdesign.co.in
+                    contact@interiorsbypreyashi.com
                   </a>
                 </div>
               </div>
@@ -182,7 +182,7 @@ const Footer: React.FC = () => {
                 <MapPin className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
                 <div className="text-gray-300 text-sm leading-relaxed">
                   Manav Kalyan Road, Parbatia<br />
-                  Namgarh Path -03<br />
+                  Namgarh Path - 03<br />
                   Tinsukia, Assam - 786125
                 </div>
               </div>
@@ -202,19 +202,18 @@ const Footer: React.FC = () => {
         <div className="border-t border-gray-700 mt-12 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
             <div className="text-gray-300 text-sm text-center md:text-left">
-              © 2024 Interiors By Preyashi. All rights reserved. | 
+              © 2025 Interiors By Preyashi. All rights reserved. | 
               <span className="inline-flex items-center ml-1">
-                Made with <Heart className="w-4 h-4 text-red-500 mx-1" /> in Northeast India
+                Made with <Heart className="w-4 h-4 text-red-500 mx-1" /> by&nbsp; {'  '}
+  <a 
+    href="https://www.nirvian.com/" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300"
+  >
+    NIRVIAN 
+  </a>
               </span>
-            </div>
-            
-            <div className="flex space-x-6 text-sm text-center">
-              <button className="text-gray-300 hover:text-amber-400 transition-colors duration-300">
-                Privacy Policy
-              </button>
-              <button className="text-gray-300 hover:text-amber-400 transition-colors duration-300">
-                Terms of Service
-              </button>
             </div>
           </div>
         </div>

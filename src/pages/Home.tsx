@@ -14,6 +14,68 @@ const Home = () => {
   const [currentDrawingIndex, setCurrentDrawingIndex] = useState(0);
   const [currentClientLogoIndex, setCurrentClientLogoIndex] = useState(0);
 
+  // Touch state management for swipe functionality
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchEndX, setTouchEndX] = useState(0);
+  const [isSwiping, setIsSwiping] = useState(false);
+
+  // Touch handlers for swipe functionality
+  const handleTouchStart = (e, section) => {
+    setTouchStartX(e.touches[0].clientX);
+    setIsSwiping(true);
+  };
+
+  const handleTouchMove = (e, section) => {
+    setTouchEndX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e, section) => {
+    if (!isSwiping) return;
+    
+    const swipeDistance = touchStartX - touchEndX;
+    const minSwipeDistance = 50; // Minimum distance for a valid swipe
+    
+    if (Math.abs(swipeDistance) > minSwipeDistance) {
+      if (section === 'testimonials') {
+        if (swipeDistance > 0) {
+          // Swipe left - next testimonial
+          setCurrentTestimonial(prev => (prev + 1) % testimonials.length);
+        } else {
+          // Swipe right - previous testimonial
+          setCurrentTestimonial(prev => prev === 0 ? testimonials.length - 1 : prev - 1);
+        }
+      } else if (section === 'vastu') {
+        if (swipeDistance > 0) {
+          // Swipe left - next tip
+          setCurrentVastuTip(prev => (prev + 1) % vastuTips.length);
+        } else {
+          // Swipe right - previous tip
+          setCurrentVastuTip(prev => prev === 0 ? vastuTips.length - 1 : prev - 1);
+        }
+      } else if (section === 'numerology') {
+        if (swipeDistance > 0) {
+          // Swipe left - next insight
+          setCurrentNumerologyInsight(prev => (prev + 1) % numerologyInsights.length);
+        } else {
+          // Swipe right - previous insight
+          setCurrentNumerologyInsight(prev => prev === 0 ? numerologyInsights.length - 1 : prev - 1);
+        }
+      } else if (section === 'interiors') {
+        if (swipeDistance > 0) {
+          // Swipe left - next interior
+          setCurrentInteriorIndex(prev => (prev + 1) % worldClassInteriors.length);
+        } else {
+          // Swipe right - previous interior
+          setCurrentInteriorIndex(prev => prev === 0 ? worldClassInteriors.length - 1 : prev - 1);
+        }
+      }
+    }
+    
+    setIsSwiping(false);
+    setTouchStartX(0);
+    setTouchEndX(0);
+  };
+
   // AutoCAD Drawings for Hero Section
   const autocadDrawings = [
     {
@@ -160,14 +222,14 @@ const Home = () => {
       reelLink: "https://www.instagram.com/reel/DMFY-N7ycuf"
     },
     {
-      title: "360 degree view of conference room", 
+      title: "360 degree view of conference room", 
       description: "Ever wondered what the perfect conference room looks like?",
       coverImage: "/images/reels/reel-cover-2.jpg",
       reelLink: "https://www.instagram.com/reel/DG4-b0sSZGP"
     },
     {
-      title: "Are you Ruled by planet Moon ?",
-      description: "Ruled by the Moon, you’re sensitive, intuitive & emotionally tuned in",
+      title: "Are you Ruled by planet Moon ?",
+      description: "Ruled by the Moon, you're sensitive, intuitive & emotionally tuned in",
       coverImage: "/images/reels/reel-cover-3.jpg",
       reelLink: "https://www.instagram.com/reel/DLE2bnJSrhP"
     },
@@ -382,7 +444,7 @@ const Home = () => {
   </div>
 </section>
 
-      {/* World-Class Interiors - Simplified */}
+      {/* World-Class Interiors - Simplified with Touch Support */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div
@@ -398,27 +460,34 @@ const Home = () => {
             </p>
           </motion.div>
 
-          <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-8 md:p-12">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentInteriorIndex}
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
-                transition={{ duration: 0.6 }}
-                className="text-center"
-              >
-                <h3 className="text-3xl font-serif text-gray-800 mb-4">
-                  {worldClassInteriors[currentInteriorIndex].title}
-                </h3>
-                <p className="text-lg text-gray-700 mb-6 max-w-3xl mx-auto">
-                  {worldClassInteriors[currentInteriorIndex].description}
-                </p>
-                <p className="text-amber-600 font-medium italic">
-                  {worldClassInteriors[currentInteriorIndex].inspiration}
-                </p>
-              </motion.div>
-            </AnimatePresence>
+          <div 
+            className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-8 md:p-12"
+            onTouchStart={(e) => handleTouchStart(e, 'interiors')}
+            onTouchMove={(e) => handleTouchMove(e, 'interiors')}
+            onTouchEnd={(e) => handleTouchEnd(e, 'interiors')}
+          >
+            <div className={`select-none transition-transform duration-150 ${isSwiping ? 'scale-[0.98]' : ''}`}>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentInteriorIndex}
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -50 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-center"
+                >
+                  <h3 className="text-3xl font-serif text-gray-800 mb-4">
+                    {worldClassInteriors[currentInteriorIndex].title}
+                  </h3>
+                  <p className="text-lg text-gray-700 mb-6 max-w-3xl mx-auto">
+                    {worldClassInteriors[currentInteriorIndex].description}
+                  </p>
+                  <p className="text-amber-600 font-medium italic">
+                    {worldClassInteriors[currentInteriorIndex].inspiration}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
             
             <div className="flex justify-center mt-8 space-x-2">
               {worldClassInteriors.map((_, index) => (
@@ -435,7 +504,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Vastu & Numerology - Simplified */}
+      {/* Vastu & Numerology - Simplified with Touch Support */}
       <section className="py-20 bg-gradient-to-r from-teal-50 to-blue-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -452,22 +521,29 @@ const Home = () => {
                 Transform your home into a sanctuary of positive energy with time-tested Vastu Shastra principles
               </p>
               
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentVastuTip}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <h4 className="text-xl font-semibold text-amber-600 mb-4">
-                    {vastuTips[currentVastuTip].title}
-                  </h4>
-                  <p className="text-gray-700 leading-relaxed">
-                    {vastuTips[currentVastuTip].tip}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
+              <div
+                onTouchStart={(e) => handleTouchStart(e, 'vastu')}
+                onTouchMove={(e) => handleTouchMove(e, 'vastu')}
+                onTouchEnd={(e) => handleTouchEnd(e, 'vastu')}
+                className={`select-none transition-transform duration-150 ${isSwiping ? 'scale-[0.98]' : ''}`}
+              >
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentVastuTip}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <h4 className="text-xl font-semibold text-amber-600 mb-4">
+                      {vastuTips[currentVastuTip].title}
+                    </h4>
+                    <p className="text-gray-700 leading-relaxed">
+                      {vastuTips[currentVastuTip].tip}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
               
               <div className="flex justify-center mt-6 space-x-2">
                 {vastuTips.map((_, index) => (
@@ -495,22 +571,29 @@ const Home = () => {
                 Unlock the power of numbers to create harmonious living spaces that resonate with your personal energy
               </p>
               
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentNumerologyInsight}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <h4 className="text-xl font-semibold text-purple-600 mb-4">
-                    {numerologyInsights[currentNumerologyInsight].title}
-                  </h4>
-                  <p className="text-gray-700 leading-relaxed">
-                    {numerologyInsights[currentNumerologyInsight].tip}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
+              <div
+                onTouchStart={(e) => handleTouchStart(e, 'numerology')}
+                onTouchMove={(e) => handleTouchMove(e, 'numerology')}
+                onTouchEnd={(e) => handleTouchEnd(e, 'numerology')}
+                className={`select-none transition-transform duration-150 ${isSwiping ? 'scale-[0.98]' : ''}`}
+              >
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentNumerologyInsight}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <h4 className="text-xl font-semibold text-purple-600 mb-4">
+                      {numerologyInsights[currentNumerologyInsight].title}
+                    </h4>
+                    <p className="text-gray-700 leading-relaxed">
+                      {numerologyInsights[currentNumerologyInsight].tip}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
               
               <div className="flex justify-center mt-6 space-x-2">
                 {numerologyInsights.map((_, index) => (
@@ -695,7 +778,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials - Enhanced with Google Reviews Link */}
+      {/* Testimonials - Enhanced with Google Reviews Link and Touch Support */}
       <section className="py-20 bg-amber-600 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center overflow-x-auto scrollbar-hide touch-pan-x">
           <motion.div
@@ -706,31 +789,38 @@ const Home = () => {
             <h2 className="text-4xl font-serif mb-6">What Our Clients Say</h2>
           </motion.div>
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentTestimonial}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.6 }}
-              className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-8"
-            >
-              <div className="flex justify-center mb-4">
-                {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-              
-              <blockquote className="text-xl italic mb-6 leading-relaxed">
-                "{testimonials[currentTestimonial].text}"
-              </blockquote>
-              
-              <div>
-                <div className="font-semibold text-lg">{testimonials[currentTestimonial].name}</div>
-                <div className="opacity-90">{testimonials[currentTestimonial].location}</div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+          <div
+            onTouchStart={(e) => handleTouchStart(e, 'testimonials')}
+            onTouchMove={(e) => handleTouchMove(e, 'testimonials')}
+            onTouchEnd={(e) => handleTouchEnd(e, 'testimonials')}
+            className={`select-none transition-transform duration-150 ${isSwiping ? 'scale-[0.98]' : ''}`}
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentTestimonial}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.6 }}
+                className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-8"
+              >
+                <div className="flex justify-center mb-4">
+                  {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                
+                <blockquote className="text-xl italic mb-6 leading-relaxed">
+                  "{testimonials[currentTestimonial].text}"
+                </blockquote>
+                
+                <div>
+                  <div className="font-semibold text-lg">{testimonials[currentTestimonial].name}</div>
+                  <div className="opacity-90">{testimonials[currentTestimonial].location}</div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
           
           <div className="flex justify-center mt-8 space-x-2 mb-8">
             {testimonials.map((_, index) => (

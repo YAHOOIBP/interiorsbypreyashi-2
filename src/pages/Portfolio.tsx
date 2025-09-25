@@ -10,11 +10,54 @@ const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
+  const [imageCache, setImageCache] = useState(new Set());
+  const [imageLoading, setImageLoading] = useState(false);
+  const [visibleProjects, setVisibleProjects] = useState(new Set());
 
   // Ensure page always loads from top
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // Image preloading for performance
+  useEffect(() => {
+    const preloadImage = (src) => {
+      if (!imageCache.has(src)) {
+        const img = new Image();
+        img.src = src;
+        img.onload = () => {
+          setImageCache(prev => new Set(prev).add(src));
+        };
+      }
+    };
+
+    // Preload first image of each project
+    projects.forEach(project => {
+      if (project.images[0]) {
+        preloadImage(project.images[0]);
+      }
+    });
+  }, []);
+
+  // Intersection Observer for better performance
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const projectId = entry.target.dataset.projectId;
+            setVisibleProjects(prev => new Set(prev).add(projectId));
+          }
+        });
+      },
+      { rootMargin: '50px' }
+    );
+
+    const projectElements = document.querySelectorAll('[data-project-id]');
+    projectElements.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [filteredProjects]);
 
   // YOUR ORIGINAL PROJECT DATA - PRESERVED EXACTLY
   const projects = [
@@ -234,6 +277,7 @@ const Portfolio = () => {
 
   const nextImage = () => {
     if (selectedProject) {
+      setImageLoading(true);
       setCurrentImageIndex((prev) => 
         prev === selectedProject.images.length - 1 ? 0 : prev + 1
       );
@@ -242,6 +286,7 @@ const Portfolio = () => {
 
   const prevImage = () => {
     if (selectedProject) {
+      setImageLoading(true);
       setCurrentImageIndex((prev) => 
         prev === 0 ? selectedProject.images.length - 1 : prev - 1
       );
@@ -394,6 +439,7 @@ const Portfolio = () => {
               {filteredProjects.map((project, index) => (
                 <motion.div
                   key={project.id}
+                  data-project-id={project.id}
                   layout
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -408,9 +454,16 @@ const Portfolio = () => {
                       <img
                         src={project.images[0]}
                         alt={project.title}
+                        loading="lazy"
                         className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                         onError={(e) => {
-                          e.target.src = "/images/portfolio/default-project.jpg";
+                          const imgSrc = e.target.src;
+                          if (imgSrc.includes('.jpg') || imgSrc.includes('.JPG')) {
+                            // Try WebP version first
+                            e.target.src = imgSrc.replace(/\.(jpg|JPG)$/, '.webp');
+                          } else if (!imgSrc.includes('default-project')) {
+                            e.target.src = "/images/portfolio/default-project.jpg";
+                          }
                         }}
                       />
                       
@@ -519,11 +572,34 @@ const Portfolio = () => {
                   <img
                     src={selectedProject.images[currentImageIndex]}
                     alt={selectedProject.title}
+                    loading="eager"
                     className="w-full h-full object-cover"
+                    style={{ 
+                      transition: 'opacity 0.3s ease',
+                      opacity: imageCache.has(selectedProject.images[currentImageIndex]) ? 1 : 0.7
+                    }}
+                    onLoad={(e) => {
+                      e.target.style.opacity = 1;
+                      setImageCache(prev => new Set(prev).add(selectedProject.images[currentImageIndex]));
+                      setImageLoading(false);
+                    }}
                     onError={(e) => {
-                      e.target.src = "/images/portfolio/default-project.jpg";
+                      const imgSrc = e.target.src;
+                      if (imgSrc.includes('.jpg') || imgSrc.includes('.JPG')) {
+                        // Try WebP version first
+                        e.target.src = imgSrc.replace(/\.(jpg|JPG)$/, '.webp');
+                      } else if (!imgSrc.includes('default-project')) {
+                        e.target.src = "/images/portfolio/default-project.jpg";
+                      }
                     }}
                   />
+                  
+                  {/* Loading indicator */}
+                  {imageLoading && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                      <div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    </div>
+                  )}
                   
                   {/* Navigation Buttons */}
                   {selectedProject.images.length > 1 && (

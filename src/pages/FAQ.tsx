@@ -29,7 +29,7 @@ const FAQ = () => {
         {
           id: "experience-credentials",
           q: "What are your qualifications and experience?",
-          a: "Preyashi More Birmiwal is the founder with over 7 years of professional experience in interior design, Vastu consultation, and Vedic numerology. She has successfully completed 19+ projects across residential, commercial, hospitality, government, and industrial sectors. Our team combines modern design expertise with deep knowledge of ancient Indian sciences like Vastu Shastra and numerology."
+          a: "Preyashi More Birmiwal is the founder with over 7 years of professional experience in interior design, Vastu consultation, and Vedic numerology. She has successfully completed 50+ projects across residential, commercial, hospitality, government, and industrial sectors. Our team combines modern design expertise with deep knowledge of ancient Indian sciences like Vastu Shastra and numerology."
         },
         {
           id: "design-style",

@@ -125,7 +125,7 @@ const Contact = () => {
 
   const serviceAreas = [
     'Tinsukia', 'Guwahati', 'Dibrugarh', 'Jorhat', 'Silchar', 'Tezpur',
-    'Itanagar', 'Namsai', 'Tezu', 'Pasighat', 'All of Assam', 'Arunachal Pradesh'
+    'Itanagar', 'Namsai', 'Tezu', 'Pasighat', 'All of Assam', 'All of India', 'Arunachal Pradesh'
   ];
 
   // Enhanced structured data for SEO

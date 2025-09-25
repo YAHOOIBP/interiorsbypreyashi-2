@@ -73,13 +73,10 @@ const Header: React.FC = () => {
           <button
   onClick={() => {
     if (isMobile) {
-      if (activeDropdown === item.name) {
-        // submenu is open → actually navigate
-        handleNavigation(item.path);
-      } else {
-        // first tap → open submenu
-        handleDropdownToggle(item.name);
-      }
+      // Always navigate first
+      handleNavigation(item.path);
+      // Then toggle submenu
+      handleDropdownToggle(item.name);
     } else {
       handleNavigation(item.path);
     }

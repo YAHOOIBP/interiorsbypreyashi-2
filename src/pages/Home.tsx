@@ -780,7 +780,7 @@ const Home = () => {
 
       {/* Testimonials - Enhanced with Google Reviews Link and Touch Support */}
       <section className="py-20 bg-amber-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center overflow-x-auto scrollbar-hide touch-pan-x">
+        <div className="max-w-4xl mx-auto px-4 text-center overflow-x-auto scrollbar-hide" style={{ touchAction: 'pan-y' }}>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}

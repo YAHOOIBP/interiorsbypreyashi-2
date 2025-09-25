@@ -71,13 +71,19 @@ const Header: React.FC = () => {
       return (
         <div key={item.name} className={isMobile ? 'w-full' : 'relative group'}>
           <button
-            onClick={() => {
-              if (isMobile) {
-                handleDropdownToggle(item.name);
-              } else {
-                handleNavigation(item.path);
-              }
-            }}
+  onClick={() => {
+    if (isMobile) {
+      if (activeDropdown === item.name) {
+        // submenu is open → actually navigate
+        handleNavigation(item.path);
+      } else {
+        // first tap → open submenu
+        handleDropdownToggle(item.name);
+      }
+    } else {
+      handleNavigation(item.path);
+    }
+  }}
             className={`${
               isMobile
                 ? 'flex items-center justify-between w-full px-4 py-3 text-left hover:bg-gray-50'

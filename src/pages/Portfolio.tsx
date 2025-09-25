@@ -12,52 +12,11 @@ const Portfolio = () => {
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
   const [imageCache, setImageCache] = useState(new Set());
   const [imageLoading, setImageLoading] = useState(false);
-  const [visibleProjects, setVisibleProjects] = useState(new Set());
 
   // Ensure page always loads from top
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  // Image preloading for performance
-  useEffect(() => {
-    const preloadImage = (src) => {
-      if (!imageCache.has(src)) {
-        const img = new Image();
-        img.src = src;
-        img.onload = () => {
-          setImageCache(prev => new Set(prev).add(src));
-        };
-      }
-    };
-
-    // Preload first image of each project
-    projects.forEach(project => {
-      if (project.images[0]) {
-        preloadImage(project.images[0]);
-      }
-    });
-  }, []);
-
-  // Intersection Observer for better performance
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const projectId = entry.target.dataset.projectId;
-            setVisibleProjects(prev => new Set(prev).add(projectId));
-          }
-        });
-      },
-      { rootMargin: '50px' }
-    );
-
-    const projectElements = document.querySelectorAll('[data-project-id]');
-    projectElements.forEach(el => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, [filteredProjects]);
 
   // YOUR ORIGINAL PROJECT DATA - PRESERVED EXACTLY
   const projects = [
@@ -275,6 +234,26 @@ const Portfolio = () => {
     ? projects 
     : projects.filter(project => project.category === selectedCategory);
 
+  // Image preloading for performance
+  useEffect(() => {
+    const preloadImage = (src) => {
+      if (!imageCache.has(src)) {
+        const img = new Image();
+        img.src = src;
+        img.onload = () => {
+          setImageCache(prev => new Set(prev).add(src));
+        };
+      }
+    };
+
+    // Preload first image of each project
+    projects.forEach(project => {
+      if (project.images[0]) {
+        preloadImage(project.images[0]);
+      }
+    });
+  }, []); // Remove projects dependency
+
   const nextImage = () => {
     if (selectedProject) {
       setImageLoading(true);
@@ -439,7 +418,6 @@ const Portfolio = () => {
               {filteredProjects.map((project, index) => (
                 <motion.div
                   key={project.id}
-                  data-project-id={project.id}
                   layout
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -457,13 +435,7 @@ const Portfolio = () => {
                         loading="lazy"
                         className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                         onError={(e) => {
-                          const imgSrc = e.target.src;
-                          if (imgSrc.includes('.jpg') || imgSrc.includes('.JPG')) {
-                            // Try WebP version first
-                            e.target.src = imgSrc.replace(/\.(jpg|JPG)$/, '.webp');
-                          } else if (!imgSrc.includes('default-project')) {
-                            e.target.src = "/images/portfolio/default-project.jpg";
-                          }
+                          e.target.src = "/images/portfolio/default-project.jpg";
                         }}
                       />
                       
@@ -584,13 +556,7 @@ const Portfolio = () => {
                       setImageLoading(false);
                     }}
                     onError={(e) => {
-                      const imgSrc = e.target.src;
-                      if (imgSrc.includes('.jpg') || imgSrc.includes('.JPG')) {
-                        // Try WebP version first
-                        e.target.src = imgSrc.replace(/\.(jpg|JPG)$/, '.webp');
-                      } else if (!imgSrc.includes('default-project')) {
-                        e.target.src = "/images/portfolio/default-project.jpg";
-                      }
+                      e.target.src = "/images/portfolio/default-project.jpg";
                     }}
                   />
                   

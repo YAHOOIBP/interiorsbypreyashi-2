@@ -108,8 +108,7 @@ const Home = () => {
     { src: "/images/clients/client-4.png", alt: "Client Logo 4" },
     { src: "/images/clients/client-5.png", alt: "Client Logo 5" },
     { src: "/images/clients/client-6.png", alt: "Client Logo 6" },
-    { src: "/images/clients/client-7.png", alt: "Client Logo 7" },
-    { src: "/images/clients/client-8.png", alt: "Client Logo 8" }
+    { src: "/images/clients/client-7.png", alt: "Client Logo 7" }
   ];
 
   // Streamlined content arrays
@@ -323,7 +322,10 @@ const Home = () => {
   <div 
     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
     style={{
-      backgroundImage: 'url(/images/bg-1.jpg)',
+      backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(/images/bg-1.jpg)',
+backgroundSize: 'cover',
+backgroundPosition: 'center',
+backgroundAttachment: 'fixed'  // Adds parallax effect
     }}
   ></div>
   
@@ -749,11 +751,11 @@ const Home = () => {
                   onClick={() => window.open(reel.reelLink, '_blank')}
                   whileHover={{ scale: 1.02 }}
                 >
-                  <div className="relative aspect-video bg-gradient-to-br from-pink-200 to-purple-200 flex items-center justify-center">
+                  <div className="relative aspect-square bg-gradient-to-br from-pink-200 to-purple-200 flex items-center justify-center">
                     <img
                       src={reel.coverImage}
                       alt={reel.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain"
                       onError={(e) => {
                         // Fallback to default cover
                         e.currentTarget.src = "/images/reels/default-cover.jpg";

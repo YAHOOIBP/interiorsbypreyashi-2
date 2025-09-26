@@ -4,11 +4,32 @@ import { Calendar, Clock, User, ChevronRight, Search, Tag } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { BLOG_POSTS, getAllCategories } from '../lib/blogData';
 import SEOHead from '../components/SEOHead';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../lib/firebase';
 
 const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedPost, setSelectedPost] = useState(null);
+  const [email, setEmail] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+  
+
+  async function handleSubscribe() {
+  if (!email) return;
+  try {
+    await addDoc(collection(db, 'subscribers'), {
+      email,
+      subscribedAt: new Date().toISOString()
+    });
+    setSubmitted(true);
+    setEmail('');
+    setTimeout(() => setSubmitted(false), 3000);
+  } catch (err) {
+    console.error(err);
+    alert('Subscription failed');
+  }
+}
 
   // FIX 3: Ensure page always loads from top
   useEffect(() => {
@@ -112,7 +133,7 @@ const Blog = () => {
 
         {/* FIX 2: Cover Image */}
         <div className="max-w-5xl mx-auto px-4 -mt-8 relative z-10">
-          <div className="aspect-[16/9] bg-white rounded-xl shadow-2xl overflow-hidden border-4 border-white">
+          <div className="aspect-square bg-white rounded-xl shadow-2xl overflow-hidden border-4 border-white">
             <img
               src={selectedPost.coverImage || '/images/blog/default-cover.jpg'}
               alt={selectedPost.title}
@@ -389,7 +410,7 @@ const Blog = () => {
                       className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300"
                     >
                       {/* FIX 2: Cover Image for regular posts */}
-                      <div className="relative aspect-[16/10] overflow-hidden">
+                      <div className="relative aspect-square overflow-hidden">
                         <img
                           src={post.coverImage || '/images/blog/default-cover.jpg'}
                           alt={post.title}
@@ -472,11 +493,17 @@ const Blog = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
                 className="flex-1 px-4 py-3 rounded-lg text-gray-800 focus:ring-2 focus:ring-purple-300 focus:outline-none"
               />
-              <button className="bg-white text-purple-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors duration-300 whitespace-nowrap">
-                Subscribe
-              </button>
+              <button
+  onClick={handleSubscribe}
+  disabled={!email || submitted}
+  className="bg-white text-purple-600 px-6 py-3 rounded-lg disabled:opacity-50 transition-colors duration-300 whitespace-nowrap"
+>
+  {submitted ? 'Thank You!' : 'Subscribe'}
+</button>
             </div>
             
             <p className="text-sm opacity-75 mt-4">

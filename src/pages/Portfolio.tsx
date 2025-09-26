@@ -57,98 +57,13 @@ const Portfolio = () => {
     },
     {
       id: 3,
-      title: "Corporate Office",
-      category: "Commercial", 
-      location: "Kharagpur, W.B.",
-      year: "2023",
-      status: "Completed",
-      duration: "2 months",
-      mood: "Sundarta aur Sahi Planning",
-      description: "Developed a well-structured office space in Kharagpur with efficient layouts, optimized storage, and a design that enhances productivity while maintaining a corporate elegance.",
-      images: [
-        "/images/portfolio/Kharagpur1.jpg",
-        "/images/portfolio/Kharagpur2.jpg",
-        "/images/portfolio/Kharagpur3.jpg"
-      ],
-      features: ["Efficient Layouts", "Optimized Storage", "Productivity Enhancement", "Contemporary Furniture", "Rich Textures", "Corporate Elegance"]
-    },
-    {
-      id: 4,
-      title: "Two Girls Bedroom",
-      category: "Residential",
-      location: "Tinsukia, Assam", 
-      year: "2024",
-      status: "Completed",
-      duration: "5 months",
-      mood: "Rangeen Khwab",
-      description: "Designed a personalized and vibrant bedroom space for two young girls, combining functionality with playful aesthetics to reflect their individuality and growing needs.",
-      images: [
-        "/images/portfolio/2GirlsBedroom1.jpg",
-        "/images/portfolio/2GirlsBedroom2.jpg",
-        "/images/portfolio/2GirlsBedroom3.jpg"
-      ],
-      features: ["Personalized Design", "Multi-generational Design", "Modern Systems", "Vibrant Aesthetics", "Functional Layout", "Growth-Adaptive"]
-    },
-    {
-      id: 5,
-      title: "Office Project",
-      category: "Commercial",
-      location: "North Lakhimpur, Assam",
-      year: "2023",
-      status: 'Completed', 
-      duration: "2.5 months",
-      mood: "Aaram aur Asar",
-      description: "Executed a modern office project in North Lakhimpur, integrating practical design solutions, ergonomic planning, and stylish interiors suited for a professional work environment.",
-      images: [
-        "/images/portfolio/Lakhimpur1.jpg",
-        "/images/portfolio/Lakhimpur2.jpg",
-        "/images/portfolio/Lakhimpur3.jpg"
-      ],
-      features: ["Modern Design", "Custom Furniture", "Ergonomic Planning", "Professional Environment", "Practical Solutions", "Sophisticated Colors"]
-    },
-    {
-      id: 6,
-      title: "Sanitary Showroom",
-      category: "Commercial",
-      location: "Tinsukia, Assam",
-      year: "2024", 
-      status: "Completed",
-      duration: "2 months",
-      mood: "Safai ka Jalwa",
-      description: "Crafted an appealing showroom interior for a sanitary brand in Tinsukia, showcasing products in an organized, customer-friendly, and visually engaging manner.",
-      images: [
-        "/images/portfolio/Sanitary2.jpg",
-        "/images/portfolio/Sanitary1.jpg",
-        "/images/portfolio/Sanitary3.jpg"
-      ],
-      features: ["Space Optimization", "Smart Storage", "Product Showcase", "Organized Layout", "Customer-Friendly", "Visual Appeal"]
-    },
-    {
-      id: 7,
-      title: "Railway DRM Washroom",
-      category: "Commercial",
-      location: "Tinsukia & Dibrugarh, Assam",
-      year: "2025",
-      status: "Completed",
-      duration: "1.5 months",
-      mood: "Sukoon Bhari Jagah",
-      description: "Handling official and functional design for railway administrative Rest houses, ensuring comfortable stays for officers.",
-      images: [
-        "/images/portfolio/R_WASHROOM1.jpg", 
-        "/images/portfolio/R_WASHROOM2.jpg",
-        "/images/portfolio/R_WASHROOM3.jpg"
-      ],
-      features: ["Modern Design", "Safety Focus", "Customer Flow", "Comfort Focus", "Modern Fixtures", "Administrative Standards"]
-    },
-    {
-      id: 8,
       title: "3BHK Two-Storey Residential Building",
       category: "Residential",
       location: "Tinsukia, Arunachal Pradesh",
       year: "2025",
       status: "Ongoing",
       duration: "6 months",
-      mood: "Sukh-Shanti ka Ghar",
+      mood: "Ghar, Vastu aur Sukoon",
       description: "A thoughtfully planned residence combining aesthetics, comfort, and Vastu-compliant design principles.",
       images: [
         "/images/portfolio/3BHK1.JPG",
@@ -158,7 +73,7 @@ const Portfolio = () => {
       features: ["Vastu Compliant", "Aesthetic Design", "Traditional Techniques", "Modern Amenities", "Comfort Focus", "Thoughtful Planning"]
     },
     {
-      id: 9,
+      id: 4,
       title: "Restaurant",
       category: "Hospitality",
       location: "Tinsukia, Assam",
@@ -175,7 +90,7 @@ const Portfolio = () => {
       features: ["Inviting Ambiance", "Stylish Design", "Traditional Techniques", "Functional Layout", "Customer Experience", "Thoughtful Planning"]
     },
     {
-      id: 10,
+      id: 5,
       title: "Gym",
       category: "Commercial",
       location: "Tinsukia, Assam",
@@ -191,6 +106,91 @@ const Portfolio = () => {
         "/images/portfolio/gym1.jpg"
       ],
       features: ["Efficient Design", "Ergonomic Planning", "Motivational Environment", "Modern Amenities", "Comfort Focus", "Member-Focused"]
+    },
+    {
+      id: 6,
+      title: "Corporate Office",
+      category: "Commercial", 
+      location: "Kharagpur, W.B.",
+      year: "2023",
+      status: "Completed",
+      duration: "2 months",
+      mood: "Sundarta aur Sahi Planning",
+      description: "Developed a well-structured office space in Kharagpur with efficient layouts, optimized storage, and a design that enhances productivity while maintaining a corporate elegance.",
+      images: [
+        "/images/portfolio/Kharagpur1.jpg",
+        "/images/portfolio/Kharagpur2.jpg",
+        "/images/portfolio/Kharagpur3.jpg"
+      ],
+      features: ["Efficient Layouts", "Optimized Storage", "Productivity Enhancement", "Contemporary Furniture", "Rich Textures", "Corporate Elegance"]
+    },
+    {
+      id: 7,
+      title: "Two Girls Bedroom",
+      category: "Residential",
+      location: "Tinsukia, Assam", 
+      year: "2024",
+      status: "Completed",
+      duration: "5 months",
+      mood: "Rangeen Khwab",
+      description: "Designed a personalized and vibrant bedroom space for two young girls, combining functionality with playful aesthetics to reflect their individuality and growing needs.",
+      images: [
+        "/images/portfolio/2GirlsBedroom1.jpg",
+        "/images/portfolio/2GirlsBedroom2.jpg",
+        "/images/portfolio/2GirlsBedroom3.jpg"
+      ],
+      features: ["Personalized Design", "Multi-generational Design", "Modern Systems", "Vibrant Aesthetics", "Functional Layout", "Growth-Adaptive"]
+    },
+    {
+      id: 8,
+      title: "Office Project",
+      category: "Commercial",
+      location: "North Lakhimpur, Assam",
+      year: "2023",
+      status: 'Completed', 
+      duration: "2.5 months",
+      mood: "Aaram aur Asar",
+      description: "Executed a modern office project in North Lakhimpur, integrating practical design solutions, ergonomic planning, and stylish interiors suited for a professional work environment.",
+      images: [
+        "/images/portfolio/Lakhimpur1.jpg",
+        "/images/portfolio/Lakhimpur2.jpg",
+        "/images/portfolio/Lakhimpur3.jpg"
+      ],
+      features: ["Modern Design", "Custom Furniture", "Ergonomic Planning", "Professional Environment", "Practical Solutions", "Sophisticated Colors"]
+    },
+    {
+      id: 9,
+      title: "Sanitary Showroom",
+      category: "Commercial",
+      location: "Tinsukia, Assam",
+      year: "2024", 
+      status: "Completed",
+      duration: "2 months",
+      mood: "Safai ka Jalwa",
+      description: "Crafted an appealing showroom interior for a sanitary brand in Tinsukia, showcasing products in an organized, customer-friendly, and visually engaging manner.",
+      images: [
+        "/images/portfolio/Sanitary2.jpg",
+        "/images/portfolio/Sanitary1.jpg",
+        "/images/portfolio/Sanitary3.jpg"
+      ],
+      features: ["Space Optimization", "Smart Storage", "Product Showcase", "Organized Layout", "Customer-Friendly", "Visual Appeal"]
+    },
+    {
+      id: 10,
+      title: "Railway DRM Washroom",
+      category: "Commercial",
+      location: "Tinsukia & Dibrugarh, Assam",
+      year: "2025",
+      status: "Completed",
+      duration: "1.5 months",
+      mood: "Sukoon Bhari Jagah",
+      description: "Handling official and functional design for railway administrative Rest houses, ensuring comfortable stays for officers.",
+      images: [
+        "/images/portfolio/R_WASHROOM1.jpg", 
+        "/images/portfolio/R_WASHROOM2.jpg",
+        "/images/portfolio/R_WASHROOM3.jpg"
+      ],
+      features: ["Modern Design", "Safety Focus", "Customer Flow", "Comfort Focus", "Modern Fixtures", "Administrative Standards"]
     },
     {
       id: 11,
@@ -217,7 +217,7 @@ const Portfolio = () => {
       year: "2025",
       status: "Ongoing",
       duration: "6 months",
-      mood: "North East Frontier Railway",
+      mood: "Kaam ka Dum",
       description: "Handling official and functional design for railway administrative Rest houses, ensuring comfortable stays for officers.",
       images: [
         "/images/portfolio/RAILWAY1.jpg",
@@ -225,6 +225,23 @@ const Portfolio = () => {
         "/images/portfolio/RAILWAY3.jpg"
       ],
       features: ["Official Design", "Functional Layout", "Comfortable Stays", "Administrative Standards"]
+    },
+    {
+      id: 13,
+      title: "ANT Solar",
+      category: "Commercial",
+      location: "Tinsukia, Assam",
+      year: "2025",
+      status: "Completed",
+      duration: "3 months",
+      mood: "Suraj ki Shakti",
+      description: "Designed the official workspace for ANT Solar, an authorized solar company in Tinsukia, creating a modern setup that reflects clean energy values, efficiency, and professionalism.",
+      images: [
+        "/images/portfolio/Ant1.jpg",
+        "/images/portfolio/Ant2.jpg", 
+        "/images/portfolio/Ant3.jpg"
+      ],
+      features: ["Authorized Solar Brand", "Modern Workspace", "Clean Energy Theme", "Efficient Layout"]
     }
   ];
 

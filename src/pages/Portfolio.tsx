@@ -31,10 +31,10 @@ const Portfolio = () => {
       mood: "Sundar aur Shaandar",
       description: "Hindustan Unilever Limited (HUL) is India\'s largest fast-moving consumer goods (FMCG) company and a subsidiary of Unilever, a British multinational. With a legacy of over 90 years, HUL has been serving Indian households with some of the most trusted brands. It\'s an honour that I had the opportunity to design and execute the conference room for HUL\'s office in Doomdooma, Assam. The project was carefully curated to reflect professionalism, modern aesthetics, and functionality—ensuring a comfortable and inspiring environment for corporate discussions and meetings within the given deadline.",
       images: [
-        "/images/portfolio/HUL1.jpg",
-        "/images/portfolio/HUL2.jpg", 
-        "/images/portfolio/HUL1.jpg",
-        "/images/portfolio/HUL1.jpg"
+        "/images/portfolio/HUL1.webp",
+        "/images/portfolio/HUL2.webp", 
+        "/images/portfolio/HUL1.webp",
+        "/images/portfolio/HUL1.webp"
       ],
       features: ["Professional Design", "Sustainable Materials", "Modern Aesthetics", "Natural Lighting", "Functional Layout", "Corporate Standards"]
     },
@@ -49,9 +49,9 @@ const Portfolio = () => {
       mood: "Mithas Bhara Nazara",
       description: "Created an inviting and aesthetic restaurant and sweet shop interior that balances traditional warmth with a contemporary dining experience, ensuring comfort and easy maintenance.",
       images: [
-        "/images/portfolio/KCR1.JPG",
-        "/images/portfolio/KCR2.JPG",
-        "/images/portfolio/KCR5.JPG"
+        "/images/portfolio/KCR1.webp",
+        "/images/portfolio/KCR2.webp",
+        "/images/portfolio/KCR5.webp"
       ],
       features: ["Brand Integration", "Traditional Warmth", "Contemporary Design", "Easy Maintenance", "Customer Comfort", "Wash Areas"]
     },
@@ -66,9 +66,9 @@ const Portfolio = () => {
       mood: "Ghar, Vastu aur Sukoon",
       description: "A thoughtfully planned residence combining aesthetics, comfort, and Vastu-compliant design principles.",
       images: [
-        "/images/portfolio/3BHK1.JPG",
-        "/images/portfolio/3BHK2.JPG", 
-        "/images/portfolio/3BHK3.JPG"
+        "/images/portfolio/3BHK1.webp",
+        "/images/portfolio/3BHK2.webp", 
+        "/images/portfolio/3BHK3.webp"
       ],
       features: ["Vastu Compliant", "Aesthetic Design", "Traditional Techniques", "Modern Amenities", "Comfort Focus", "Thoughtful Planning"]
     },
@@ -83,9 +83,9 @@ const Portfolio = () => {
       mood: "Swad aur Shaan",
       description: "Creating an inviting and stylish dining environment that balances ambiance, functionality, and customer experience.",
       images: [
-        "/images/portfolio/Restro1.jpg",
-        "/images/portfolio/Restro2.jpg", 
-        "/images/portfolio/Restro3.jpg"
+        "/images/portfolio/Restro1.webp",
+        "/images/portfolio/Restro2.webp", 
+        "/images/portfolio/Restro3.webp"
       ],
       features: ["Inviting Ambiance", "Stylish Design", "Traditional Techniques", "Functional Layout", "Customer Experience", "Thoughtful Planning"]
     },
@@ -100,10 +100,10 @@ const Portfolio = () => {
       mood: "Josh aur Junoon",
       description: "Designing a fitness space focused on efficiency, ergonomics, and motivation for members.",
       images: [
-        "/images/portfolio/gym1.jpg",
-        "/images/portfolio/gym2.jpg", 
-        "/images/portfolio/gym3.jpg",
-        "/images/portfolio/gym1.jpg"
+        "/images/portfolio/gym1.webp",
+        "/images/portfolio/gym2.webp", 
+        "/images/portfolio/gym3.webp",
+        "/images/portfolio/gym1.webp"
       ],
       features: ["Efficient Design", "Ergonomic Planning", "Motivational Environment", "Modern Amenities", "Comfort Focus", "Member-Focused"]
     },
@@ -118,9 +118,9 @@ const Portfolio = () => {
       mood: "Sundarta aur Sahi Planning",
       description: "Developed a well-structured office space in Kharagpur with efficient layouts, optimized storage, and a design that enhances productivity while maintaining a corporate elegance.",
       images: [
-        "/images/portfolio/Kharagpur1.jpg",
-        "/images/portfolio/Kharagpur2.jpg",
-        "/images/portfolio/Kharagpur3.jpg"
+        "/images/portfolio/Kharagpur1.webp",
+        "/images/portfolio/Kharagpur2.webp",
+        "/images/portfolio/Kharagpur3.webp"
       ],
       features: ["Efficient Layouts", "Optimized Storage", "Productivity Enhancement", "Contemporary Furniture", "Rich Textures", "Corporate Elegance"]
     },
@@ -135,9 +135,9 @@ const Portfolio = () => {
       mood: "Rangeen Khwab",
       description: "Designed a personalized and vibrant bedroom space for two young girls, combining functionality with playful aesthetics to reflect their individuality and growing needs.",
       images: [
-        "/images/portfolio/2GirlsBedroom1.jpg",
-        "/images/portfolio/2GirlsBedroom2.jpg",
-        "/images/portfolio/2GirlsBedroom3.jpg"
+        "/images/portfolio/2GirlsBedroom1.webp",
+        "/images/portfolio/2GirlsBedroom2.webp",
+        "/images/portfolio/2GirlsBedroom3.webp"
       ],
       features: ["Personalized Design", "Multi-generational Design", "Modern Systems", "Vibrant Aesthetics", "Functional Layout", "Growth-Adaptive"]
     },
@@ -152,9 +152,9 @@ const Portfolio = () => {
       mood: "Aaram aur Asar",
       description: "Executed a modern office project in North Lakhimpur, integrating practical design solutions, ergonomic planning, and stylish interiors suited for a professional work environment.",
       images: [
-        "/images/portfolio/Lakhimpur1.jpg",
-        "/images/portfolio/Lakhimpur2.jpg",
-        "/images/portfolio/Lakhimpur3.jpg"
+        "/images/portfolio/Lakhimpur1.webp",
+        "/images/portfolio/Lakhimpur2.webp",
+        "/images/portfolio/Lakhimpur3.webp"
       ],
       features: ["Modern Design", "Custom Furniture", "Ergonomic Planning", "Professional Environment", "Practical Solutions", "Sophisticated Colors"]
     },
@@ -169,9 +169,9 @@ const Portfolio = () => {
       mood: "Safai ka Jalwa",
       description: "Crafted an appealing showroom interior for a sanitary brand in Tinsukia, showcasing products in an organized, customer-friendly, and visually engaging manner.",
       images: [
-        "/images/portfolio/Sanitary2.jpg",
-        "/images/portfolio/Sanitary1.jpg",
-        "/images/portfolio/Sanitary3.jpg"
+        "/images/portfolio/Sanitary2.webp",
+        "/images/portfolio/Sanitary1.webp",
+        "/images/portfolio/Sanitary3.webp"
       ],
       features: ["Space Optimization", "Smart Storage", "Product Showcase", "Organized Layout", "Customer-Friendly", "Visual Appeal"]
     },
@@ -186,9 +186,9 @@ const Portfolio = () => {
       mood: "Sukoon Bhari Jagah",
       description: "Handling official and functional design for railway administrative Rest houses, ensuring comfortable stays for officers.",
       images: [
-        "/images/portfolio/R_WASHROOM1.jpg", 
-        "/images/portfolio/R_WASHROOM2.jpg",
-        "/images/portfolio/R_WASHROOM3.jpg"
+        "/images/portfolio/R_WASHROOM1.webp", 
+        "/images/portfolio/R_WASHROOM2.webp",
+        "/images/portfolio/R_WASHROOM3.webp"
       ],
       features: ["Modern Design", "Safety Focus", "Customer Flow", "Comfort Focus", "Modern Fixtures", "Administrative Standards"]
     },
@@ -203,9 +203,9 @@ const Portfolio = () => {
       mood: "Mazbooti aur Bharosa",
       description: "Developing industrial interiors with a focus on safety, operational efficiency, and professional aesthetics.",
       images: [
-        "/images/portfolio/DRILLING1.jpg",
-        "/images/portfolio/DRILLING2.jpg", 
-        "/images/portfolio/DRILLING3.jpg"
+        "/images/portfolio/DRILLING1.webp",
+        "/images/portfolio/DRILLING2.webp", 
+        "/images/portfolio/DRILLING3.webp"
       ],
       features: ["Safety Focus", "Operational Efficiency", "Professional Aesthetics", "Industrial Standards"]
     },
@@ -220,9 +220,9 @@ const Portfolio = () => {
       mood: "Kaam ka Dum",
       description: "Handling official and functional design for railway administrative Rest houses, ensuring comfortable stays for officers.",
       images: [
-        "/images/portfolio/RAILWAY1.jpg",
-        "/images/portfolio/RAILWAY2.jpg", 
-        "/images/portfolio/RAILWAY3.jpg"
+        "/images/portfolio/RAILWAY1.webp",
+        "/images/portfolio/RAILWAY2.webp", 
+        "/images/portfolio/RAILWAY3.webp"
       ],
       features: ["Official Design", "Functional Layout", "Comfortable Stays", "Administrative Standards"]
     },
@@ -237,9 +237,9 @@ const Portfolio = () => {
       mood: "Suraj ki Shakti",
       description: "Designed the official workspace for ANT Solar, an authorized solar company in Tinsukia, creating a modern setup that reflects clean energy values, efficiency, and professionalism.",
       images: [
-        "/images/portfolio/Ant1.jpg",
-        "/images/portfolio/Ant2.jpg", 
-        "/images/portfolio/Ant3.jpg"
+        "/images/portfolio/Ant1.webp",
+        "/images/portfolio/Ant2.webp", 
+        "/images/portfolio/Ant3.webp"
       ],
       features: ["Authorized Solar Brand", "Modern Workspace", "Clean Energy Theme", "Efficient Layout"]
     }
@@ -452,7 +452,7 @@ const Portfolio = () => {
                         loading="lazy"
                         className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                         onError={(e) => {
-                          e.target.src = "/images/portfolio/default-project.jpg";
+                          e.target.src = "/images/portfolio/default-project.webp";
                         }}
                       />
                       
@@ -573,7 +573,7 @@ const Portfolio = () => {
                       setImageLoading(false);
                     }}
                     onError={(e) => {
-                      e.target.src = "/images/portfolio/default-project.jpg";
+                      e.target.src = "/images/portfolio/default-project.webp";
                     }}
                   />
                   

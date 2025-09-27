@@ -16,7 +16,7 @@ export const BLOG_POSTS: BlogPost[] = [
     id: '1',
     slug: 'vastu-principles-for-modern-homes',
     title: 'Vastu Principles for Modern Homes',
-    coverImage: '/images/blog/vastu-principles-cover.jpg',
+    coverImage: '/images/blog/vastu-principles-cover.webp',
     category: 'Vastu',
     excerpt: 'Discover how ancient Vastu Shastra principles can be seamlessly integrated into contemporary interior design for harmony and prosperity.',
     content: `
@@ -73,7 +73,7 @@ export const BLOG_POSTS: BlogPost[] = [
     id: '2',
     slug: '5-interior-design-mistakes-to-avoid',
     title: '5 Interior Design Mistakes to Avoid',
-    coverImage: '/images/blog/mistakes-cover.jpg',
+    coverImage: '/images/blog/mistakes-cover.webp',
     category: 'Design Tips',
     excerpt: 'Learn about the most common interior design pitfalls and how to avoid them for a perfectly balanced and functional living space.',
     content: `
@@ -118,7 +118,7 @@ export const BLOG_POSTS: BlogPost[] = [
     id: '3',
     slug: 'color-psychology-in-interior-design',
     title: 'Color Psychology in Interior Design',
-    coverImage: '/images/blog/color-psychology-cover.jpg',
+    coverImage: '/images/blog/color-psychology-cover.webp',
     category: 'Color Theory',
     excerpt: 'Understand how different colors affect mood and behavior, and learn to use color psychology to create the perfect atmosphere in your home.',
     content: `
@@ -177,7 +177,7 @@ export const BLOG_POSTS: BlogPost[] = [
     id: '4',
     slug: 'vedic-numerology-in-interior-design',
     title: 'Vedic Numerology in Interior Design',
-    coverImage: '/images/blog/numerology-cover.jpg',
+    coverImage: '/images/blog/numerology-cover.webp',
     category: 'Numerology',
     excerpt: 'Explore how Vedic numerology can guide your interior design choices to create spaces that resonate with your personal energy.',
     content: `

@@ -79,22 +79,22 @@ const Home = () => {
   // AutoCAD Drawings for Hero Section
   const autocadDrawings = [
     {
-      src: "/images/autocad/floor-plan-1.jpg",
+      src: "/images/autocad/floor-plan-1.webp",
       alt: "Modern Floor Plan - Living Space Design",
       title: "Contemporary Floor Plan"
     },
     {
-      src: "/images/autocad/elevation-1.jpg", 
+      src: "/images/autocad/elevation-1.webp", 
       alt: "Interior Elevation - Kitchen Design",
       title: "Kitchen Elevation"
     },
     {
-      src: "/images/autocad/section-1.jpg",
+      src: "/images/autocad/section-1.webp",
       alt: "Architectural Section - Cross Section View", 
       title: "Section Drawing"
     },
     {
-      src: "/images/autocad/3d-plan.jpg",
+      src: "/images/autocad/3d-plan.webp",
       alt: "3D Floor Plan - Detailed Layout",
       title: "3D Visualization"
     }
@@ -102,13 +102,13 @@ const Home = () => {
 
   // Client Logos for Carousel
   const clientLogos = [
-    { src: "/images/clients/client-1.png", alt: "Client Logo 1" },
-    { src: "/images/clients/client-2.png", alt: "Client Logo 2" },
-    { src: "/images/clients/client-3.png", alt: "Client Logo 3" },
-    { src: "/images/clients/client-4.png", alt: "Client Logo 4" },
-    { src: "/images/clients/client-5.png", alt: "Client Logo 5" },
-    { src: "/images/clients/client-6.png", alt: "Client Logo 6" },
-    { src: "/images/clients/client-7.png", alt: "Client Logo 7" }
+    { src: "/images/clients/client-1.webp", alt: "Client Logo 1" },
+    { src: "/images/clients/client-2.webp", alt: "Client Logo 2" },
+    { src: "/images/clients/client-3.webp", alt: "Client Logo 3" },
+    { src: "/images/clients/client-4.webp", alt: "Client Logo 4" },
+    { src: "/images/clients/client-5.webp", alt: "Client Logo 5" },
+    { src: "/images/clients/client-6.webp", alt: "Client Logo 6" },
+    { src: "/images/clients/client-7.webp", alt: "Client Logo 7" }
   ];
 
   // Streamlined content arrays
@@ -217,43 +217,43 @@ const Home = () => {
     {
       title: "Entrances Main Door Designs",
       description: "Who knew a door could set the vibe this hard?",
-      coverImage: "/images/reels/reel-cover-1.jpg",
+      coverImage: "/images/reels/reel-cover-1.webp",
       reelLink: "https://www.instagram.com/reel/DMFY-N7ycuf"
     },
     {
       title: "360 degree view of conference room", 
       description: "Ever wondered what the perfect conference room looks like?",
-      coverImage: "/images/reels/reel-cover-2.jpg",
+      coverImage: "/images/reels/reel-cover-2.webp",
       reelLink: "https://www.instagram.com/reel/DG4-b0sSZGP"
     },
     {
       title: "Are you Ruled by planet Moon ?",
       description: "Ruled by the Moon, you're sensitive, intuitive & emotionally tuned in",
-      coverImage: "/images/reels/reel-cover-3.jpg",
+      coverImage: "/images/reels/reel-cover-3.webp",
       reelLink: "https://www.instagram.com/reel/DLE2bnJSrhP"
     },
     {
       title: "Modern Bedroom Makeover",
       description: "Renovation focused on updating the room while keeping the original floor", 
-      coverImage: "/images/reels/reel-cover-4.jpg",
+      coverImage: "/images/reels/reel-cover-4.webp",
       reelLink: "https://www.instagram.com/reel/C_DprW9PrNi"
     },
     {
       title: "Clients Testimonial",
       description: "Our clients are the heart of our business",
-      coverImage: "/images/reels/reel-cover-5.jpg", 
+      coverImage: "/images/reels/reel-cover-5.webp", 
       reelLink: "https://www.instagram.com/reel/C_dZ34uv6rM"
     },
     {
       title: "Transformation Of Favourite Corner",
       description: "Testament to effective design, where form meets function",
-      coverImage: "/images/reels/reel-cover-5.jpg", 
+      coverImage: "/images/reels/reel-cover-6.webp", 
       reelLink: "https://www.instagram.com/reel/CeTMFuvphOq"
     },
     {
       title: "Trendy kids Bedroom colour combinations",
       description: "Heaven for little ones with our expert-approved color combination",
-      coverImage: "/images/reels/reel-cover-5.jpg", 
+      coverImage: "/images/reels/reel-cover-7.webp", 
       reelLink: "https://www.instagram.com/reel/C_fx6UfPAfw"
     }
   ];
@@ -322,7 +322,7 @@ const Home = () => {
   <div 
     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
     style={{
-      backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(/images/bg-1.jpg)',
+      backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(/images/bg-1.webp)',
 backgroundSize: 'cover',
 backgroundPosition: 'center',
 backgroundAttachment: 'fixed'  // Adds parallax effect
@@ -417,7 +417,7 @@ backgroundAttachment: 'fixed'  // Adds parallax effect
             transition={{ duration: 0.7 }}
             className="w-full h-full object-cover"
             onError={(e) => {
-              e.target.src = "/images/hero/hero-fallback.jpg";
+              e.target.src = "/images/hero/hero-fallback.webp";
             }}
           />
         </AnimatePresence>
@@ -709,7 +709,7 @@ backgroundAttachment: 'fixed'  // Adds parallax effect
                         opacity: 1 // Full opacity always
                       }}
                       onError={(e) => {
-                        e.target.src = "/images/clients/default-client.png";
+                        e.target.src = "/images/clients/default-client.webp";
                       }}
                     />
                   </div>
@@ -758,7 +758,7 @@ backgroundAttachment: 'fixed'  // Adds parallax effect
                       className="w-full h-full object-contain"
                       onError={(e) => {
                         // Fallback to default cover
-                        e.currentTarget.src = "/images/reels/default-cover.jpg";
+                        e.currentTarget.src = "/images/reels/default-cover.webp";
                       }}
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">

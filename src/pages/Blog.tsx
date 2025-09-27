@@ -135,7 +135,7 @@ const Blog = () => {
         <div className="max-w-5xl mx-auto px-4 -mt-8 relative z-10">
           <div className="aspect-square bg-white rounded-xl shadow-2xl overflow-hidden border-4 border-white">
             <img
-              src={selectedPost.coverImage || '/images/blog/default-cover.jpg'}
+              src={selectedPost.coverImage || '/images/blog/default-cover.webp'}
               alt={selectedPost.title}
               className="w-full h-full object-cover"
               onError={(e) => {
@@ -326,7 +326,7 @@ const Blog = () => {
                 {/* FIX 2: Featured Post Cover Image */}
                 <div className="relative">
                   <img
-                    src={featuredPost.coverImage || '/images/blog/featured-cover.jpg'}
+                    src={featuredPost.coverImage || '/images/blog/featured-cover.webp'}
                     alt={featuredPost.title}
                     className="w-full h-full object-cover"
                     onError={(e) => {
@@ -412,7 +412,7 @@ const Blog = () => {
                       {/* FIX 2: Cover Image for regular posts */}
                       <div className="relative aspect-square overflow-hidden">
                         <img
-                          src={post.coverImage || '/images/blog/default-cover.jpg'}
+                          src={post.coverImage || '/images/blog/default-cover.webp'}
                           alt={post.title}
                           className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                           onError={(e) => {

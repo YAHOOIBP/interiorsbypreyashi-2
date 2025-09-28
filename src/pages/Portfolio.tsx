@@ -34,7 +34,7 @@ const Portfolio = () => {
         "/images/portfolio/HUL1.webp",
         "/images/portfolio/HUL2.webp", 
         "/images/portfolio/HUL1.webp",
-        "/images/portfolio/HUL1.webp"
+        "/images/portfolio/HUL1.webp" 
       ],
       features: ["Professional Design", "Sustainable Materials", "Modern Aesthetics", "Natural Lighting", "Functional Layout", "Corporate Standards"]
     },
@@ -102,8 +102,7 @@ const Portfolio = () => {
       images: [
         "/images/portfolio/gym1.webp",
         "/images/portfolio/gym2.webp", 
-        "/images/portfolio/gym3.webp",
-        "/images/portfolio/gym1.webp"
+        "/images/portfolio/gym3.webp"    
       ],
       features: ["Efficient Design", "Ergonomic Planning", "Motivational Environment", "Modern Amenities", "Comfort Focus", "Member-Focused"]
     },
@@ -561,7 +560,7 @@ const Portfolio = () => {
                   <img
                     src={selectedProject.images[currentImageIndex]}
                     alt={selectedProject.title}
-                    loading="eager"
+                    loading="lazy"
                     className="w-full h-full object-cover"
                     style={{ 
                       transition: 'opacity 0.3s ease',

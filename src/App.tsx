@@ -25,6 +25,9 @@ function App() {
     <HelmetProvider>
       <Router>
         <div className="min-h-screen flex flex-col bg-cream-50">
+         <a href="#main-content" className="skip-link">
+  Skip to main content
+</a>
           <Header />
           <main className="flex-grow">
             <AnimatePresence mode="wait">

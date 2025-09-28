@@ -1271,3 +1271,108 @@ select:focus {
 .touch-pan-x {
   touch-action: pan-x;
 }
+/* ACCESSIBILITY IMPROVEMENTS */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #000;
+  color: #fff;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+  z-index: 9999;
+  transition: top 0.3s;
+  font-size: 14px;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* FOCUS INDICATORS FOR ACCESSIBILITY */
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus,
+[tabindex]:focus {
+  outline: 3px solid #4A90E2;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+/* HIGH CONTRAST MODE SUPPORT */
+@media (prefers-contrast: high) {
+  .text-gray-600 {
+    color: #000 !important;
+  }
+  .text-gray-500 {
+    color: #000 !important;
+  }
+}
+
+/* REDUCED MOTION SUPPORT */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* IMPROVED TOUCH TARGETS */
+button,
+.btn,
+a[role="button"] {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* IMAGE OPTIMIZATION */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* LOADING STATES */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* CTA BUTTON IMPROVEMENTS */
+.cta-button {
+  background: linear-gradient(45deg, #4A90E2, #357ABD);
+  transition: all 0.3s ease;
+  transform: translateZ(0);
+}
+
+.cta-button:hover {
+  background: linear-gradient(45deg, #357ABD, #2E5D8A);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+/* FORM VALIDATION STYLES */
+.error-message {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+input.error,
+textarea.error {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.125rem rgba(220, 53, 69, 0.25);
+}
+
+input.success,
+textarea.success {
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.125rem rgba(40, 167, 69, 0.25);
+}

@@ -102,13 +102,13 @@ const Home = () => {
 
   // Client Logos for Carousel
   const clientLogos = [
-    { src: "/images/clients/client-1.webp", alt: "Client Logo 1" },
-    { src: "/images/clients/client-2.webp", alt: "Client Logo 2" },
-    { src: "/images/clients/client-3.webp", alt: "Client Logo 3" },
-    { src: "/images/clients/client-4.webp", alt: "Client Logo 4" },
-    { src: "/images/clients/client-5.webp", alt: "Client Logo 5" },
-    { src: "/images/clients/client-6.webp", alt: "Client Logo 6" },
-    { src: "/images/clients/client-7.webp", alt: "Client Logo 7" }
+    { src: "/images/clients/client-1.webp", alt: "hindustan unilever" },
+    { src: "/images/clients/client-2.webp", alt: "indian railway" },
+    { src: "/images/clients/client-3.webp", alt: "kcr hotel" },
+    { src: "/images/clients/client-4.webp", alt: "jay bee energy duliajan" },
+    { src: "/images/clients/client-5.webp", alt: "nirvian" },
+    { src: "/images/clients/client-6.webp", alt: "ant energies" },
+    { src: "/images/clients/client-7.webp", alt: "gold gym" }
   ];
 
   // Streamlined content arrays
@@ -307,7 +307,7 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-cream-50 overflow-x-hidden">
+    <div id="main-content" className="min-h-screen bg-cream-50 overflow-x-hidden">
       <SEOHead
         title="Interiors By Preyashi - Expert Interior Design with Vastu & Numerology"
         description="Transform your space with world-class interior design, authentic Vastu consultation, and personalized numerology guidance across Northeast India."

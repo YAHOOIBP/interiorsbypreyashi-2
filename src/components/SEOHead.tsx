@@ -12,12 +12,12 @@ interface SEOHeadProps {
 }
 
 const SEOHead: React.FC<SEOHeadProps> = ({
-  title,
-  description,
-  keywords = "interior design, vastu consultation, vedic numerology, Tinsukia, Dibrugarh, Guwahati, Assam, Arunachal Pradesh, Northeast India",
+  title = 'Interior Designer in Tinsukia, Assam | Vastu Consultant | Interiors by Preyashi | PM Design',
+  description = 'Expert interior designer in Tinsukia, Assam offering residential & commercial design, Vastu consultation, and numerology services. 7+ years experience across Northeast India.',
+  keywords = "interior designer Tinsukia, vastu consultantAssam, vedic numerology, Tinsukia, Dibrugarh, Guwahati, Assam, Arunachal Pradesh, Northeast India, interior design Dibrugarh, numerology expert Northeast India",
   canonicalUrl,
-  ogImage = "/images/og-image.jpg",
-  ogType = "website",
+  ogImage = "/images/logo/logo.png",
+  ogType = "https://interiorsbypreyashi.com",
   structuredData
 }) => {
   const fullTitle = `${title} | Interiors By Preyashi - Premium Interior Design`;

@@ -13,7 +13,7 @@ const About = () => {
     "jobTitle": "Interior Designer, Vastu Consultant & Vedic Numerologist",
     "description": "Expert interior designer with 7+ years experience specializing in Vastu Shastra and Vedic Numerology. Founder of Interiors by Preyashi, serving Northeast India with holistic design solutions.",
     "url": "https://interiorsbypreyashi.com/about",
-    "image": "https://interiorsbypreyashi.com/images/founder/preyashi-profile1.jpg",
+    "image": "https://interiorsbypreyashi.com/images/founder/preyashi-profile1.webp",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Tinsukia",
@@ -137,11 +137,11 @@ const About = () => {
                 <div className="w-80 h-80 rounded-full bg-gradient-to-br from-amber-200 to-orange-200 p-4 shadow-xl">
                   <div className="w-full h-full rounded-full overflow-hidden bg-white flex items-center justify-center">
                     <img
-                      src="/images/founder/preyashi-profile1.jpg"
+                      src="/images/founder/preyashi-profile1.webp"
                       alt="Preyashi More Birmiwal - Interior Designer and Vastu Consultant in Tinsukia, Assam"
                       className="w-full h-full object-cover object-top"
                       onError={(e) => {
-                        e.currentTarget.src = "/images/founder/placeholder-profile.jpg";
+                        e.currentTarget.src = "/images/founder/placeholder-profile.webp";
                       }}
                     />
                   </div>

@@ -57,7 +57,8 @@ const Blog = () => {
     return matchesCategory && matchesSearch;
   });
 
-  const regularPosts = filteredPosts;
+  const featuredPost = BLOG_POSTS[0]; // First post as featured
+  const regularPosts = filteredPosts.slice(selectedCategory === 'all' && !searchTerm ? 1 : 0);
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -269,6 +270,90 @@ const Blog = () => {
         </div>
       </section>
 
+      {/* Featured Post (only show when no search/filter active) */}
+      {selectedCategory === 'all' && !searchTerm && (
+        <section className="py-16">
+          <div className="max-w-6xl mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="bg-gradient-to-r from-purple-100 to-pink-100 rounded-2xl overflow-hidden shadow-xl"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                <div className="p-8 lg:p-12">
+                  <div className="mb-4">
+                    <span className="inline-flex items-center px-3 py-1 bg-purple-200 text-purple-800 rounded-full text-sm font-medium">
+                      <Tag className="w-3 h-3 mr-1" />
+                      Featured • {featuredPost.category}
+                    </span>
+                  </div>
+                  
+                  <h2 className="text-3xl lg:text-4xl font-serif text-gray-800 mb-4 leading-tight">
+                    {featuredPost.title}
+                  </h2>
+                  
+                  <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                    {featuredPost.excerpt}
+                  </p>
+                  
+                  <div className="flex flex-wrap items-center gap-4 text-gray-600 mb-8">
+                    <div className="flex items-center">
+                      <User className="w-4 h-4 mr-2" />
+                      <span>{featuredPost.author}</span>
+                    </div>
+                    
+                    <div className="flex items-center">
+                      <Calendar className="w-4 h-4 mr-2" />
+                      <span>{new Date(featuredPost.date).toLocaleDateString()}</span>
+                    </div>
+                    
+                    <div className="flex items-center">
+                      <Clock className="w-4 h-4 mr-2" />
+                      <span>{featuredPost.readTime}</span>
+                    </div>
+                  </div>
+                  
+                  <button
+                    onClick={() => handleReadMore(featuredPost)}
+                    className="inline-flex items-center bg-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+                  >
+                    Read Full Article
+                    <ChevronRight className="w-5 h-5 ml-2" />
+                  </button>
+                </div>
+                
+                {/* FIX 2: Featured Post Cover Image */}
+                <div className="relative">
+                  <img
+                    src={featuredPost.coverImage || '/images/blog/featured-cover.webp'}
+                    alt={featuredPost.title}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextElementSibling.style.display = 'flex';
+                    }}
+                  />
+                  <div className="w-full h-full bg-gradient-to-br from-purple-200 to-pink-200 flex items-center justify-center p-8 hidden">
+                    <div className="w-full max-w-sm">
+                      <div className="bg-white p-6 rounded-lg shadow-lg">
+                        <div className="w-full h-48 bg-gradient-to-br from-purple-100 to-pink-100 rounded-lg mb-4 flex items-center justify-center">
+                          <div className="text-6xl text-purple-300">✨</div>
+                        </div>
+                        <div className="text-center">
+                          <h3 className="font-serif text-lg text-gray-800 mb-2">Featured Insight</h3>
+                          <p className="text-sm text-gray-600">Latest design wisdom from our experts</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      )}
+
       {/* Blog Posts Grid */}
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4">
@@ -309,76 +394,81 @@ const Blog = () => {
               )}
 
               <motion.div
-  layout
-  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
->
-  <AnimatePresence>
-    {regularPosts.map((post, index) => (
-      <motion.article
-        key={post.id}
-        layout
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 50 }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
-        whileHover={{ y: -5 }}
-        className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300"
-      >
-        {/* MOBILE-OPTIMIZED IMAGE */}
-        <div className="relative aspect-[4/3] overflow-hidden">
-          <img
-            src={post.coverImage || '/images/blog/default-cover.webp'}
-            alt={post.title}
-            loading="lazy"
-            className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-            onError={(e) => {
-              e.target.style.display = 'none';
-              e.target.nextElementSibling.style.display = 'flex';
-            }}
-          />
-          <div className="w-full h-full bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center text-purple-600 font-bold hidden">
-            Cover Image
-          </div>
-          
-          {/* Category Badge */}
-          <div className="absolute top-3 left-3">
-            <span className="px-2 py-1 bg-purple-600/90 text-white text-xs font-medium rounded-full">
-              {post.category}
-            </span>
-          </div>
-        </div>
+                layout
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              >
+                <AnimatePresence>
+                  {regularPosts.map((post, index) => (
+                    <motion.article
+                      key={post.id}
+                      layout
+                      initial={{ opacity: 0, y: 50 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 50 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      whileHover={{ y: -5 }}
+                      className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300"
+                    >
+                      {/* FIX 2: Cover Image for regular posts */}
+                      <div className="relative aspect-square overflow-hidden">
+                        <img
+                          src={post.coverImage || '/images/blog/default-cover.webp'}
+                          alt={post.title}
+                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                          onError={(e) => {
+                            e.target.style.display = 'none';
+                            e.target.nextElementSibling.style.display = 'flex';
+                          }}
+                        />
+                        <div className="w-full h-full bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center text-purple-600 font-bold hidden">
+                          Cover Image
+                        </div>
+                        
+                        {/* Category Badge */}
+                        <div className="absolute top-4 left-4">
+                          <span className="px-3 py-1 rounded-full text-xs font-medium text-white bg-purple-500/80">
+                            {post.category}
+                          </span>
+                        </div>
+                      </div>
 
-        {/* MOBILE-OPTIMIZED CONTENT */}
-        <div className="p-4 sm:p-5 lg:p-6">
-          <h3 className="text-lg sm:text-xl font-serif text-gray-800 mb-2 leading-tight line-clamp-2">
-            {post.title}
-          </h3>
-          
-          <p className="text-gray-600 text-sm sm:text-base mb-3 line-clamp-2">
-            {post.excerpt}
-          </p>
-          
-          {/* SIMPLIFIED META FOR MOBILE */}
-          <div className="flex items-center text-xs text-gray-500 mb-4">
-            <User className="w-3 h-3 mr-1" />
-            <span>{post.author}</span>
-            <span className="mx-2">•</span>
-            <Clock className="w-3 h-3 mr-1" />
-            <span>{post.readTime}</span>
-          </div>
-          
-          {/* MOBILE-FRIENDLY CTA */}
-          <button
-            onClick={() => handleReadMore(post)}
-            className="w-full bg-purple-600 text-white py-3 px-4 rounded-lg text-sm font-medium hover:bg-purple-700 transition-colors touch-manipulation"
-          >
-            Read Article →
-          </button>
-        </div>
-      </motion.article>
-    ))}
-  </AnimatePresence>
-</motion.div>
+                      <div className="p-6">
+                        <h3 className="text-xl font-serif text-gray-800 mb-3 line-clamp-2 leading-tight">
+                          {post.title}
+                        </h3>
+                        
+                        <p className="text-gray-600 leading-relaxed mb-4 line-clamp-3">
+                          {post.excerpt}
+                        </p>
+                        
+                        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-6">
+                          <div className="flex items-center">
+                            <User className="w-3 h-3 mr-1" />
+                            <span>{post.author}</span>
+                          </div>
+                          
+                          <div className="flex items-center">
+                            <Calendar className="w-3 h-3 mr-1" />
+                            <span>{new Date(post.date).toLocaleDateString()}</span>
+                          </div>
+                          
+                          <div className="flex items-center">
+                            <Clock className="w-3 h-3 mr-1" />
+                            <span>{post.readTime}</span>
+                          </div>
+                        </div>
+                        
+                        <button
+                          onClick={() => handleReadMore(post)}
+                          className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 px-6 rounded-lg text-sm font-medium hover:from-purple-700 hover:to-pink-700 transition-all duration-300"
+                        >
+                          Read More →
+                        </button>
+                      </div>
+                    </motion.article>
+                  ))}
+                </AnimatePresence>
+              </motion.div>
             </>
           )}
         </div>

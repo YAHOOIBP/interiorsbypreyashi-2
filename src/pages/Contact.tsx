@@ -110,7 +110,7 @@ const Contact = () => {
       title: 'Address',
       primary: 'Manav Kalyan Road, Parbatia',
       secondary: 'Namgarh Path - 03, Tinsukia, Assam - 786125',
-      action: () => window.open('https://maps.app.goo.gl/swy5ftPjmrD9rReS8'),
+      action: () => window.open('https://maps.app.goo.gl/yzgGQoBTxWtwRNuQ9'),
       color: 'from-purple-500 to-pink-500'
     },
     {
@@ -157,7 +157,7 @@ const Contact = () => {
     "areaServed": ["Assam", "Arunachal Pradesh", "Northeast India"],
     "priceRange": "₹₹₹",
     "paymentAccepted": ["Cash", "Credit Card", "Bank Transfer", "UPI"],
-    "hasMap": "https://maps.app.goo.gl/swy5ftPjmrD9rReS8",
+    "hasMap": "https://maps.app.goo.gl/yzgGQoBTxWtwRNuQ9",
     "founder": {
       "@type": "Person",
       "name": "Preyashi More Birmiwal"
@@ -321,6 +321,7 @@ const Contact = () => {
                       type="text"
                       id="fullName"
                       name="fullName"
+                      aria-required="true"
                       value={formData.fullName}
                       onChange={handleInputChange}
                       required
@@ -338,6 +339,7 @@ const Contact = () => {
                       type="tel"
                       id="phone"
                       name="phone"
+                      aria-required="true"
                       value={formData.phone}
                       onChange={handleInputChange}
                       required
@@ -356,6 +358,7 @@ const Contact = () => {
                     type="email"
                     id="email"
                     name="email"
+                    aria-required="true"
                     value={formData.email}
                     onChange={handleInputChange}
                     required
@@ -530,7 +533,7 @@ const Contact = () => {
                 </p>
                 
                 <button
-                  onClick={() => window.open('https://maps.google.com/?q=Manav+Kalyan+Road,Parbatia,Tinsukia,Assam', '_blank')}
+                  onClick={() => window.open('https://maps.google.com/?q=PM+Design+Interiors+By+Preyashi', '_blank')}
                   className="text-blue-600 hover:text-blue-700 font-medium transition-colors duration-300"
                 >
                   View on Google Maps →

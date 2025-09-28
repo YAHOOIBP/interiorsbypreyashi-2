@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import LeadModal from '../components/LeadModal';
 
-const Home = () => {
+const Home: React.FC = () => {
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [currentInteriorIndex, setCurrentInteriorIndex] = useState(0);
@@ -19,17 +19,24 @@ const Home = () => {
   const [touchEndX, setTouchEndX] = useState(0);
   const [isSwiping, setIsSwiping] = useState(false);
 
+  // Instagram Reels auto-scroll state
+  const [reelsOffset, setReelsOffset] = useState(0);
+  const [autoScroll, setAutoScroll] = useState(true);
+
   // Touch handlers for swipe functionality
-  const handleTouchStart = (e, section) => {
+  const handleTouchStart = (e: React.TouchEvent, section: string) => {
     setTouchStartX(e.touches[0].clientX);
     setIsSwiping(true);
+    if (section === 'reels') {
+      setAutoScroll(false);
+    }
   };
 
-  const handleTouchMove = (e, section) => {
+  const handleTouchMove = (e: React.TouchEvent, section: string) => {
     setTouchEndX(e.touches[0].clientX);
   };
 
-  const handleTouchEnd = (e, section) => {
+  const handleTouchEnd = (e: React.TouchEvent, section: string) => {
     if (!isSwiping) return;
     
     const swipeDistance = touchStartX - touchEndX;
@@ -68,12 +75,26 @@ const Home = () => {
           // Swipe right - previous interior
           setCurrentInteriorIndex(prev => prev === 0 ? worldClassInteriors.length - 1 : prev - 1);
         }
+      } else if (section === 'reels') {
+        const cardWidth = 320 + 24; // card width + gap
+        if (swipeDistance > 0) {
+          // Swipe left - advance carousel
+          setReelsOffset(prev => prev - cardWidth);
+        } else {
+          // Swipe right - go back
+          setReelsOffset(prev => prev + cardWidth);
+        }
       }
     }
     
     setIsSwiping(false);
     setTouchStartX(0);
     setTouchEndX(0);
+    
+    if (section === 'reels') {
+      // Resume auto-scroll after swipe
+      setTimeout(() => setAutoScroll(true), 2000);
+    }
   };
 
   // AutoCAD Drawings for Hero Section
@@ -258,6 +279,10 @@ const Home = () => {
     }
   ];
 
+  // Calculate total width for auto-scroll
+  const cardWidth = 320 + 24; // card width + gap
+  const totalWidth = cardWidth * instagramReels.length;
+
   // Auto-rotate content with scroll position awareness
   useEffect(() => {
     const intervals = [
@@ -270,6 +295,21 @@ const Home = () => {
 
     return () => intervals.forEach(clearInterval);
   }, []);
+
+  // Auto-scroll effect for Instagram reels
+  useEffect(() => {
+    if (!autoScroll) return;
+    
+    const interval = setInterval(() => {
+      setReelsOffset(prev => {
+        const nextOffset = prev - 1;
+        // Reset when reaching the end
+        return nextOffset <= -totalWidth ? 0 : nextOffset;
+      });
+    }, 20);
+
+    return () => clearInterval(interval);
+  }, [autoScroll, totalWidth]);
 
   // Handle home page navigation - scroll to top
   useEffect(() => {
@@ -317,134 +357,135 @@ const Home = () => {
       />
 
       {/* Hero Section with Blueprint Background */}
-<section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-  {/* Blueprint Background Image */}
-  <div 
-    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-    style={{
-      backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(/images/bg-1.webp)',
-backgroundSize: 'cover',
-backgroundPosition: 'center',
-backgroundAttachment: 'fixed'  // Adds parallax effect
-    }}
-  ></div>
-  
-  {/* Dark overlay for better text visibility */}
-  <div className="absolute inset-0 bg-black/60 z-10"></div>
-  
-  {/* Additional subtle pattern overlay */}
-  <div className="absolute inset-0 opacity-10 z-10">
-    <div className="absolute inset-0" style={{
-      backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-    }} />
-  </div>
-
-  <div className="relative z-20 max-w-7xl mx-auto px-0 sm:px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-    {/* Left Content */}
-    <motion.div
-      initial={{ opacity: 0, x: -50 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8 }}
-      className="text-center lg:text-left"
-    >
-      <motion.h1 
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="text-4xl md:text-5xl lg:text-6xl font-serif mb-6 text-white leading-tight drop-shadow-lg"
-      >
-        <span className="text-cyan-300">Interiors By</span><br />
-        <span className="text-amber-400 italic">Preyashi</span>
-      </motion.h1>
-      
-      <motion.p
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-        className="text-xl md:text-2xl text-gray-100 mb-8 leading-relaxed drop-shadow-md"
-      >
-        Where ancient wisdom meets modern design.
-      </motion.p>
-
-      <motion.p
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
-        className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed drop-shadow-md"
-      >
-        Creating harmonious spaces through<br />
-        <span className="text-amber-300 font-semibold">Interior Design</span>, <span className="text-green-300 font-semibold">Vastu Shastra</span> & <span className="text-cyan-300 font-semibold">Vedic Numerology</span>.
-      </motion.p>
-
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-        className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-      >
-        <button
-          onClick={() => setIsLeadModalOpen(true)}
-          className="bg-amber-600 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 border border-amber-500"
-        >
-          Start Your Project
-        </button>
-        <Link
-          to="/portfolio"
-          className="border-2 border-cyan-400 text-cyan-400 px-8 py-4 rounded-lg text-lg font-medium hover:bg-cyan-400 hover:text-gray-900 transition-all duration-300 flex items-center justify-center backdrop-blur-sm bg-white/10"
-        >
-          View Portfolio
-          <ArrowRight className="ml-2 w-5 h-5" />
-        </Link>
-      </motion.div>
-    </motion.div>
-
-    {/* Right Visual */}
-    <motion.div
-      initial={{ opacity: 0, x: 50 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8, delay: 0.3 }}
-      className="relative"
-    >
-      <div className="relative w-full h-96 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/30 backdrop-blur-sm">
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={currentDrawingIndex}
-            src={autocadDrawings[currentDrawingIndex].src}
-            alt={autocadDrawings[currentDrawingIndex].alt}
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.7 }}
-            className="w-full h-full object-cover"
-            onError={(e) => {
-              e.target.src = "/images/hero/hero-fallback.webp";
-            }}
-          />
-        </AnimatePresence>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Blueprint Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(/images/bg-1.webp)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed'  // Adds parallax effect
+          }}
+        ></div>
         
-        {/* Enhanced overlay with title */}
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6">
-          <h3 className="text-white font-semibold text-lg mb-2 drop-shadow-lg">{autocadDrawings[currentDrawingIndex].title}</h3>
-          <div className="flex items-center text-amber-400">
-            <Star className="w-4 h-4 mr-1" />
-            <span className="text-sm drop-shadow-md">Professional Design</span>
-          </div>
+        {/* Dark overlay for better text visibility */}
+        <div className="absolute inset-0 bg-black/60 z-10"></div>
+        
+        {/* Additional subtle pattern overlay */}
+        <div className="absolute inset-0 opacity-10 z-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }} />
         </div>
-      </div>
 
-      {/* Enhanced floating stats with backdrop blur */}
-      <div className="absolute -top-4 -left-4 bg-white/20 backdrop-blur-md rounded-xl p-4 text-white border border-white/30 shadow-xl">
-        <div className="text-2xl font-bold text-amber-400 drop-shadow-lg">7+</div>
-        <div className="text-sm drop-shadow-md">Years Experience</div>
-      </div>
+        <div className="relative z-20 max-w-7xl mx-auto px-0 sm:px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center lg:text-left"
+          >
+            <motion.h1 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-serif mb-6 text-white leading-tight drop-shadow-lg"
+            >
+              <span className="text-cyan-300">Interiors By</span><br />
+              <span className="text-amber-400 italic">Preyashi</span>
+            </motion.h1>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-xl md:text-2xl text-gray-100 mb-8 leading-relaxed drop-shadow-md"
+            >
+              Where ancient wisdom meets modern design.
+            </motion.p>
 
-      <div className="absolute -bottom-4 -right-4 bg-white/20 backdrop-blur-md rounded-xl p-4 text-white border border-white/30 shadow-xl">
-        <div className="text-2xl font-bold text-cyan-400 drop-shadow-lg">50+</div>
-        <div className="text-sm drop-shadow-md">Projects</div>
-      </div>
-    </motion.div>
-  </div>
-</section>
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed drop-shadow-md"
+            >
+              Creating harmonious spaces through<br />
+              <span className="text-amber-300 font-semibold">Interior Design</span>, <span className="text-green-300 font-semibold">Vastu Shastra</span> & <span className="text-cyan-300 font-semibold">Vedic Numerology</span>.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            >
+              <button
+                onClick={() => setIsLeadModalOpen(true)}
+                className="bg-amber-600 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 border border-amber-500"
+              >
+                Start Your Project
+              </button>
+              <Link
+                to="/portfolio"
+                className="border-2 border-cyan-400 text-cyan-400 px-8 py-4 rounded-lg text-lg font-medium hover:bg-cyan-400 hover:text-gray-900 transition-all duration-300 flex items-center justify-center backdrop-blur-sm bg-white/10"
+              >
+                View Portfolio
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Visual */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="relative"
+          >
+            <div className="relative w-full h-96 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/30 backdrop-blur-sm">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={currentDrawingIndex}
+                  src={autocadDrawings[currentDrawingIndex].src}
+                  alt={autocadDrawings[currentDrawingIndex].alt}
+                  initial={{ opacity: 0, scale: 1.1 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.7 }}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = "/images/hero/hero-fallback.webp";
+                  }}
+                />
+              </AnimatePresence>
+              
+              {/* Enhanced overlay with title */}
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6">
+                <h3 className="text-white font-semibold text-lg mb-2 drop-shadow-lg">{autocadDrawings[currentDrawingIndex].title}</h3>
+                <div className="flex items-center text-amber-400">
+                  <Star className="w-4 h-4 mr-1" />
+                  <span className="text-sm drop-shadow-md">Professional Design</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Enhanced floating stats with backdrop blur */}
+            <div className="absolute -top-4 -left-4 bg-white/20 backdrop-blur-md rounded-xl p-4 text-white border border-white/30 shadow-xl">
+              <div className="text-2xl font-bold text-amber-400 drop-shadow-lg">7+</div>
+              <div className="text-sm drop-shadow-md">Years Experience</div>
+            </div>
+
+            <div className="absolute -bottom-4 -right-4 bg-white/20 backdrop-blur-md rounded-xl p-4 text-white border border-white/30 shadow-xl">
+              <div className="text-2xl font-bold text-cyan-400 drop-shadow-lg">50+</div>
+              <div className="text-sm drop-shadow-md">Projects</div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* World-Class Interiors - Simplified with Touch Support */}
       <section className="py-20 bg-white">
@@ -709,7 +750,8 @@ backgroundAttachment: 'fixed'  // Adds parallax effect
                         opacity: 1 // Full opacity always
                       }}
                       onError={(e) => {
-                        e.target.src = "/images/clients/default-client.webp";
+                        const target = e.target as HTMLImageElement;
+                        target.src = "/images/clients/default-client.webp";
                       }}
                     />
                   </div>
@@ -720,7 +762,7 @@ backgroundAttachment: 'fixed'  // Adds parallax effect
         </div>
       </section>
 
-      {/* Instagram Reels - Enhanced Auto-scrolling Carousel */}
+      {/* Instagram Reels - Enhanced Auto-scrolling + Swipe Carousel */}
       <section className="py-20 bg-gradient-to-r from-pink-50 to-purple-50">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div
@@ -732,15 +774,20 @@ backgroundAttachment: 'fixed'  // Adds parallax effect
             <p className="text-xl text-gray-600">See our latest projects and design tips on Instagram</p>
           </motion.div>
 
-          {/* Auto-scrolling Reels Carousel */}
-          <div className="relative overflow-hidden">
+          {/* Auto-scrolling + Swipe Reels Carousel */}
+          <div 
+            className="relative overflow-hidden"
+            onTouchStart={(e) => handleTouchStart(e, 'reels')}
+            onTouchMove={(e) => handleTouchMove(e, 'reels')}
+            onTouchEnd={(e) => handleTouchEnd(e, 'reels')}
+          >
             <motion.div
-              animate={{ x: [-1600, 0] }}
-              transition={{ 
-                duration: 25,
-                repeat: Infinity,
-                ease: "linear"
-              }}
+              style={{ x: reelsOffset }}
+              animate={autoScroll ? { x: [-totalWidth, 0] } : {}}
+              transition={autoScroll
+                ? { x: { repeat: Infinity, duration: 25, ease: 'linear' }}
+                : {}
+              }
               className="flex space-x-6"
             >
               {/* Double the reels for seamless infinite scroll */}
@@ -758,7 +805,8 @@ backgroundAttachment: 'fixed'  // Adds parallax effect
                       className="w-full h-full object-contain"
                       onError={(e) => {
                         // Fallback to default cover
-                        e.currentTarget.src = "/images/reels/default-cover.webp";
+                        const target = e.currentTarget as HTMLImageElement;
+                        target.src = "/images/reels/default-cover.webp";
                       }}
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">

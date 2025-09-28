@@ -1376,3 +1376,46 @@ textarea.success {
   border-color: #28a745;
   box-shadow: 0 0 0 0.125rem rgba(40, 167, 69, 0.25);
 }
+/* MOBILE TEXT JUSTIFICATION - GLOBAL */
+@media (max-width: 768px) {
+  /* Target only paragraph text content */
+  p,
+  .prose p,
+  article p,
+  .description-text,
+  .excerpt-text,
+  blockquote {
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    line-height: 1.6;
+    word-spacing: 0.05em;
+  }
+  
+  /* Exclude elements that shouldn't be justified */
+  .text-center p,
+  .text-left p,
+  .text-right p,
+  button p,
+  .btn p,
+  .navbar p,
+  .footer p,
+  .card-title,
+  .no-justify {
+    text-align: inherit !important;
+    hyphens: none !important;
+  }
+}
+
+/* Optional: Add utility class for exceptions */
+.no-justify-mobile {
+  text-align: left !important;
+}
+
+@media (max-width: 768px) {
+  .no-justify-mobile {
+    text-align: left !important;
+    hyphens: none !important;
+  }
+}

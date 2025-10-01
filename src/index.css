@@ -737,10 +737,85 @@ select.form-control {
     format('woff2');
 }
 
-/* END PERPLEXITY DESIGN SYSTEM */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ✨ ELEGANT GOLD/AMBER LUXURY THEME ✨ */
+:root {
+  /* Luxury Gold Color Palette */
+  --color-primary-50: #fefbf3;   /* Very light cream */
+  --color-primary-100: #fef6e7;  /* Light cream */
+  --color-primary-200: #fde8c3;  /* Soft gold */
+  --color-primary-300: #fbd494;  /* Light gold */
+  --color-primary-400: #f7b955;  /* Medium gold */
+  --color-primary-500: #f59e0b;  /* Rich gold - main brand */
+  --color-primary-600: #d97706;  /* Deep gold - hover states */
+  --color-primary-700: #b45309;  /* Dark gold */
+  --color-primary-800: #92400e;  /* Darker gold */
+  --color-primary-900: #78350f;  /* Darkest gold */
+}
+
+/* 🎯 OVERRIDE ALL INCONSISTENT COLORS */
+
+/* Primary Buttons & CTAs */
+.bg-amber-600, .bg-purple-600, .bg-orange-600 {
+  background-color: var(--color-primary-500) !important;
+}
+
+.bg-amber-700, .bg-purple-700, .bg-orange-700 {
+  background-color: var(--color-primary-600) !important;
+}
+
+/* Hover States */
+.hover\:bg-amber-700:hover, .hover\:bg-purple-700:hover, .hover\:bg-orange-700:hover {
+  background-color: var(--color-primary-600) !important;
+}
+
+.hover\:bg-amber-600:hover, .hover\:bg-purple-600:hover {
+  background-color: var(--color-primary-500) !important;
+}
+
+/* Text Colors */
+.text-amber-600, .text-purple-600, .text-orange-600 {
+  color: var(--color-primary-500) !important;
+}
+
+.text-amber-700, .text-purple-700 {
+  color: var(--color-primary-600) !important;
+}
+
+/* Border Colors */
+.border-amber-600, .border-purple-600, .border-orange-600 {
+  border-color: var(--color-primary-500) !important;
+}
+
+.border-amber-500, .border-purple-500 {
+  border-color: var(--color-primary-500) !important;
+}
+
+/* 🌟 GRADIENT BACKGROUNDS - LUXURY FEEL */
+.bg-gradient-to-r.from-pink-50.to-purple-50 {
+  background: linear-gradient(to right, var(--color-primary-50), var(--color-primary-100)) !important;
+}
+
+.bg-gradient-to-br.from-pink-200.to-purple-200 {
+  background: linear-gradient(to bottom right, var(--color-primary-200), var(--color-primary-300)) !important;
+}
+
+.bg-gradient-to-r.from-amber-50.to-orange-50 {
+  background: linear-gradient(to right, var(--color-primary-50), var(--color-primary-100)) !important;
+}
+
+/* Ring Colors (focus states) */
+.ring-amber-500, .ring-purple-500 {
+  --tw-ring-color: var(--color-primary-500) !important;
+}
+
+/* Theme Color for Browser */
+meta[name="theme-color"] {
+  content: var(--color-primary-600) !important;
+}
 
 /* Custom CSS */
 @layer base {

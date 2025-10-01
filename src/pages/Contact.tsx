@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, MessageCircle, CheckCircle, User, Briefcase, Calendar, FileText, Send } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);

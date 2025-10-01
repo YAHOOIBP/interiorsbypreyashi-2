@@ -504,7 +504,7 @@ const Home: React.FC = () => {
           </motion.div>
 
           <div 
-            className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-8 md:p-12"
+            className="bg-gradient-to-r from-amber-50 to-pink-50 rounded-2xl p-8 md:p-12"
             onTouchStart={(e) => handleTouchStart(e, 'interiors')}
             onTouchMove={(e) => handleTouchMove(e, 'interiors')}
             onTouchEnd={(e) => handleTouchEnd(e, 'interiors')}
@@ -628,7 +628,7 @@ const Home: React.FC = () => {
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <h4 className="text-xl font-semibold text-purple-600 mb-4">
+                    <h4 className="text-xl font-semibold text-amber-600 mb-4">
                       {numerologyInsights[currentNumerologyInsight].title}
                     </h4>
                     <p className="text-gray-700 leading-relaxed">
@@ -644,7 +644,7 @@ const Home: React.FC = () => {
                     key={index}
                     onClick={() => setCurrentNumerologyInsight(index)}
                     className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                      index === currentNumerologyInsight ? 'bg-purple-600' : 'bg-gray-300'
+                      index === currentNumerologyInsight ? 'bg-amber-600' : 'bg-gray-300'
                     }`}
                   />
                 ))}
@@ -763,7 +763,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Instagram Reels - Enhanced Auto-scrolling + Swipe Carousel */}
-      <section className="py-20 bg-gradient-to-r from-pink-50 to-purple-50">
+      <section className="py-20 bg-gradient-to-r from-pink-50 to-amber-100">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -798,7 +798,7 @@ const Home: React.FC = () => {
                   onClick={() => window.open(reel.reelLink, '_blank')}
                   whileHover={{ scale: 1.02 }}
                 >
-                  <div className="relative aspect-square bg-gradient-to-br from-pink-200 to-purple-200 flex items-center justify-center">
+                  <div className="relative aspect-square bg-gradient-to-br from-amber-100 to-amber-200 flex items-center justify-center">
                     <img
                       src={reel.coverImage}
                       alt={reel.title}

@@ -51,8 +51,8 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
 
       {/* Additional Meta Tags */}
-      <meta name="theme-color" content="#d97706" />
-      <meta name="msapplication-TileColor" content="#d97706" />
+      <meta name="theme-color" content="#D2691E" />
+      <meta name="msapplication-TileColor" content="#D2691E" />
 
       {/* Structured Data */}
       {structuredData && (

@@ -88,8 +88,8 @@ const Header: React.FC = () => {
             } transition-colors duration-300 ${
               location.pathname === item.path ||
               item.dropdown.some((dropdownItem: any) => dropdownItem.path === location.pathname)
-                ? 'text-amber-600 font-semibold'
-                : 'text-gray-700 hover:text-amber-600'
+                ? 'text-primary font-semibold'
+                : 'text-neutral-dark hover:text-primary'
             }`}
           >
             {item.name}
@@ -103,7 +103,7 @@ const Header: React.FC = () => {
                 <button
                   key={dropdownItem.name}
                   onClick={() => handleNavigation(dropdownItem.path)}
-                  className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-amber-50 hover:text-amber-600 transition-colors duration-300 first:rounded-t-lg last:rounded-b-lg"
+                  className="block w-full text-left px-4 py-3 text-neutral-dark hover:bg-neutral-light hover:text-primary transition-colors duration-300 first:rounded-t-lg last:rounded-b-lg"
                 >
                   {dropdownItem.name}
                 </button>
@@ -118,7 +118,7 @@ const Header: React.FC = () => {
                 <button
                   key={dropdownItem.name}
                   onClick={() => handleNavigation(dropdownItem.path)}
-                  className="block w-full text-left px-8 py-3 text-gray-600 hover:text-amber-600 transition-colors duration-300"
+                  className="block w-full text-left px-8 py-3 text-gray-600 hover:text-primary transition-colors duration-300"
                 >
                   {dropdownItem.name}
                 </button>
@@ -139,8 +139,8 @@ const Header: React.FC = () => {
             : 'px-3 py-2 hover:text-amber-600'
         } transition-colors duration-300 ${
           location.pathname === item.path
-            ? 'text-amber-600 font-semibold'
-            : 'text-gray-700 hover:text-amber-600'
+            ? 'text-primary font-semibold'
+            : 'text-neutral-dark hover:text-primary'
         }`}
       >
         {item.name}
@@ -164,7 +164,7 @@ const Header: React.FC = () => {
                 className="flex items-center space-x-3 hover:opacity-80 transition-opacity duration-300"
               >
                 {/* Logo Image */}
-                <div className="w-12 h-12 bg-amber-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
                   <img
                     src="/images/logo/logo.png"
                     alt="Interiors By Preyashi Logo"
@@ -200,7 +200,7 @@ const Header: React.FC = () => {
             <div className="lg:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2 rounded-lg text-gray-700 hover:text-amber-600 hover:bg-gray-100 transition-colors duration-300"
+                className="p-2 rounded-lg text-neutral-dark hover:text-primary hover:bg-neutral-light/50 transition-colors duration-300"
                 aria-label="Toggle mobile menu"
               >
                 {isMobileMenuOpen ? (

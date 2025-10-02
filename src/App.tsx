@@ -19,17 +19,21 @@ import VastuInsights from './pages/VastuInsights';
 import NumerologyInsights from './pages/NumerologyInsights';
 import FAQ from './pages/FAQ';
 import Contact from './pages/Contact';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
     <HelmetProvider>
       <Router>
-        <div className="min-h-screen flex flex-col bg-cream-50">
-         <a href="#main-content" className="skip-link">
-  Skip to main content
-</a>
+        <div className="min-h-screen flex flex-col bg-neutral-light">
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-[9999] bg-neutral-dark text-white px-4 py-2 rounded-br-lg focus:outline-none focus:ring-2 focus:ring-primary"
+          >
+            Skip to main content
+          </a>
           <Header />
-          <main className="flex-grow">
+          <main id="main-content" className="flex-grow" role="main">
             <AnimatePresence mode="wait">
               <Routes>
                 <Route path="/" element={<HomePage />} />
@@ -46,6 +50,7 @@ function App() {
                 <Route path="/numerology-insights" element={<NumerologyInsights />} />
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </AnimatePresence>
           </main>

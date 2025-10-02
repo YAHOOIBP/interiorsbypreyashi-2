@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-3 mb-6">
               {/* Footer Logo */}
-              <div className="w-12 h-12 bg-amber-600 rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
                 <img
                   src="/images/logo/logo.png"
                   alt="Interiors By Preyashi Logo"
@@ -129,7 +129,7 @@ const Footer: React.FC = () => {
                 <li key={link.name}>
                   <button
                     onClick={() => handleNavigation(link.path)}
-                    className="text-gray-300 hover:text-amber-400 transition-colors duration-300 text-left"
+                    className="text-gray-300 hover:text-primary-light transition-colors duration-300 text-left"
                   >
                     {link.name}
                   </button>
@@ -155,11 +155,11 @@ const Footer: React.FC = () => {
             <h3 className="text-lg font-semibold mb-6">Contact Info</h3>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
-                <Phone className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
+                <Phone className="w-5 h-5 text-primary-light mt-0.5 flex-shrink-0" />
                 <div>
                   <a 
                     href="tel:+918486076075" 
-                    className="text-gray-300 hover:text-amber-400 transition-colors duration-300"
+                    className="text-gray-300 hover:text-primary-light transition-colors duration-300"
                   >
                     +91 8486076075
                   </a>
@@ -167,11 +167,11 @@ const Footer: React.FC = () => {
               </div>
               
               <div className="flex items-start space-x-3">
-                <Mail className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
+                <Mail className="w-5 h-5 text-primary-light mt-0.5 flex-shrink-0" />
                 <div>
                   <a 
                     href="mailto:contact@interiorsbypreyashi.com" 
-                    className="text-gray-300 hover:text-amber-400 transition-colors duration-300 break-all"
+                    className="text-gray-300 hover:text-primary-light transition-colors duration-300 break-all"
                   >
                     contact@interiorsbypreyashi.com
                   </a>
@@ -179,7 +179,7 @@ const Footer: React.FC = () => {
               </div>
               
               <div className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
+                <MapPin className="w-5 h-5 text-primary-light mt-0.5 flex-shrink-0" />
                 <div className="text-gray-300 text-sm leading-relaxed">
                   Manav Kalyan Road, Parbatia<br />
                   Namgarh Path - 03<br />
@@ -188,7 +188,7 @@ const Footer: React.FC = () => {
               </div>
               
               <div className="flex items-start space-x-3">
-                <Clock className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
+                <Clock className="w-5 h-5 text-primary-light mt-0.5 flex-shrink-0" />
                 <div className="text-gray-300 text-sm">
                   <p>Mon - Sat: 10 AM - 7 PM</p>
                   <p>Sunday: By Appointment</p>

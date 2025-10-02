@@ -741,19 +741,21 @@ select.form-control {
 @tailwind components;
 @tailwind utilities;
 
-/* ✨ ELEGANT GOLD/AMBER LUXURY THEME ✨ */
+/* ✨ INDIAN HERITAGE LUXURY THEME ✨ */
 :root {
-  /* Luxury Gold Color Palette */
-  --color-primary-50: #fefbf3;   /* Very light cream */
-  --color-primary-100: #fef6e7;  /* Light cream */
-  --color-primary-200: #fde8c3;  /* Soft gold */
-  --color-primary-300: #fbd494;  /* Light gold */
-  --color-primary-400: #f7b955;  /* Medium gold */
-  --color-primary-500: #f59e0b;  /* Rich gold - main brand */
-  --color-primary-600: #d97706;  /* Deep gold - hover states */
-  --color-primary-700: #b45309;  /* Dark gold */
-  --color-primary-800: #92400e;  /* Darker gold */
-  --color-primary-900: #78350f;  /* Darkest gold */
+  /* Indian Heritage Color Palette - Warm Orange/Peru Tones */
+  --color-primary-50: #fef5f1;   /* Very light cream */
+  --color-primary-100: #fde8dd;  /* Light peach */
+  --color-primary-200: #f8d2b8;  /* Soft terra cotta */
+  --color-primary-300: #ebb89d;  /* Light peru */
+  --color-primary-400: #de9977;  /* Medium peru */
+  --color-primary-500: #D2691E;  /* Rich Peru - PRIMARY BRAND */
+  --color-primary-600: #8B4513;  /* Saddle Brown - DARK */
+  --color-primary-700: #CD853F;  /* Peru Light - LIGHT/ACCENT */
+  --color-primary-800: #704214;  /* Darker brown */
+  --color-primary-900: #2F2F2F;  /* Charcoal - NEUTRAL DARK */
+  --color-neutral-light: #F5F5DC;  /* Beige */
+  --color-cta: #228B22;  /* Forest Green - CTA */
 }
 
 /* 🎯 OVERRIDE ALL INCONSISTENT COLORS */
@@ -1492,5 +1494,73 @@ textarea.success {
   .no-justify-mobile {
     text-align: left !important;
     hyphens: none !important;
+  }
+}
+
+/* MOBILE HERO SECTION ENHANCEMENTS */
+@media (max-width: 768px) {
+  /* Ensure hero content is always visible */
+  section.relative.min-h-screen {
+    min-height: 100vh;
+    padding: 1rem;
+  }
+
+  /* Fix hero text overflow */
+  .text-center.lg\\:text-left {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  /* Responsive buttons */
+  button, .btn, a[role="button"] {
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    padding: clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+  }
+
+  /* Responsive headings */
+  h1 {
+    font-size: clamp(1.875rem, 8vw, 3rem) !important;
+    line-height: 1.2 !important;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 6vw, 2.5rem) !important;
+  }
+
+  h3 {
+    font-size: clamp(1.25rem, 5vw, 2rem) !important;
+  }
+}
+
+/* MOBILE PORTRAIT (320px - 480px) */
+@media (max-width: 480px) {
+  body {
+    font-size: 16px; /* Minimum for iOS to prevent zoom */
+  }
+
+  /* Ensure minimum tap target size */
+  button, a, input[type="button"], input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Fix hero section on very small screens */
+  .relative.z-20 {
+    padding: 1rem !important;
+  }
+
+  /* Better paragraph spacing */
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+}
+
+/* TABLET LANDSCAPE */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }

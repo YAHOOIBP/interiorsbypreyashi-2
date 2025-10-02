@@ -379,29 +379,29 @@ const Home: React.FC = () => {
           }} />
         </div>
 
-        <div className="relative z-20 max-w-7xl mx-auto px-0 sm:px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-16 py-8 md:py-0 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center lg:text-left"
+            className="text-center lg:text-left px-4 sm:px-0"
           >
             <motion.h1 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-serif mb-6 text-white leading-tight drop-shadow-lg"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif mb-4 md:mb-6 text-white leading-tight drop-shadow-lg"
             >
-              <span className="text-cyan-300">Interiors By</span><br />
-              <span className="text-amber-400 italic">Preyashi</span>
+              <span className="text-primary-light">Interiors By</span><br />
+              <span className="text-primary italic">Preyashi</span>
             </motion.h1>
             
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl md:text-2xl text-gray-100 mb-8 leading-relaxed drop-shadow-md"
+              className="text-lg sm:text-xl md:text-2xl text-gray-100 mb-6 md:mb-8 leading-relaxed drop-shadow-md"
             >
               Where ancient wisdom meets modern design.
             </motion.p>
@@ -410,10 +410,10 @@ const Home: React.FC = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed drop-shadow-md"
+              className="text-base sm:text-lg md:text-xl text-gray-200 mb-6 md:mb-8 leading-relaxed drop-shadow-md"
             >
               Creating harmonious spaces through<br />
-              <span className="text-amber-300 font-semibold">Interior Design</span>, <span className="text-green-300 font-semibold">Vastu Shastra</span> & <span className="text-cyan-300 font-semibold">Vedic Numerology</span>.
+              <span className="text-primary-light font-semibold">Interior Design</span>, <span className="text-cta font-semibold">Vastu Shastra</span> & <span className="text-accent font-semibold">Vedic Numerology</span>.
             </motion.p>
 
             <motion.div
@@ -424,13 +424,13 @@ const Home: React.FC = () => {
             >
               <button
                 onClick={() => setIsLeadModalOpen(true)}
-                className="bg-amber-600 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 border border-amber-500"
+                className="bg-primary text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-medium hover:bg-primary-dark transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 Start Your Project
               </button>
               <Link
                 to="/portfolio"
-                className="border-2 border-cyan-400 text-cyan-400 px-8 py-4 rounded-lg text-lg font-medium hover:bg-cyan-400 hover:text-gray-900 transition-all duration-300 flex items-center justify-center backdrop-blur-sm bg-white/10"
+                className="border-2 border-primary-light text-primary-light px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-medium hover:bg-primary-light hover:text-neutral-dark transition-all duration-300 flex items-center justify-center backdrop-blur-sm bg-white/10"
               >
                 View Portfolio
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -443,7 +443,7 @@ const Home: React.FC = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative"
+            className="relative hidden lg:block"
           >
             <div className="relative w-full h-96 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/30 backdrop-blur-sm">
               <AnimatePresence mode="wait">
@@ -466,7 +466,7 @@ const Home: React.FC = () => {
               {/* Enhanced overlay with title */}
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6">
                 <h3 className="text-white font-semibold text-lg mb-2 drop-shadow-lg">{autocadDrawings[currentDrawingIndex].title}</h3>
-                <div className="flex items-center text-amber-400">
+                <div className="flex items-center text-primary-light">
                   <Star className="w-4 h-4 mr-1" />
                   <span className="text-sm drop-shadow-md">Professional Design</span>
                 </div>
@@ -475,12 +475,12 @@ const Home: React.FC = () => {
 
             {/* Enhanced floating stats with backdrop blur */}
             <div className="absolute -top-4 -left-4 bg-white/20 backdrop-blur-md rounded-xl p-4 text-white border border-white/30 shadow-xl">
-              <div className="text-2xl font-bold text-amber-400 drop-shadow-lg">7+</div>
+              <div className="text-2xl font-bold text-primary-light drop-shadow-lg">7+</div>
               <div className="text-sm drop-shadow-md">Years Experience</div>
             </div>
 
             <div className="absolute -bottom-4 -right-4 bg-white/20 backdrop-blur-md rounded-xl p-4 text-white border border-white/30 shadow-xl">
-              <div className="text-2xl font-bold text-cyan-400 drop-shadow-lg">50+</div>
+              <div className="text-2xl font-bold text-accent drop-shadow-lg">50+</div>
               <div className="text-sm drop-shadow-md">Projects</div>
             </div>
           </motion.div>
@@ -504,7 +504,7 @@ const Home: React.FC = () => {
           </motion.div>
 
           <div 
-            className="bg-gradient-to-r from-amber-50 to-pink-50 rounded-2xl p-8 md:p-12"
+            className="bg-gradient-to-r from-neutral-light to-primary-light/10 rounded-2xl p-8 md:p-12"
             onTouchStart={(e) => handleTouchStart(e, 'interiors')}
             onTouchMove={(e) => handleTouchMove(e, 'interiors')}
             onTouchEnd={(e) => handleTouchEnd(e, 'interiors')}
@@ -525,7 +525,7 @@ const Home: React.FC = () => {
                   <p className="text-lg text-gray-700 mb-6 max-w-3xl mx-auto">
                     {worldClassInteriors[currentInteriorIndex].description}
                   </p>
-                  <p className="text-amber-600 font-medium italic">
+                  <p className="text-primary font-medium italic">
                     {worldClassInteriors[currentInteriorIndex].inspiration}
                   </p>
                 </motion.div>
@@ -538,7 +538,7 @@ const Home: React.FC = () => {
                   key={index}
                   onClick={() => setCurrentInteriorIndex(index)}
                   className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-                    index === currentInteriorIndex ? 'bg-amber-600' : 'bg-gray-300'
+                    index === currentInteriorIndex ? 'bg-primary' : 'bg-gray-300'
                   }`}
                 />
               ))}
@@ -548,7 +548,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Vastu & Numerology - Simplified with Touch Support */}
-      <section className="py-20 bg-gradient-to-r from-teal-50 to-blue-50">
+      <section className="py-20 bg-gradient-to-r from-neutral-light to-primary-light/20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Vastu Wisdom */}
@@ -578,7 +578,7 @@ const Home: React.FC = () => {
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <h4 className="text-xl font-semibold text-amber-600 mb-4">
+                    <h4 className="text-xl font-semibold text-primary mb-4">
                       {vastuTips[currentVastuTip].title}
                     </h4>
                     <p className="text-gray-700 leading-relaxed">
@@ -594,7 +594,7 @@ const Home: React.FC = () => {
                     key={index}
                     onClick={() => setCurrentVastuTip(index)}
                     className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                      index === currentVastuTip ? 'bg-amber-600' : 'bg-gray-300'
+                      index === currentVastuTip ? 'bg-primary' : 'bg-gray-300'
                     }`}
                   />
                 ))}
@@ -628,7 +628,7 @@ const Home: React.FC = () => {
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <h4 className="text-xl font-semibold text-amber-600 mb-4">
+                    <h4 className="text-xl font-semibold text-primary mb-4">
                       {numerologyInsights[currentNumerologyInsight].title}
                     </h4>
                     <p className="text-gray-700 leading-relaxed">
@@ -644,7 +644,7 @@ const Home: React.FC = () => {
                     key={index}
                     onClick={() => setCurrentNumerologyInsight(index)}
                     className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                      index === currentNumerologyInsight ? 'bg-amber-600' : 'bg-gray-300'
+                      index === currentNumerologyInsight ? 'bg-primary' : 'bg-gray-300'
                     }`}
                   />
                 ))}
@@ -744,6 +744,7 @@ const Home: React.FC = () => {
                     <img
                       src={logo.src}
                       alt={logo.alt}
+                      loading="lazy"
                       className="w-full h-full object-contain transition-transform duration-300"
                       style={{ 
                         filter: 'none', // Remove any grayscale filter
@@ -763,7 +764,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Instagram Reels - Enhanced Auto-scrolling + Swipe Carousel */}
-      <section className="py-20 bg-gradient-to-r from-pink-50 to-amber-100">
+      <section className="py-20 bg-gradient-to-r from-neutral-light to-primary-light/30">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -798,10 +799,11 @@ const Home: React.FC = () => {
                   onClick={() => window.open(reel.reelLink, '_blank')}
                   whileHover={{ scale: 1.02 }}
                 >
-                  <div className="relative aspect-square bg-gradient-to-br from-amber-100 to-amber-200 flex items-center justify-center">
+                  <div className="relative aspect-square bg-gradient-to-br from-neutral-light to-primary-light/40 flex items-center justify-center">
                     <img
                       src={reel.coverImage}
                       alt={reel.title}
+                      loading="lazy"
                       className="w-full h-full object-contain"
                       onError={(e) => {
                         // Fallback to default cover
@@ -816,7 +818,7 @@ const Home: React.FC = () => {
                   <div className="p-6">
                     <h3 className="font-semibold text-gray-800 mb-2">{reel.title}</h3>
                     <p className="text-gray-600 text-sm">{reel.description}</p>
-                    <div className="mt-4 flex items-center text-pink-600 text-sm font-medium">
+                    <div className="mt-4 flex items-center text-primary text-sm font-medium">
                       <ExternalLink className="w-4 h-4 mr-1" />
                       Watch on Instagram
                     </div>
@@ -829,7 +831,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Testimonials - Enhanced with Google Reviews Link and Touch Support */}
-      <section className="py-20 bg-amber-600 text-white">
+      <section className="py-20 bg-primary text-white">
         <div className="max-w-4xl mx-auto px-4 text-center overflow-x-auto scrollbar-hide" style={{ touchAction: 'pan-y' }}>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -889,7 +891,7 @@ const Home: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => window.open('https://maps.app.goo.gl/h9urqLv7WTLWRwbF8', '_blank')}
-            className="bg-white text-amber-600 px-8 py-4 rounded-lg font-medium hover:bg-gray-100 transition-colors duration-300 inline-flex items-center shadow-lg"
+            className="bg-white text-primary px-8 py-4 rounded-lg font-medium hover:bg-neutral-light transition-colors duration-300 inline-flex items-center shadow-lg"
           >
             <Star className="w-5 h-5 mr-2 fill-yellow-500 text-yellow-500" />
             Read All Google Reviews
@@ -917,7 +919,7 @@ const Home: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsLeadModalOpen(true)}
-                className="bg-amber-600 text-white px-8 py-4 rounded-lg font-medium hover:bg-amber-700 transition-colors duration-300"
+                className="bg-cta text-white px-8 py-4 rounded-lg font-medium hover:bg-green-700 transition-colors duration-300"
               >
                 Get Free Consultation
               </motion.button>

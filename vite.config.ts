@@ -13,7 +13,9 @@ const routes = [
   '/portfolio',
   '/blog',
   '/faq',
-  '/contact'
+  '/contact',
+  '/vastu-insights',
+  '/numerology-insights'
 ];
 
 // https://vitejs.dev/config/
@@ -29,6 +31,14 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  server: {
+    headers: {
+      'X-Frame-Options': 'DENY',
+      'X-Content-Type-Options': 'nosniff',
+      'Referrer-Policy': 'strict-origin-when-cross-origin',
+      'Permissions-Policy': 'camera=(), microphone=(), geolocation=()'
+    }
+  },
   build: {
     rollupOptions: {
       output: {
@@ -39,6 +49,8 @@ export default defineConfig({
           firebase: ['firebase/app', 'firebase/firestore', 'firebase/analytics']
         }
       }
-    }
+    },
+    cssCodeSplit: true,
+    minify: 'esbuild'
   }
 });

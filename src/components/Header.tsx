@@ -191,17 +191,18 @@ const Header: React.FC = () => {
               </button>
             </div>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-1">
+            {/* Desktop Navigation - ALWAYS VISIBLE ON DESKTOP */}
+            <nav className="hidden lg:flex items-center space-x-2 xl:space-x-4">
               {navigationItems.map((item) => renderNavItem(item))}
             </nav>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button - PROMINENT AND VISIBLE */}
             <div className="lg:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2 rounded-lg text-neutral-dark hover:text-primary hover:bg-neutral-light/50 transition-colors duration-300"
+                className="p-3 rounded-lg bg-primary text-white hover:bg-primary-dark transition-all duration-300 shadow-md border-2 border-primary-dark"
                 aria-label="Toggle mobile menu"
+                aria-expanded={isMobileMenuOpen}
               >
                 {isMobileMenuOpen ? (
                   <X className="w-6 h-6" />

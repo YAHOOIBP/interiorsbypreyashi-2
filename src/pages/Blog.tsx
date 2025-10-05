@@ -6,6 +6,7 @@ import { BLOG_POSTS, getAllCategories } from '../lib/blogData';
 import SEOHead from '../components/SEOHead';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
+import emailjs from '@emailjs/browser';
 
 const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -17,7 +18,14 @@ const Blog = () => {
 
   async function handleSubscribe() {
   if (!email) return;
+    const emailData = {
+    subscriber_email: email,
+    subscription_date: new Date().toLocaleDateString(),
+    subscription_time: new Date().toLocaleTimeString()
+  };
+
   try {
+    await emailjs.send('service_u6op9ls', 'template_0jnte3q', emailData, 'VyG6mRGf3pAIfwSNl');
     await addDoc(collection(db, 'subscribers'), {
       email,
       subscribedAt: new Date().toISOString()

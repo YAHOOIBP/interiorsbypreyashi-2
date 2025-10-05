@@ -113,7 +113,6 @@ const Contact = () => {
   setIsSubmitting(false);
 };
 
-
   const handleWhatsAppContact = () => {
     const message = encodeURIComponent("Hello! I'm interested in your interior design services. I would like to discuss my project with you.");
     window.open(`https://wa.me/918486076075?text=${message}`, '_blank');

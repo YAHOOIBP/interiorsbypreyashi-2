@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, MessageCircle, CheckCircle, User, Briefcase, Calendar, FileText, Send } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
-import emailjs from '@emailjs/browser';
+import { sendLeadEmail } from '../utils/emailService';
+import { submitLead } from '../lib/firebase';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../lib/firebase';
+
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -65,24 +69,50 @@ const Contact = () => {
     }));
   };
 
-  const generateReferenceId = () => {
-    const timestamp = Date.now().toString().slice(-6);
-    const random = Math.random().toString(36).substring(2, 5).toUpperCase();
-    return `IBP-${timestamp}-${random}`;
-  };
-
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    const refId = generateReferenceId();
-    setReferenceId(refId);
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  try {
+    // Send email notification
+    const emailResult = await sendLeadEmail(formData);
+
+    // Submit lead via your Firebase helper, which returns sequential leadId
+    const result = await submitLead({
+      name: formData.fullName,
+      phone: formData.phone,
+      email: formData.email,
+      projectType: formData.projectType,
+      projectLocation: formData.projectLocation,
+      budget: formData.budget,
+      timeline: formData.timeline,
+      message: formData.message
+    });
+
+    if (!result.success) {
+      throw new Error('submitLead failed');
+    }
+
+    // Save backup to Firestore
+    await addDoc(collection(db, 'leads'), {
+      ...formData,
+      leadId: result.leadId,
+      submittedAt: new Date().toISOString(),
+      emailSent: emailResult.success
+    });
+
+    // Show sequential reference ID
+    setReferenceId(result.leadId);
     setSubmitted(true);
-    setIsSubmitting(false);
-  };
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (error) {
+    console.error('Submission error:', error);
+    alert('Submission failed. Please try again.');
+  }
+
+  setIsSubmitting(false);
+};
+
 
   const handleWhatsAppContact = () => {
     const message = encodeURIComponent("Hello! I'm interested in your interior design services. I would like to discuss my project with you.");

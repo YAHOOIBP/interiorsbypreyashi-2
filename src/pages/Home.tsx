@@ -465,7 +465,7 @@ useEffect(() => {
               className="text-base sm:text-lg md:text-xl text-gray-200 mb-6 md:mb-8 leading-relaxed drop-shadow-md"
             >
               Creating harmonious spaces through<br />
-              <span className="text-primary-light font-semibold">Interior Design</span>, <span className="text-cta font-semibold">Vastu Shastra</span> & <span className="text-accent font-semibold">Vedic Numerology</span>.
+              <span className="text-primary-light font-semibold">Interior Design</span>, <span className="text-cta font-semibold">Vastu Shastra</span> & <span className="text-yellow-600 font-semibold">Vedic Numerology</span>.
             </motion.p>
 
             <motion.div

@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   /* Primitive Color Tokens */
   --color-white: rgba(255, 255, 255, 1);
@@ -736,10 +740,6 @@ select.form-control {
   src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2')
     format('woff2');
 }
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 /* ✨ INDIAN HERITAGE LUXURY THEME ✨ */
 :root {
@@ -1564,39 +1564,42 @@ textarea.success {
     padding-right: 2rem;
   }
 }
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-/* ===== GLOBAL RESETS ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* ===== INTELLIGENT OVERFLOW MANAGEMENT ===== */
+
+/* Root container: Prevent page-wide horizontal scroll */
+html {
+  overflow-x: hidden;
+  width: 100%;
 }
 
-/* ===== PREVENT HORIZONTAL SCROLL (WITHOUT BREAKING DROPDOWNS) ===== */
-
-/* Body: Prevent horizontal scroll, allow vertical */
+/* Body: Allow natural overflow for nested components */
 body {
-  overflow-x: hidden;
-  overflow-y: auto;
   width: 100%;
   position: relative;
+  /* NO overflow-x: hidden - let sections handle their own overflow */
 }
 
 /* Header and Navigation: MUST allow overflow for dropdowns */
 header,
 header nav,
-.header-dropdown {
+.header-dropdown,
+.mobile-menu {
   overflow: visible !important;
+  position: relative;
+  z-index: 9999;
 }
 
-/* Sections: Prevent horizontal overflow */
+/* Sections: Careful overflow management */
 section {
-  overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
+  /* NO overflow-x: hidden by default - breaks carousels */
+}
+
+/* ONLY apply overflow-x: hidden to non-carousel sections */
+section:not(.carousel-section) {
+  overflow-x: clip; /* Clip instead of hidden - better for nested content */
 }
 
 /* ===== FIX WIDE ELEMENTS ===== */
@@ -1654,22 +1657,56 @@ html {
   max-width: 100%;
 }
 
+/* ===== CAROUSEL-SPECIFIC OVERFLOW RULES ===== */
+
+/* Client Logos Carousel - Allow horizontal movement */
+.client-logos-carousel {
+  overflow: visible !important;
+  position: relative;
+}
+
+.client-logos-carousel .carousel-container {
+  overflow: hidden !important; /* Hide overflow ONLY in carousel container */
+  position: relative;
+  width: 100%;
+}
+
+/* Instagram Reels Carousel - Allow horizontal scroll */
+.instagram-reels-carousel {
+  overflow: visible !important;
+  position: relative;
+}
+
+.instagram-reels-carousel .carousel-container {
+  overflow: hidden !important; /* Hide overflow ONLY in carousel container */
+  position: relative;
+  width: 100%;
+  touch-action: pan-y pinch-zoom; /* Allow vertical scroll and pinch zoom */
+}
+
+/* Framer Motion carousel animations */
+.carousel-container [style*="transform"] {
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
 /* ===== MOBILE SPECIFIC FIXES ===== */
 @media (max-width: 768px) {
-  /* Prevent any element from being wider than screen */
-  * {
-    max-width: 100vw;
-  }
-  
   /* Allow header dropdowns on mobile */
   header,
   header nav,
   .mobile-menu {
     overflow: visible !important;
   }
-  
+
   /* Fix for mobile menu */
   .mobile-menu-open {
+    overflow: visible !important;
+  }
+
+  /* Ensure carousels work on mobile */
+  .carousel-section {
     overflow: visible !important;
   }
 }

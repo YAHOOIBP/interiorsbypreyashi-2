@@ -66,7 +66,7 @@ const Header: React.FC = () => {
       <span className="mx-0.5 sm:mx-1 text-neutral-dark/50">•</span>
       <span className="text-green-600 font-semibold">Vastu</span>
       <span className="mx-0.5 sm:mx-1 text-neutral-dark/50">•</span>
-      <span className="text-amber-600 font-semibold">Numerology</span>
+      <span className="text-yellow-600 font-semibold">Numerology</span>
     </span>
   </div>
 </Link>

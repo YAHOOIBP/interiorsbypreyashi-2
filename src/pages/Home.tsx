@@ -23,11 +23,6 @@ const Home: React.FC = () => {
   const [reelsOffset, setReelsOffset] = useState(0);
   const [autoScroll, setAutoScroll] = useState(true);
 
-// ADD THESE NEW ONES for smooth reels dragging
-const [isDraggingReels, setIsDraggingReels] = useState(false);
-const [reelsDragStart, setReelsDragStart] = useState(0);
-const [reelsDragOffset, setReelsDragOffset] = useState(0);
-
   // Touch handlers for swipe functionality
   const handleTouchStart = (e: React.TouchEvent, section: string) => {
     setTouchStartX(e.touches[0].clientX);
@@ -80,19 +75,16 @@ const [reelsDragOffset, setReelsDragOffset] = useState(0);
           // Swipe right - previous interior
           setCurrentInteriorIndex(prev => prev === 0 ? worldClassInteriors.length - 1 : prev - 1);
         }
-     } else if (section === 'reels') {
-  const cardWidth = 320 + 24;
-  const maxOffset = 0;
-  const minOffset = -(cardWidth * instagramReels.length);
-  
-  if (swipeDistance > 0) {
-    // Swipe left - advance carousel
-    setReelsOffset(prev => Math.max(minOffset, prev - cardWidth));
-  } else {
-    // Swipe right - go back
-    setReelsOffset(prev => Math.min(maxOffset, prev + cardWidth));
-  }
-}
+      } else if (section === 'reels') {
+        const cardWidth = 320 + 24; // card width + gap
+        if (swipeDistance > 0) {
+          // Swipe left - advance carousel
+          setReelsOffset(prev => prev - cardWidth);
+        } else {
+          // Swipe right - go back
+          setReelsOffset(prev => prev + cardWidth);
+        }
+      }
     }
     
     setIsSwiping(false);
@@ -104,42 +96,6 @@ const [reelsDragOffset, setReelsDragOffset] = useState(0);
       setTimeout(() => setAutoScroll(true), 2000);
     }
   };
-// Smooth continuous dragging ONLY for reels
-const handleReelsDragStart = (e: React.TouchEvent) => {
-  setAutoScroll(false);
-  setIsDraggingReels(true);
-  setReelsDragStart(e.touches[0].clientX);
-  setReelsDragOffset(reelsOffset);
-};
-
-const handleReelsDragMove = (e: React.TouchEvent) => {
-  if (!isDraggingReels) return;
-  const currentX = e.touches[0].clientX;
-  const diff = currentX - reelsDragStart;
-  
-  // Apply smooth drag with the offset
-  const newOffset = reelsDragOffset + diff;
-  const cardWidth = 320 + 24;
-  const maxOffset = 0;
-  const minOffset = -(cardWidth * (instagramReels.length - 1));
-  
-  // Clamp to boundaries
-  setReelsOffset(Math.max(minOffset, Math.min(maxOffset, newOffset)));
-};
-
-const handleReelsDragEnd = () => {
-  if (!isDraggingReels) return;
-  
-  // Snap to nearest card
-  const cardWidth = 320 + 24;
-  const currentIndex = Math.round(-reelsOffset / cardWidth);
-  setReelsOffset(-(currentIndex * cardWidth));
-  
-  setIsDraggingReels(false);
-  
-  // Resume auto-scroll after 3 seconds
-  setTimeout(() => setAutoScroll(true), 3000);
-};
 
   // AutoCAD Drawings for Hero Section
   const autocadDrawings = [
@@ -341,27 +297,19 @@ const handleReelsDragEnd = () => {
   }, []);
 
   // Auto-scroll effect for Instagram reels
-  // Smooth auto-scroll for reels
-useEffect(() => {
-  if (!autoScroll || isDraggingReels) return;
+  useEffect(() => {
+    if (!autoScroll) return;
+    
+    const interval = setInterval(() => {
+      setReelsOffset(prev => {
+        const nextOffset = prev - 1;
+        // Reset when reaching the end
+        return nextOffset <= -totalWidth ? 0 : nextOffset;
+      });
+    }, 20);
 
-  const interval = setInterval(() => {
-    setReelsOffset(prev => {
-      const cardWidth = 320 + 24;
-      const totalCards = instagramReels.length;
-      const nextOffset = prev - 2; // Smooth pixel-by-pixel scroll
-      
-      // Loop back when reaching end
-      if (nextOffset <= -(cardWidth * totalCards)) {
-        return 0;
-      }
-      return nextOffset;
-    });
-  }, 30); // Smooth 33fps
-
-  return () => clearInterval(interval);
-}, [autoScroll, isDraggingReels, instagramReels.length]);
-
+    return () => clearInterval(interval);
+  }, [autoScroll, totalWidth]);
 
   // Handle home page navigation - scroll to top
   useEffect(() => {
@@ -829,21 +777,11 @@ useEffect(() => {
 
           {/* Auto-scrolling + Swipe Reels Carousel */}
           <div 
-  className="relative overflow-hidden cursor-grab active:cursor-grabbing"
-  onTouchStart={handleReelsDragStart}
-  onTouchMove={handleReelsDragMove}
-  onTouchEnd={handleReelsDragEnd}
->
-  <motion.div
-    animate={{ x: reelsOffset }}
-    transition={{ 
-      type: isDraggingReels ? "tween" : "tween",
-      duration: isDraggingReels ? 0 : 0.5,
-      ease: "easeOut"
-    }}
-    className="flex space-x-6 select-none"
-  >
-
+            className="relative overflow-hidden"
+            onTouchStart={(e) => handleTouchStart(e, 'reels')}
+            onTouchMove={(e) => handleTouchMove(e, 'reels')}
+            onTouchEnd={(e) => handleTouchEnd(e, 'reels')}
+          >
             <motion.div
               style={{ x: reelsOffset }}
               animate={autoScroll ? { x: [-totalWidth, 0] } : {}}
@@ -888,7 +826,7 @@ useEffect(() => {
                 </motion.div>
               ))}
             </motion.div>
-          </motion.div>  
+          </div>
         </div>
       </section>
 

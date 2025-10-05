@@ -156,27 +156,14 @@ const Blog = () => {
           </div>
         </div>
 
-        {/* FIX 1: Article Content - Enhanced Readability */}
-        <article className="max-w-4xl mx-auto px-4 py-16">
-          <div className="prose prose-lg max-w-none">
-            <div style={{ color: '#374151', fontSize: '1.125rem', lineHeight: '1.75' }}>
-              <h2 style={{ color: '#1f2937', fontSize: '2rem', margin: '2rem 0 1rem 0', fontWeight: 'bold', fontFamily: 'serif' }}>Understanding {selectedPost.category} in Modern Context</h2>
-              <p style={{ marginBottom: '1.5rem' }}>{selectedPost.excerpt}</p>
-              
-              <h2 style={{ color: '#1f2937', fontSize: '2rem', margin: '2rem 0 1rem 0', fontWeight: 'bold', fontFamily: 'serif' }}>Key Principles and Insights</h2>
-              
-              <h3 style={{ color: '#1f2937', fontSize: '1.5rem', margin: '1.5rem 0 0.75rem 0', fontWeight: 'bold' }}>Professional Approach</h3>
-              <p style={{ marginBottom: '1.5rem' }}>Our expertise in {selectedPost.category.toLowerCase()} combines traditional wisdom with modern design principles. This approach ensures that every space we create is both aesthetically pleasing and functionally superior.</p>
-              
-              <h3 style={{ color: '#1f2937', fontSize: '1.5rem', margin: '1.5rem 0 0.75rem 0', fontWeight: 'bold' }}>Practical Applications</h3>
-              <p style={{ marginBottom: '1.5rem' }}>We believe in creating spaces that truly resonate with our clients' lifestyle and aspirations. Each project is carefully planned to maximize both beauty and functionality.</p>
-              
-              <h3 style={{ color: '#1f2937', fontSize: '1.5rem', margin: '1.5rem 0 0.75rem 0', fontWeight: 'bold' }}>Expert Recommendations</h3>
-              <p style={{ marginBottom: '1.5rem' }}>Based on our experience across Northeast India, we recommend a thoughtful integration of traditional principles with contemporary design elements for optimal results.</p>
-              
-              <p style={{ marginBottom: '1.5rem' }}>By carefully applying these principles, we create harmonious living environments that support both aesthetic appeal and daily functionality, ensuring every space becomes a true reflection of its inhabitants.</p>
-            </div>
-          </div>
+                <article className="max-w-4xl mx-auto px-4 py-16">
+  <div className="prose prose-lg max-w-none">
+    <div 
+      style={{ color: '#374151', fontSize: '1.125rem', lineHeight: '1.75' }}
+      dangerouslySetInnerHTML={{ __html: selectedPost.content }}
+      className="blog-content"
+    />
+  </div>
           
           {/* Author Bio */}
           <div className="mt-16 p-8 bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl">

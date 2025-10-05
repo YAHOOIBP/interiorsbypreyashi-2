@@ -59,7 +59,7 @@ const Header: React.FC = () => {
               <span className="text-lg lg:text-xl font-bold text-neutral-dark">
                 Interiors by Preyashi
               </span>
-              <span className="text-xs text-neutral-dark hidden sm:block">
+              <span className="text-xs text-neutral-dark">
                 Design • Vastu • Numerology
               </span>
             </div>

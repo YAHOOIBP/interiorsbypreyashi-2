@@ -5,6 +5,7 @@ import { HelmetProvider } from 'react-helmet-async';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import HomePage from './pages/Home';
 import About from './pages/About';
 import WhereWeWork from './pages/WhereWeWork';
@@ -25,6 +26,7 @@ function App() {
   return (
     <HelmetProvider>
       <Router>
+        <ScrollToTop />
         <div className="min-h-screen flex flex-col bg-neutral-light">
           <a
             href="#main-content"

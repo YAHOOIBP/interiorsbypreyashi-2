@@ -1002,10 +1002,11 @@ useEffect(() => {
         onClose={() => setIsLeadModalOpen(false)}
         title="Start Your Dream Project"
       />
+      {/* Quiz Modal */}
       <QuizModal
-  isOpen={isQuizOpen}
-  onClose={() => setIsQuizOpen(false)}
-/>
+        isOpen={isQuizOpen}
+        onClose={() => setIsQuizOpen(false)}
+      />
 
     </div>
   );

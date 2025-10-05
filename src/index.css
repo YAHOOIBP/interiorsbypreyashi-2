@@ -1564,3 +1564,312 @@ textarea.success {
     padding-right: 2rem;
   }
 }
+/* Prevent horizontal scroll on mobile */
+body {
+  overflow-x: hidden;
+}
+
+/* Ensure all sections don't overflow */
+section {
+  overflow-x: hidden;
+}
+
+/* Fix container width issues */
+.container {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+/* ========================================
+   BLOG POST TYPOGRAPHY & SPACING FIXES
+   ======================================== */
+
+/* Article Container */
+article,
+.blog-content,
+.prose {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  line-height: 1.8;
+}
+
+/* Main Heading (H1) */
+article h1,
+.blog-content h1,
+.prose h1 {
+  color: #2F2F2F !important; /* Dark charcoal */
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid #D2691E; /* Brand color underline */
+}
+
+/* Section Headings (H2) */
+article h2,
+.blog-content h2,
+.prose h2 {
+  color: #2F2F2F !important; /* Dark charcoal */
+  font-size: 1.875rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 1.5rem;
+  }
+
+/* Sub-headings (H3) */
+article h3,
+.blog-content h3,
+.prose h3 {
+  color: #D2691E !important; /* Brand color */
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Paragraphs */
+article p,
+.blog-content p,
+.prose p {
+  color: #2F2F2F !important; /* Dark charcoal */
+  font-size: 1.125rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+/* Lists (ul, ol) */
+article ul,
+article ol,
+.blog-content ul,
+.blog-content ol,
+.prose ul,
+.prose ol {
+  color: #2F2F2F !important;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+}
+
+/* List Items */
+article ul li,
+article ol li,
+.blog-content li,
+.prose li {
+  color: #2F2F2F !important;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  margin-bottom: 1rem; /* Space between list items */
+  padding-left: 0.5rem;
+}
+
+/* Nested Lists */
+article ul li ul,
+article ol li ol,
+.blog-content li ul,
+.prose li ul {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Bold Text */
+article strong,
+article b,
+.blog-content strong,
+.prose strong {
+  color: #2F2F2F !important;
+  font-weight: 600;
+}
+
+/* Links */
+article a,
+.blog-content a,
+.prose a {
+  color: #D2691E !important; /* Brand color */
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+article a:hover,
+.blog-content a:hover,
+.prose a:hover {
+  color: #8B4513 !important; /* Darker brand color */
+}
+
+/* Blockquotes */
+article blockquote,
+.blog-content blockquote,
+.prose blockquote {
+  border-left: 4px solid #D2691E;
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: #555555;
+  background: #F5F5DC;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+/* Mistake/Fix Sections (from your blog) */
+article .mistake,
+.blog-content .mistake {
+  color: #DC2626 !important; /* Red for mistakes */
+  font-weight: 600;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+article .fix,
+.blog-content .fix {
+  color: #16A34A !important; /* Green for fixes */
+  font-weight: 600;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+/* Icons before mistake/fix */
+article .mistake::before {
+  content: "❌ ";
+  margin-right: 0.5rem;
+  font-size: 1.25rem;
+}
+
+article .fix::before {
+  content: "✅ ";
+  margin-right: 0.5rem;
+  font-size: 1.25rem;
+}
+
+/* Code blocks (if any) */
+article code,
+.blog-content code,
+.prose code {
+  background: #F5F5DC;
+  color: #D2691E;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+  font-family: 'Courier New', monospace;
+}
+
+/* Images in blog posts */
+article img,
+.blog-content img,
+.prose img {
+  max-width: 100%;
+  height: auto;
+  margin: 2rem 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Tables (if any) */
+article table,
+.blog-content table,
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+}
+
+article table th,
+.blog-content table th,
+.prose table th {
+  background: #D2691E;
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+article table td,
+.blog-content table td,
+.prose table td {
+  border: 1px solid #E5E5E5;
+  padding: 1rem;
+  color: #2F2F2F;
+}
+
+/* Horizontal Rule */
+article hr,
+.blog-content hr,
+.prose hr {
+  border: none;
+  border-top: 2px solid #D2691E;
+  margin: 3rem 0;
+}
+
+/* Mobile Responsiveness for Blog */
+@media (max-width: 768px) {
+  article,
+  .blog-content,
+  .prose {
+    padding: 1.5rem 1rem;
+  }
+
+  article h1,
+  .blog-content h1,
+  .prose h1 {
+    font-size: 2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  article h2,
+  .blog-content h2,
+  .prose h2 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  article h3,
+  .blog-content h3,
+  .prose h3 {
+    font-size: 1.25rem;
+  }
+
+  article p,
+  article li,
+  .blog-content p,
+  .blog-content li,
+  .prose p,
+  .prose li {
+    font-size: 1rem;
+  }
+
+  article ul,
+  article ol,
+  .blog-content ul,
+  .blog-content ol,
+  .prose ul,
+  .prose ol {
+    padding-left: 1.5rem;
+  }
+}
+
+/* Print Styles for Blog Posts */
+@media print {
+  article,
+  .blog-content,
+  .prose {
+    max-width: 100%;
+    padding: 0;
+    color: black !important;
+  }
+
+  article h1,
+  article h2,
+  article h3,
+  .blog-content h1,
+  .blog-content h2,
+  .blog-content h3 {
+    color: black !important;
+  }
+}

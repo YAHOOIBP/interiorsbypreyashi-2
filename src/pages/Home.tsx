@@ -14,6 +14,7 @@ const Home: React.FC = () => {
   const [currentNumerologyInsight, setCurrentNumerologyInsight] = useState(0);
   const [currentDrawingIndex, setCurrentDrawingIndex] = useState(0);
   const [currentClientLogoIndex, setCurrentClientLogoIndex] = useState(0);
+  const [isQuizOpen, setIsQuizOpen] = useState(false);
 
   // Touch state management for swipe functionality
   const [touchStartX, setTouchStartX] = useState(0);
@@ -984,6 +985,12 @@ useEffect(() => {
               >
                 Contact Us
               </Link>
+              <button
+    onClick={() => setIsQuizOpen(true)}
+    className="w-full sm:w-auto bg-purple-600 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-purple-700 transition-all duration-300 flex items-center justify-center"
+  >
+    Take Quiz ✨
+   </button>
             </div>
           </motion.div>
         </div>
@@ -995,6 +1002,11 @@ useEffect(() => {
         onClose={() => setIsLeadModalOpen(false)}
         title="Start Your Dream Project"
       />
+      <QuizModal
+  isOpen={isQuizOpen}
+  onClose={() => setIsQuizOpen(false)}
+/>
+
     </div>
   );
 };

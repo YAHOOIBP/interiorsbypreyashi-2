@@ -4,6 +4,7 @@ import { ArrowRight, Star, Users, Award, Heart, Play, ChevronLeft, ChevronRight,
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import LeadModal from '../components/LeadModal';
+import QuizModal from '../components/QuizModal';
 
 const Home: React.FC = () => {
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
@@ -994,6 +995,14 @@ useEffect(() => {
         onClose={() => setIsLeadModalOpen(false)}
         title="Start Your Dream Project"
       />
+
+      {/* Quiz Modal */}
+      <QuizModal
+        isOpen={isQuizOpen}
+        onClose={() => setIsQuizOpen(false)}
+        title="Take Quiz"
+      />
+
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, CheckCircle, User, Phone, Mail, MessageSquare } from 'lucide-react';
 import { submitLead } from '../lib/firebase';
+import { sendLeadEmail } from '../utils/emailService';
 
 interface LeadModalProps {
   isOpen: boolean;
@@ -40,6 +41,15 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose, title = "Start Y
     setIsSubmitting(true);
 
     try {
+
+      const emailResult = await sendLeadEmail({
+      fullName: formData.name,
+   email: formData.email,
+   phone: formData.phone,
+   projectType: formData.projectType,
+   message: formData.message
+ });
+
       const result = await submitLead(formData);
       
       if (result.success) {

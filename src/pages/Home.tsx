@@ -987,7 +987,7 @@ useEffect(() => {
               </Link>
               <button
     onClick={() => setIsQuizOpen(true)}
-    className="w-full sm:w-auto bg-purple-600 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-purple-700 transition-all duration-300 flex items-center justify-center"
+    className="w-full sm:w-auto bg-gold-600 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-purple-700 transition-all duration-300 flex items-center justify-center"
   >
     Take Quiz ✨
    </button>

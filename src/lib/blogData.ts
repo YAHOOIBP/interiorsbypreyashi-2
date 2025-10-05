@@ -8,7 +8,7 @@ export interface BlogPost {
   author: string;
   date: string;
   readTime: string;
-  coverImage?: string;
+  image?: string;
 }
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -18,55 +18,52 @@ export const BLOG_POSTS: BlogPost[] = [
     title: 'Vastu Principles for Modern Homes',
     coverImage: '/images/blog/vastu-principles-cover.webp',
     category: 'Vastu',
-    excerpt: 'A comprehensive direction-wise guide to applying ancient Vastu principles in modern home design for harmony and prosperity.',
+    excerpt: 'Discover how ancient Vastu Shastra principles can be seamlessly integrated into contemporary interior design for harmony and prosperity.',
     content: `
-      <h2>Vastu for Modern Homes — Merged Direction-wise Guide</h2>
+      <h2>Introduction to Modern Vastu Living</h2>
+      <p>In today's fast-paced world, creating a harmonious living space that balances modern aesthetics with ancient wisdom has become more important than ever. Vastu Shastra, the traditional Indian science of architecture and design, offers timeless principles that can transform your contemporary home into a sanctuary of positive energy.</p>
+
+      <h3>Essential Vastu Principles for Today's Homes</h3>
       
-      <h3>🧭 North-East (NE – Ishaan)</h3>
-      <p><strong>Recommended:</strong> Entrance, Puja/Meditation room, Porch/Verandah/Balcony, Underground water tank, Lawn & plants, Study, Living/Drawing, Guest/Kids' room</p>
-      <p><strong>Avoid:</strong> Kitchen, Toilets, Septic tank, Main switch/electricals</p>
-      
-      <h3>🧭 North (N)</h3>
-      <p><strong>Recommended:</strong> Living/Drawing room, Entrance, Bathroom, Accounts/Treasury, Puja ghar, Lawn & plants, Basement (if needed), Well/Borewell</p>
-      <p><strong>Avoid:</strong> Bedrooms</p>
-      
-      <h3>🧭 North-West (NW)</h3>
-      <p><strong>Recommended:</strong> Guest bedroom, Kids' room, Dining, Study, Living room, Washing area, Food/Grain store, Parking, Toilet/Septic tank, Room for elders</p>
-      <p><strong>Avoid:</strong> Master bedroom</p>
-      
-      <h3>🧭 East (E)</h3>
-      <p><strong>Recommended:</strong> Bathroom, Open space, Guest room, Living/Drawing room, Study, Balcony; (Puja room acceptable)</p>
-      <p><strong>Avoid:</strong> — (no specific avoid items in your charts)</p>
-      
-      <h3>🧭 West (W)</h3>
-      <p><strong>Recommended:</strong> Dining room, Children's bedroom, Study room, Overhead water tank, Toilet/Septic tank</p>
-      <p><strong>Avoid:</strong> Cellar</p>
-      
-      <h3>🧭 South-West (SW)</h3>
-      <p><strong>Recommended:</strong> Master bedroom, Wardrobes & Dressing, Heavy items, Cash box, Staircase block, Overhead water tank, Servant room</p>
-      <p><strong>Avoid:</strong> Cellar/Well, Underground water features</p>
-      
-      <h3>🧭 South (S)</h3>
-      <p><strong>Recommended:</strong> Bedrooms (sleep with head to South), Store room, Stairs, Toilet, Trees (landscape)</p>
-      <p><strong>Avoid:</strong> Cellar/Well, Large open water</p>
-      
-      <h3>🧭 South-East (SE – Agni)</h3>
-      <p><strong>Recommended:</strong> Kitchen (cook facing East), Electric meter/Main switch, Inverter/Generator, Store for oils & provisions, Drawing/Guest room, Servant room</p>
-      <p><strong>Avoid:</strong> Septic tank, Puja room, Well/Cellar</p>
-      
-      <h3>🧭 South-South-East (SSE)</h3>
-      <p><strong>Recommended:</strong> Oil & general store, Gate, Bedroom, Drawing & Dining room, Stairs, Guest/Paying-guest room, Servant room</p>
-      
-      <h3>🧭 South-South-West (SSW)</h3>
-      <p><strong>Recommended:</strong> Toilet, Bedroom, Store, Stairs, Trees</p>
-      
-      <h3>🌟 Center (Brahmasthan)</h3>
-      <p><strong>Recommended:</strong> Keep open, light & airy; ideal for Tulsi plant</p>
-      <p><strong>Avoid:</strong> Heavy construction, Toilet, Kitchen, Staircase, Store</p>
-      
-      <h3>🌿 Tulsi Plant</h3>
-      <p><strong>Ideal:</strong> Center (Brahmasthan)</p>
-      <p><strong>Also acceptable:</strong> NE (with lawn/plants) and SE (not near the stove)</p>
+      <h4>1. Entrance Orientation - The Gateway of Energy</h4>
+      <p>Your home's main entrance is considered the mouth through which cosmic energy enters. For modern homes:</p>
+      <ul>
+        <li><strong>North-facing entrance:</strong> Attracts wealth and career opportunities - ideal for professionals and business owners</li>
+        <li><strong>East-facing entrance:</strong> Brings health, vitality, and new beginnings - perfect for growing families</li>
+        <li><strong>Northeast entrance:</strong> The most auspicious direction for spiritual growth and wisdom</li>
+      </ul>
+      <p>Modern application: Ensure your entrance is well-lit with LED lighting, keep it clutter-free, and consider adding plants or water features in the northeast zone.</p>
+
+      <h4>2. Living Room Design According to Vastu</h4>
+      <p>The living room represents social harmony and family bonding:</p>
+      <ul>
+        <li>Position in the <strong>north or east zones</strong> for optimal energy flow</li>
+        <li>Arrange seating to face <strong>east or north</strong> for positive conversations</li>
+        <li>Use <strong>light colors</strong> like cream, light yellow, or soft greens</li>
+        <li>Place heavy furniture in the <strong>south or west walls</strong></li>
+      </ul>
+
+      <h4>3. Kitchen Placement and Modern Vastu</h4>
+      <p>The kitchen represents nourishment and prosperity:</p>
+      <ul>
+        <li><strong>Southeast corner (Agni zone):</strong> Ideal placement aligning with fire element</li>
+        <li><strong>Cooking direction:</strong> Face east while cooking for positive energy absorption</li>
+        <li><strong>Modern appliances:</strong> Place microwave and electrical items in southeast</li>
+        <li><strong>Water elements:</strong> Sink and water purifier in northeast zone of kitchen</li>
+      </ul>
+
+      <h3>Getting Started: Your Vastu Action Plan</h3>
+      <ol>
+        <li><strong>Assessment:</strong> Evaluate your current home layout and identify key areas for improvement</li>
+        <li><strong>Prioritize:</strong> Start with the most important spaces - entrance, bedroom, and kitchen</li>
+        <li><strong>Implement gradually:</strong> Make changes systematically rather than all at once</li>
+        <li><strong>Observe:</strong> Notice the effects of changes on your daily life and well-being</li>
+        <li><strong>Refine:</strong> Continue to make small adjustments based on your observations</li>
+      </ol>
+
+      <p>Remember, the goal of Vastu is to create a living space that supports your highest potential. By thoughtfully integrating these ancient principles with modern design, you can create a home that is not only beautiful but also energetically supportive of your goals and dreams.</p>
+
+      <p><em>Ready to transform your space with Vastu principles? Contact our expert team for a personalized consultation that respects both your design preferences and ancient wisdom.</em></p>
     `,
     author: 'Preyashi',
     date: '2024-12-15',
@@ -78,29 +75,40 @@ export const BLOG_POSTS: BlogPost[] = [
     title: '5 Interior Design Mistakes to Avoid',
     coverImage: '/images/blog/mistakes-cover.webp',
     category: 'Design Tips',
-    excerpt: 'Learn about the most common interior design pitfalls and practical solutions to create perfectly balanced and functional living spaces.',
+    excerpt: 'Learn about the most common interior design pitfalls and how to avoid them for a perfectly balanced and functional living space.',
     content: `
-      <h2>Here are 5 common Interior Design mistakes to avoid (and how to fix them):</h2>
-      
-      <h3>1. Ignoring Proper Space Planning</h3>
-      <p><strong>❌ Mistake:</strong> Filling rooms with furniture without measuring, leading to cramped or awkward layouts.</p>
-      <p><strong>✅ Fix:</strong> Always measure your space and create a floor plan before buying furniture. Keep circulation space clear.</p>
-      
-      <h3>2. Poor Lighting Choices</h3>
-      <p><strong>❌ Mistake:</strong> Relying only on overhead lighting (making spaces feel flat or harsh).</p>
-      <p><strong>✅ Fix:</strong> Use a mix of ambient, task, and accent lighting. Layer light with floor lamps, wall sconces, or under-cabinet lights for warmth and depth.</p>
-      
-      <h3>3. Pushing All Furniture Against Walls</h3>
-      <p><strong>❌ Mistake:</strong> Thinking this will make the room look bigger—but it often makes the space look empty in the middle.</p>
-      <p><strong>✅ Fix:</strong> Float furniture when possible (like a sofa with a console table behind it) to create conversation zones.</p>
-      
-      <h3>4. Choosing Style Over Comfort</h3>
-      <p><strong>❌ Mistake:</strong> Buying furniture only for looks, but not for functionality or comfort.</p>
-      <p><strong>✅ Fix:</strong> Test furniture before purchase. Make sure sofas, chairs, and beds are ergonomically comfortable and suit daily use.</p>
-      
-      <h3>5. Neglecting Personal Touch</h3>
-      <p><strong>❌ Mistake:</strong> Copy-pasting Pinterest or showroom looks without adding your own story.</p>
-      <p><strong>✅ Fix:</strong> Add personal elements—art, photos, souvenirs, heirlooms, or custom pieces—to make the space feel like your home.</p>
+      <h2>Common Interior Design Mistakes That Can Ruin Your Space</h2>
+      <p>Creating a beautiful, functional home is an art that requires both creativity and practical knowledge. Even with the best intentions, many homeowners fall into common traps that can undermine the beauty and functionality of a space.</p>
+
+      <h3>Mistake #1: Ignoring Scale and Proportion</h3>
+      <h4>The Problem:</h4>
+      <p>One of the most frequent errors is choosing furniture that's either too large or too small for the space. This creates visual imbalance and can make rooms feel cramped or uncomfortably sparse.</p>
+
+      <h4>The Solution:</h4>
+      <ul>
+        <li><strong>Measure twice, buy once:</strong> Always measure your space and create a floor plan before purchasing</li>
+        <li><strong>Follow the 2/3 rule:</strong> Area rugs should cover at least the front legs of all furniture in a seating group</li>
+        <li><strong>Coffee table height:</strong> Should be the same height as your sofa seat or 1-2 inches lower</li>
+      </ul>
+
+      <h3>Mistake #2: Poor Lighting Design</h3>
+      <h4>The Solution - Layer Your Lighting:</h4>
+      <ol>
+        <li><strong>Ambient lighting:</strong> General illumination (overhead fixtures, recessed lights)</li>
+        <li><strong>Task lighting:</strong> Focused light for specific activities (desk lamps, under-cabinet lighting)</li>
+        <li><strong>Accent lighting:</strong> Decorative illumination (table lamps, wall sconces, artwork lighting)</li>
+      </ol>
+
+      <h3>Mistake #3: Neglecting Flow and Functionality</h3>
+      <p>Prioritizing aesthetics over functionality leads to beautiful but impractical spaces that don't support daily life.</p>
+
+      <h3>Mistake #4: Rushing the Process</h3>
+      <p>Interior design is a process that benefits from thoughtful consideration. Rushing leads to costly mistakes and spaces that feel disjointed.</p>
+
+      <h3>Mistake #5: Ignoring Personal Style for Trends</h3>
+      <p>Creating a space that doesn't reflect your personality leads to a home that feels foreign and uncomfortable.</p>
+
+      <p>Remember, the best interior design serves both beauty and function. By avoiding these common mistakes and taking a thoughtful approach to your space, you can create a home that not only looks stunning but also supports and enhances your daily life.</p>
     `,
     author: 'Preyashi',
     date: '2024-12-10',
@@ -112,61 +120,54 @@ export const BLOG_POSTS: BlogPost[] = [
     title: 'Color Psychology in Interior Design',
     coverImage: '/images/blog/color-psychology-cover.webp',
     category: 'Color Theory',
-    excerpt: 'Discover how different colors influence mood, emotions, and energy levels to create the perfect atmosphere in your home.',
+    excerpt: 'Understand how different colors affect mood and behavior, and learn to use color psychology to create the perfect atmosphere in your home.',
     content: `
-      <h2>🎨 Color Psychology in Interior Design – How Colors Shape Your Mood & Space</h2>
-      
-      <p>Colors are more than just visual choices in interior design—they have the power to influence our mood, emotions, and even energy levels. A thoughtfully chosen color palette can transform a house into a home, adding not only beauty but also balance. Here's how different colors impact your interiors and how to use them effectively.</p>
-      
-      <h3>🤍 White – Purity & Spaciousness</h3>
-      <p>White represents simplicity, cleanliness, and freshness. It reflects light beautifully, making spaces feel larger and brighter.</p>
-      <p><strong>Best Use:</strong> Small rooms, modern minimalist interiors, Scandinavian-style spaces.</p>
-      <p><strong>Tip:</strong> Pair with wood, plants, or textured fabrics to avoid a clinical feel.</p>
-      
-      <h3>🌾 Beige & Neutrals – Warmth & Timelessness</h3>
-      <p>Neutral tones like beige, taupe, and cream bring warmth and sophistication. They work as perfect backdrops, allowing furniture, art, or accessories to shine.</p>
-      <p><strong>Best Use:</strong> Living rooms, bedrooms, or spaces that need a cozy, timeless touch.</p>
-      <p><strong>Tip:</strong> Layer different neutral shades with textures (linen, wood, jute) for depth.</p>
-      
-      <h3>💙 Blue – Calm & Focus</h3>
-      <p>Blue is associated with peace, stability, and productivity. It lowers stress levels and helps with concentration.</p>
-      <p><strong>Best Use:</strong> Bedrooms for restful sleep, study rooms for focus, and bathrooms for a spa-like feel.</p>
-      <p><strong>Tip:</strong> Light blues create serenity, while deep navy adds elegance.</p>
-      
-      <h3>🌿 Green – Balance & Freshness</h3>
-      <p>Green symbolizes nature, growth, and harmony. It brings a sense of healing and freshness indoors.</p>
-      <p><strong>Best Use:</strong> Living rooms, dining areas, and wellness corners.</p>
-      <p><strong>Tip:</strong> Use sage or olive tones for calmness, or brighter greens for vibrancy. Adding indoor plants enhances the effect.</p>
-      
-      <h3>💛 Yellow – Positivity & Energy</h3>
-      <p>Yellow radiates warmth, optimism, and cheerfulness. It's known to uplift mood and stimulate energy.</p>
-      <p><strong>Best Use:</strong> Kitchens and dining areas for lively energy, or kids' rooms for playfulness.</p>
-      <p><strong>Tip:</strong> Use softer yellows for subtle cheer; avoid overusing bright tones in bedrooms.</p>
-      
-      <h3>❤ Red – Passion & Excitement</h3>
-      <p>Red is bold, energetic, and passionate. It increases warmth but can also feel overwhelming in large doses.</p>
-      <p><strong>Best Use:</strong> Dining areas (stimulates appetite), accent walls, or statement décor.</p>
-      <p><strong>Tip:</strong> Use as highlights or feature walls instead of painting an entire room red.</p>
-      
-      <h3>🌸 Pink – Love & Comfort</h3>
-      <p>Pink carries softness, affection, and nurturing vibes. It's soothing yet stylish when used in interiors.</p>
-      <p><strong>Best Use:</strong> Bedrooms, nurseries, or cozy corners.</p>
-      <p><strong>Tip:</strong> Blush and dusty pinks feel elegant, while brighter pinks can be playful.</p>
-      
-      <h3>⚫ Grey – Balance & Modernity</h3>
-      <p>Grey symbolizes neutrality, sophistication, and balance. It's versatile and pairs beautifully with almost any accent color.</p>
-      <p><strong>Best Use:</strong> Living rooms, offices, and modern homes.</p>
-      <p><strong>Tip:</strong> Mix warm greys with wood for a cozy effect, or pair cool greys with metals for a sleek, industrial vibe.</p>
-      
-      <h3>🖤 Black – Power & Elegance</h3>
-      <p>Black adds depth, luxury, and a dramatic effect. It can make spaces look chic but should be used carefully.</p>
-      <p><strong>Best Use:</strong> Statement walls, furniture, lighting fixtures, or trims.</p>
-      <p><strong>Tip:</strong> Combine with lighter shades to prevent a heavy, closed-in feel.</p>
-      
-      <h3>🌟 Conclusion</h3>
-      <p>Colors are not just decorative choices—they're emotional tools that influence how we live, work, and feel at home. Whether you prefer calming blues, grounding neutrals, or energizing yellows, the right palette can truly elevate your interiors.</p>
-      
-      <p><strong>👉 When designing your space, think about the mood you want to create, and let color psychology guide your decisions.</strong></p>
+      <h2>The Science of Color: How Hues Influence Our Daily Lives</h2>
+      <p>Color is one of the most powerful tools in interior design, capable of dramatically altering not just the appearance of a space, but also the emotions, behaviors, and well-being of those who inhabit it.</p>
+
+      <h3>The Fundamentals of Color Psychology</h3>
+      <p>Color psychology studies how different hues affect human behavior and emotional responses. These effects occur because:</p>
+      <ul>
+        <li><strong>Evolutionary associations:</strong> We've developed responses to colors based on natural associations</li>
+        <li><strong>Cultural conditioning:</strong> Societal associations with colors influence our responses</li>
+        <li><strong>Personal experiences:</strong> Individual memories and associations with specific colors</li>
+      </ul>
+
+      <h3>Warm Colors - Energy and Intimacy</h3>
+      <p><strong>Red - The Color of Passion and Power</strong></p>
+      <ul>
+        <li><strong>Best for:</strong> Dining rooms, exercise spaces, accent walls</li>
+        <li><strong>Avoid in:</strong> Bedrooms (can disrupt sleep), small spaces</li>
+      </ul>
+
+      <p><strong>Orange - The Color of Enthusiasm and Creativity</strong></p>
+      <ul>
+        <li><strong>Best for:</strong> Play rooms, creative studios, kitchens, social spaces</li>
+        <li><strong>Modern applications:</strong> Burnt orange and terracotta create warmth without overstimulation</li>
+      </ul>
+
+      <h3>Cool Colors - Calm and Focus</h3>
+      <p><strong>Blue - The Color of Tranquility and Trust</strong></p>
+      <ul>
+        <li><strong>Best for:</strong> Bedrooms, bathrooms, meditation spaces, home offices</li>
+        <li><strong>Varieties:</strong> Navy for sophistication, powder blue for serenity, teal for balance</li>
+      </ul>
+
+      <p><strong>Green - The Color of Balance and Renewal</strong></p>
+      <ul>
+        <li><strong>Best for:</strong> Any room, especially bedrooms, living rooms, and home offices</li>
+        <li><strong>Benefits:</strong> Works well with both warm and cool color schemes</li>
+      </ul>
+
+      <h3>The 60-30-10 Rule</h3>
+      <p>A foolproof way to create balanced color schemes:</p>
+      <ul>
+        <li><strong>60%:</strong> Dominant neutral color (walls, large furniture)</li>
+        <li><strong>30%:</strong> Secondary color (accent furniture, window treatments)</li>
+        <li><strong>10%:</strong> Pop of accent color (pillows, artwork, accessories)</li>
+      </ul>
+
+      <p>Color psychology is a powerful tool that can transform not just the look of your home, but how you feel and function within it. By understanding the psychological effects of different hues, you can create an environment that truly supports your well-being.</p>
     `,
     author: 'Preyashi',
     date: '2024-12-05',
@@ -175,46 +176,60 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: '4',
     slug: 'vedic-numerology-in-interior-design',
-    title: 'Vedic Numerology – The 3 Pillars That Shape Your Life',
+    title: 'Vedic Numerology in Interior Design',
     coverImage: '/images/blog/numerology-cover.webp',
     category: 'Numerology',
-    excerpt: 'Explore the ancient science of Vedic numerology and learn how the 3 core numbers influence personality, destiny, and life purpose.',
+    excerpt: 'Explore how Vedic numerology can guide your interior design choices to create spaces that resonate with your personal energy.',
     content: `
-      <h2>Vedic Numerology – The 3 Pillars That Shape Your Life</h2>
-      
-      <p>Vedic Numerology is an ancient science that connects numbers with vibrations of the universe. Each person is born with a unique numerical blueprint that influences personality, destiny, and how others perceive them. In this system, three core numbers—known as the 3 Pillars of Life—play the most important role in understanding and balancing one's journey.</p>
-      
-      <h3>🌟 1. Basic Number (Psychic Number)</h3>
-      <p>The Basic Number represents your personality, emotions, and how you deal with life on a day-to-day basis. It's the number closest to your heart and defines your natural instincts.</p>
-      
-      <p><strong>How to Calculate:</strong> Take your date of birth (day only).</p>
-      <p><strong>Example:</strong> If born on 15 → 1 + 5 = 6.</p>
-      <p><strong>What it Means:</strong> This number reveals your nature, likes and dislikes, and how you react in daily situations.</p>
-      <p><strong>👉 It's the number that makes you you.</strong></p>
-      
-      <h3>🌿 2. Destiny Number (Life Path Number)</h3>
-      <p>The Destiny Number shows the bigger picture—your life purpose, karmic path, and the opportunities or challenges you may face. It reflects the journey your soul has chosen in this lifetime.</p>
-      
-      <p><strong>How to Calculate:</strong> Add up the full date of birth (DD + MM + YYYY) until you reach a single digit (except master numbers 11 & 22).</p>
-      <p><strong>Example:</strong> 15-08-1992 → 1+5+0+8+1+9+9+2 = 35 → 3+5 = 8.</p>
-      <p><strong>What it Means:</strong> This number guides your long-term goals, career path, and the lessons you're meant to learn.</p>
-      <p><strong>👉 It is often called your life's compass.</strong></p>
-      
-      <h3>💫 3. Name Number (Expression Number)</h3>
-      <p>The Name Number reflects how the outside world perceives you. It represents your social image, opportunities, and how your energy interacts with others. Unlike your date of birth, this number can be modified by changing the spelling of your name to achieve better alignment.</p>
-      
-      <p><strong>How to Calculate:</strong> Assign numerical values to each letter of your full name using the Chaldean/Vedic chart and total them until a single digit is reached.</p>
-      <p><strong>What it Means:</strong> If this number vibrates in harmony with your Basic and Destiny numbers, it enhances success, recognition, and balance in life.</p>
-      <p><strong>👉 It's the face you show to the world.</strong></p>
-      
-      <h3>⚖ Why Balancing the 3 Pillars Matters</h3>
-      <p>When the Basic Number, Destiny Number, and Name Number are in harmony, life feels smoother. You attract the right opportunities, relationships flow better, and challenges become easier to navigate.</p>
-      
-      <p>If they conflict, you may feel blocked or face repeated struggles.</p>
-      <p>Through name correction and mindful living, balance can be restored.</p>
-      
-      <h3>🌟 Conclusion</h3>
-      <p>Vedic Numerology isn't about changing fate—it's about aligning with the right vibrations. The 3 Pillars of Life reveal your inner nature (Basic), your soul's path (Destiny), and your outer identity (Name). By harmonizing these numbers, you can unlock clarity, confidence, and abundance in your journey.</p>
+      <h2>Unlocking the Sacred Science of Numbers in Your Living Space</h2>
+      <p>Vedic numerology, an ancient system rooted in Indian spiritual traditions, offers profound insights into how numbers influence our lives, personalities, and environments. When applied to interior design, this sacred science can help create living spaces that resonate with your personal energy.</p>
+
+      <h3>Understanding Vedic Numerology Basics</h3>
+      <p>Unlike Western numerology, Vedic numerology connects each number to specific planetary energies, colors, directions, and life aspects. This system recognizes three key numbers:</p>
+
+      <h4>The Three Pillars of Personal Numerology</h4>
+      <ol>
+        <li><strong>Psychic Number:</strong> Your birth date reduced to a single digit - how you see yourself</li>
+        <li><strong>Destiny Number:</strong> Your complete birth date reduced to a single digit - how the world sees you</li>
+        <li><strong>Name Number:</strong> The numerical value of your name - your professional and social identity</li>
+      </ol>
+
+      <h3>Number 1 - Sun Energy (Leadership & Independence)</h3>
+      <p><strong>Interior Design Approach:</strong></p>
+      <ul>
+        <li><strong>Colors:</strong> Golden yellow, orange, bright red</li>
+        <li><strong>Materials:</strong> Bold metals like gold and brass</li>
+        <li><strong>Furniture Style:</strong> Statement pieces, unique designs, bold geometries</li>
+        <li><strong>Direction:</strong> East-facing rooms for maximum sun energy</li>
+      </ul>
+
+      <h3>Number 2 - Moon Energy (Cooperation & Intuition)</h3>
+      <p><strong>Interior Design Approach:</strong></p>
+      <ul>
+        <li><strong>Colors:</strong> Soft whites, silver, pale blue, cream</li>
+        <li><strong>Materials:</strong> Silver accents, glass, crystal</li>
+        <li><strong>Furniture Style:</strong> Curved lines, paired items, comfortable seating</li>
+        <li><strong>Direction:</strong> North-facing rooms for moon energy</li>
+      </ul>
+
+      <h3>Calculating Your Personal Numbers</h3>
+      <h4>Psychic Number Calculation</h4>
+      <p>Simply reduce your birth date to a single digit:</p>
+      <ul>
+        <li>Born on the 5th = 5</li>
+        <li>Born on the 23rd = 2 + 3 = 5</li>
+        <li>Born on the 29th = 2 + 9 = 11 = 1 + 1 = 2</li>
+      </ul>
+
+      <h3>Color Coordination with Personal Numbers</h3>
+      <p>Layer colors based on your three key numbers:</p>
+      <ul>
+        <li><strong>Primary color (60%):</strong> Based on your Destiny Number</li>
+        <li><strong>Secondary color (30%):</strong> Based on your Psychic Number</li>
+        <li><strong>Accent color (10%):</strong> Based on your Name Number</li>
+      </ul>
+
+      <p>Numerology offers a profound way to understand yourself and create living spaces that truly support your authentic nature and life purpose. By aligning your personal space with your numerical vibrations, you create an environment that enhances your natural strengths and supports your goals.</p>
     `,
     author: 'Preyashi',
     date: '2024-11-28',

@@ -998,8 +998,8 @@ useEffect(() => {
 
       {/* Quiz Modal */}
       <QuizModal
-        isOpen={isQuizOpen}
-        onClose={() => setIsQuizOpen(false)}
+        isOpen={isQuizModalOpen}
+        onClose={() => setIsQuizModalOpen(false)}
         title="Take Quiz"
       />
 

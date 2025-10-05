@@ -995,13 +995,11 @@ useEffect(() => {
         onClose={() => setIsLeadModalOpen(false)}
         title="Start Your Dream Project"
       />
-
-      {/* Quiz Modal */}
+      
       <QuizModal
-        isOpen={isQuizModalOpen}
-        onClose={() => setIsQuizModalOpen(false)}
-        title="Take Quiz"
-      />
+  isOpen={isQuizOpen}
+  onClose={() => setIsQuizOpen(false)}
+/>
 
     </div>
   );

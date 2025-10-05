@@ -42,28 +42,34 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           
-          {/* Logo Section - YOUR ACTUAL LOGO IMAGE */}
-          <Link 
-            to="/" 
-            className="flex items-center space-x-3 flex-shrink-0 z-50"
-          >
-            {/* Your actual logo image - UPDATE PATH AS NEEDED */}
-            <img 
-              src="/images/logo/logo.png" 
-              alt="Interiors by Preyashi Logo" 
-              className="w-10 h-10 lg:w-12 lg:h-12 object-contain"
-              loading="eager"
-            />
-            
-            <div className="flex flex-col">
-              <span className="text-lg lg:text-xl font-bold text-neutral-dark">
-                Interiors by Preyashi
-              </span>
-              <span className="text-xs text-neutral-dark">
-                Design • Vastu • Numerology
-              </span>
-            </div>
-          </Link>
+          {/* Logo Section - FINAL RECOMMENDED VERSION */}
+<Link 
+  to="/" 
+  className="flex items-center space-x-3 flex-shrink-0 z-50 group"
+>
+  {/* Logo with hover effect */}
+  <img 
+    src="/images/logo/logo.png" 
+    alt="Interiors by Preyashi Logo" 
+    className="w-10 h-10 lg:w-12 lg:h-12 object-contain transition-transform duration-300 group-hover:scale-110"
+    loading="eager"
+  />
+  
+  <div className="flex flex-col">
+    {/* Brand name with hover color change */}
+    <span className="text-base sm:text-lg lg:text-xl font-bold text-neutral-dark tracking-tight leading-tight transition-colors duration-300 group-hover:text-primary">
+      Interiors by Preyashi
+    </span>
+    {/* Colorful tagline - always visible */}
+    <span className="text-[10px] sm:text-xs font-medium tracking-wide">
+      <span className="text-primary font-semibold">Design</span> 
+      <span className="mx-0.5 sm:mx-1 text-neutral-dark/50">•</span>
+      <span className="text-green-600 font-semibold">Vastu</span>
+      <span className="mx-0.5 sm:mx-1 text-neutral-dark/50">•</span>
+      <span className="text-amber-600 font-semibold">Numerology</span>
+    </span>
+  </div>
+</Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-6">

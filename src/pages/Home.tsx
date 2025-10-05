@@ -986,11 +986,11 @@ useEffect(() => {
                 Contact Us
               </Link>
               <button
-    onClick={() => setIsQuizOpen(true)}
-    className="w-full sm:w-auto bg-yellow-600 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-purple-700 transition-all duration-300 flex items-center justify-center"
-  >
-    Take Quiz ✨
-   </button>
+                onClick={() => setIsQuizOpen(true)}
+                className="w-full sm:w-auto bg-yellow-600 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-purple-700 transition-all duration-300 flex items-center justify-center"
+              >
+               Take Quiz ✨
+              </button>
             </div>
           </motion.div>
         </div>
